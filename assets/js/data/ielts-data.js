@@ -1008,5 +1008,192 @@ window.COURSE_DATA = [
     {q:"In the E.M.O.T.I.O.N. method, the final N stands for:",opts:["Narrative","New Lesson","Notice","Note"],a:1},
     {q:"\"We were waiting for the bus when it started raining\" uses which tense for \"were waiting\"?",opts:["Past Simple","Past Continuous","Past Perfect","Present Continuous"],a:1}
   ]
+},
+{
+  unit:"Module 4 — Review & Assessment",
+  id:"4.1",
+  title:"IELTS Speaking Course Review Quiz",
+  objectives:[
+    "Assess vocabulary, grammar, and speaking strategies from Modules 1–2.",
+    "Complete all six parts of the review assessment.",
+    "Identify strengths and areas for improvement before Module 3.",
+    "Apply learned expressions and structures under timed conditions."
+  ],
+  success:[
+    "Complete Parts 1–4 multiple-choice questions accurately.",
+    "Write 2–3 sentence answers for Part 5 short-answer questions.",
+    "Record a 2-minute Part 6 speaking response using required language.",
+    "Review the answer key and understand every correction.",
+    "Score at least 70/100 to be ready for Module 3."
+  ],
+  vocab:[],
+  html:`
+  <div class="content-body">
+  <p><strong>Duration:</strong> 90 minutes &nbsp;|&nbsp; <strong>Target Band:</strong> 5.5 → 6.5 &nbsp;|&nbsp; <strong>Focus:</strong> Full Assessment — Modules 1 &amp; 2</p>
+  <p>This assessment covers Lessons 1–8. Complete all parts, then check your answers using the key at the end.</p>
+  <h4>Part 1 – Vocabulary (30 Marks)</h4>
+  <p>Choose the best answer for questions 1–15.</p>
+  <table class="data-table"><tr><th>Q</th><th>Prompt</th><th>A</th><th>B</th><th>C</th><th>D</th></tr>
+  <tr><td>1</td><td>Best replacement for "I like reading."</td><td>I think reading.</td><td>I quite like.</td><td>I'm quite fond of reading.</td><td>Reading is okay.</td></tr>
+  <tr><td>2</td><td>Word meaning very beautiful</td><td>Nice</td><td>Stunning</td><td>Good</td><td>Pretty</td></tr>
+  <tr><td>3</td><td>Expression meaning relax</td><td>Improve</td><td>Develop</td><td>Unwind</td><td>Spend</td></tr>
+  <tr><td>4</td><td>Adjective for someone who always helps others</td><td>Selfish</td><td>Dedicated</td><td>Kind-hearted</td><td>Serious</td></tr>
+  <tr><td>5</td><td>Best replacement for "My town is very quiet."</td><td>peaceful</td><td>noisy</td><td>famous</td><td>modern</td></tr>
+  <tr><td>6</td><td>Phrase meaning I started enjoying photography</td><td>I made photography.</td><td>I got into photography.</td><td>I studied photography.</td><td>I tried photography.</td></tr>
+  <tr><td>7</td><td>Strongest adjective: The film was ________</td><td>good</td><td>nice</td><td>excellent</td><td>okay</td></tr>
+  <tr><td>8</td><td>Phrase meaning become better</td><td>improve</td><td>develop</td><td>learn</td><td>teach</td></tr>
+  <tr><td>9</td><td>Phrase meaning choose</td><td>decide</td><td>opt for</td><td>select</td><td>buy</td></tr>
+  <tr><td>10</td><td>Most natural sentence</td><td>I like football very much.</td><td>I'm a big fan of football.</td><td>Football is good.</td><td>I football.</td></tr>
+  <tr><td>11</td><td>Someone easy to talk to is...</td><td>approachable</td><td>imaginative</td><td>nervous</td><td>quiet</td></tr>
+  <tr><td>12</td><td>"My sister has a knack for drawing." means...</td><td>She dislikes drawing.</td><td>She is naturally good at drawing.</td><td>She teaches drawing.</td><td>She studies drawing.</td></tr>
+  <tr><td>13</td><td>Expression meaning healthy</td><td>nutritious</td><td>tasty</td><td>spicy</td><td>sweet</td></tr>
+  <tr><td>14</td><td>Phrase meaning eat in a restaurant</td><td>work out</td><td>dine out</td><td>unwind</td><td>recharge</td></tr>
+  <tr><td>15</td><td>Most natural expression</td><td>Technology changed everything.</td><td>Technology has transformed our lives.</td><td>Technology is good.</td><td>Technology helps.</td></tr>
+  </table>
+
+  <h4>Part 2 – Grammar (20 Marks)</h4>
+  <p>Choose the correct answer for questions 16–25.</p>
+  <table class="data-table"><tr><th>Q</th><th>Prompt</th><th>A</th><th>B</th><th>C</th><th>D</th></tr>
+  <tr><td>16</td><td>I ______ English for five years.</td><td>study</td><td>studied</td><td>have studied</td><td>studying</td></tr>
+  <tr><td>17</td><td>While I ______ television, my friend called.</td><td>watched</td><td>was watching</td><td>watch</td><td>watches</td></tr>
+  <tr><td>18</td><td>I'd like ______ abroad.</td><td>work</td><td>working</td><td>to work</td><td>worked</td></tr>
+  <tr><td>19</td><td>The woman ______ helped me is my teacher.</td><td>who</td><td>where</td><td>when</td><td>whose</td></tr>
+  <tr><td>20</td><td>Home-cooked meals are ______ fast food.</td><td>healthier than</td><td>healthiest</td><td>healthy</td><td>more healthiest</td></tr>
+  <tr><td>21</td><td>I hope ______ my English this year.</td><td>improve</td><td>improving</td><td>to improve</td><td>improved</td></tr>
+  <tr><td>22</td><td>This phone is ______ than my old one.</td><td>expensive</td><td>more expensive</td><td>most expensive</td><td>expensiver</td></tr>
+  <tr><td>23</td><td>Technology ______ education in the future.</td><td>change</td><td>changed</td><td>will change</td><td>changing</td></tr>
+  <tr><td>24</td><td>My brother, ______ lives in Canada, is a doctor.</td><td>where</td><td>who</td><td>when</td><td>what</td></tr>
+  <tr><td>25</td><td>I enjoy ______ English.</td><td>learn</td><td>learning</td><td>learned</td><td>learns</td></tr>
+  </table>
+
+  <h4>Part 3 – Idioms &amp; Expressions (15 Marks)</h4>
+  <p>Choose the correct meaning for questions 26–30.</p>
+  <table class="data-table"><tr><th>Q</th><th>Prompt</th><th>A</th><th>B</th><th>C</th><th>D</th></tr>
+  <tr><td>26</td><td>"I have a sweet tooth."</td><td>I like sweets.</td><td>My teeth hurt.</td><td>I visit the dentist often.</td><td>I eat quickly.</td></tr>
+  <tr><td>27</td><td>"Food brings people together."</td><td>Food makes people healthy.</td><td>Sharing meals strengthens relationships.</td><td>Food is expensive.</td><td>Restaurants are busy.</td></tr>
+  <tr><td>28</td><td>"It depends." means...</td><td>Definitely yes.</td><td>Definitely no.</td><td>It varies according to the situation.</td><td>I don't know.</td></tr>
+  <tr><td>29</td><td>"Lead a hectic lifestyle." means...</td><td>Live peacefully.</td><td>Have a very busy life.</td><td>Travel often.</td><td>Exercise regularly.</td></tr>
+  <tr><td>30</td><td>"Job satisfaction." means...</td><td>Earning a high salary.</td><td>Enjoying your work.</td><td>Getting promoted.</td><td>Working overtime.</td></tr>
+  </table>
+
+  <h4>Part 4 – Speaking Knowledge (15 Marks)</h4>
+  <p>Choose the correct answer for questions 31–35.</p>
+  <table class="data-table"><tr><th>Q</th><th>Prompt</th><th>A</th><th>B</th><th>C</th><th>D</th></tr>
+  <tr><td>31</td><td>How long to prepare for IELTS Speaking Part 2?</td><td>30 seconds</td><td>1 minute</td><td>2 minutes</td><td>5 minutes</td></tr>
+  <tr><td>32</td><td>How long should you speak?</td><td>30 seconds</td><td>1 minute</td><td>Up to 2 minutes</td><td>5 minutes</td></tr>
+  <tr><td>33</td><td>What should you write during preparation?</td><td>Full sentences</td><td>Keywords</td><td>Nothing</td><td>Every word you'll say</td></tr>
+  <tr><td>34</td><td>Which method helps organise Part 2 answers?</td><td>S.T.A.R.</td><td>R.A.M.</td><td>P.E.T.</td><td>F.A.S.T.</td></tr>
+  <tr><td>35</td><td>A good Part 2 answer should include...</td><td>Only facts</td><td>Only opinions</td><td>Personal examples and reflection</td><td>Memorised sentences</td></tr>
+  </table>
+
+  <h4>Part 5 – Short Answer (10 Marks)</h4>
+  <p>Answer questions 36–40 in 2–3 complete sentences.</p>
+  <div class="example-box">
+  <p><strong>36.</strong> Describe your favourite hobby.</p>
+  <p><strong>37.</strong> Describe someone you admire.</p>
+  <p><strong>38.</strong> What technology do you use every day?</p>
+  <p><strong>39.</strong> Describe your dream career.</p>
+  <p><strong>40.</strong> Describe your favourite place.</p>
+  </div>
+  <div class="example-box"><em>Tip: Use expressions from Modules 1–2 and speak for at least 30 seconds per answer.</em></div>
+
+  <h4>Part 6 – Speaking Challenge (10 Marks)</h4>
+  <p>Record yourself speaking for 2 minutes on the following topic:</p>
+  <div class="example-box">
+  <p><strong>Topic:</strong> Describe a memorable experience that taught you something important.</p>
+  <p><strong>Include:</strong></p>
+  <ul>
+    <li>What happened</li>
+    <li>Where it happened</li>
+    <li>Who was with you</li>
+    <li>Your feelings</li>
+    <li>What you learned</li>
+  </ul>
+  <p><strong>Use:</strong></p>
+  <ul>
+    <li>At least 10 vocabulary expressions from Modules 1–2</li>
+    <li>One relative clause</li>
+    <li>One comparison</li>
+    <li>One opinion phrase</li>
+    <li>One personal example</li>
+  </ul>
+  </div>
+
+  <h4>Answer Key</h4>
+  <table class="data-table"><tr><th>Q</th><th>Ans</th><th>Q</th><th>Ans</th><th>Q</th><th>Ans</th></tr>
+  <tr><td>1</td><td>C</td><td>16</td><td>C</td><td>31</td><td>B</td></tr>
+  <tr><td>2</td><td>B</td><td>17</td><td>B</td><td>32</td><td>C</td></tr>
+  <tr><td>3</td><td>C</td><td>18</td><td>C</td><td>33</td><td>B</td></tr>
+  <tr><td>4</td><td>C</td><td>19</td><td>A</td><td>34</td><td>A</td></tr>
+  <tr><td>5</td><td>A</td><td>20</td><td>A</td><td>35</td><td>C</td></tr>
+  <tr><td>6</td><td>B</td><td>21</td><td>C</td><td></td><td></td></tr>
+  <tr><td>7</td><td>C</td><td>22</td><td>B</td><td></td><td></td></tr>
+  <tr><td>8</td><td>B</td><td>23</td><td>C</td><td></td><td></td></tr>
+  <tr><td>9</td><td>B</td><td>24</td><td>B</td><td></td><td></td></tr>
+  <tr><td>10</td><td>B</td><td>25</td><td>B</td><td></td><td></td></tr>
+  <tr><td>11</td><td>A</td><td>26</td><td>A</td><td></td><td></td></tr>
+  <tr><td>12</td><td>B</td><td>27</td><td>B</td><td></td><td></td></tr>
+  <tr><td>13</td><td>A</td><td>28</td><td>C</td><td></td><td></td></tr>
+  <tr><td>14</td><td>B</td><td>29</td><td>B</td><td></td><td></td></tr>
+  <tr><td>15</td><td>B</td><td>30</td><td>B</td><td></td><td></td></tr>
+  </table>
+
+  <h4>Marking Guide</h4>
+  <table class="data-table"><tr><th>Score</th><th>Estimated IELTS Speaking Level</th></tr>
+  <tr><td>90–100</td><td>Ready for Band 7.0–7.5</td></tr>
+  <tr><td>80–89</td><td>Strong Band 6.5</td></tr>
+  <tr><td>70–79</td><td>Around Band 6.0</td></tr>
+  <tr><td>60–69</td><td>High Band 5.5</td></tr>
+  <tr><td>Below 60</td><td>Review Modules 1–2 before moving on</td></tr>
+  </table>
+
+  <h4>Teacher Feedback Checklist</h4>
+  <p>After the assessment, evaluate the student on:</p>
+  <table class="data-table"><tr><th>Skill</th><th>Excellent</th><th>Good</th><th>Needs Work</th></tr>
+  <tr><td>Vocabulary Range</td><td>☐</td><td>☐</td><td>☐</td></tr>
+  <tr><td>Grammar Accuracy</td><td>☐</td><td>☐</td><td>☐</td></tr>
+  <tr><td>Fluency</td><td>☐</td><td>☐</td><td>☐</td></tr>
+  <tr><td>Pronunciation</td><td>☐</td><td>☐</td><td>☐</td></tr>
+  <tr><td>Coherence &amp; Organization</td><td>☐</td><td>☐</td><td>☐</td></tr>
+  </table>
+  <div class="example-box"><strong>Key Takeaway:</strong> This review quiz is designed to reinforce the vocabulary, grammar, and speaking strategies from Lessons 1–8, while also preparing the student for the longer, more advanced speaking tasks introduced in Module 3.</div>
+  </div>`,
+  quiz:[
+    {q:"Which expression is the best replacement for \"I like reading.\"",opts:["I think reading.","I quite like.","I'm quite fond of reading.","Reading is okay."],a:2},
+    {q:"Which word means very beautiful?",opts:["Nice","Stunning","Good","Pretty"],a:1},
+    {q:"Which expression means relax?",opts:["Improve","Develop","Unwind","Spend"],a:2},
+    {q:"Which adjective describes someone who always helps others?",opts:["Selfish","Dedicated","Kind-hearted","Serious"],a:2},
+    {q:"Choose the best replacement. \"My town is very quiet.\"",opts:["peaceful","noisy","famous","modern"],a:0},
+    {q:"Which phrase means I started enjoying photography?",opts:["I made photography.","I got into photography.","I studied photography.","I tried photography."],a:1},
+    {q:"Choose the strongest adjective. The film was ________.",opts:["good","nice","excellent","okay"],a:2},
+    {q:"Which phrase means become better?",opts:["improve","develop","learn","teach"],a:1},
+    {q:"Which phrase means choose?",opts:["decide","opt for","select","buy"],a:1},
+    {q:"Which sentence sounds most natural?",opts:["I like football very much.","I'm a big fan of football.","Football is good.","I football."],a:1},
+    {q:"Someone who is easy to talk to is...",opts:["approachable","imaginative","nervous","quiet"],a:0},
+    {q:"\"My sister has a knack for drawing.\" This means...",opts:["She dislikes drawing.","She is naturally good at drawing.","She teaches drawing.","She studies drawing."],a:1},
+    {q:"Which expression means healthy?",opts:["nutritious","tasty","spicy","sweet"],a:0},
+    {q:"Which phrase means eat in a restaurant?",opts:["work out","dine out","unwind","recharge"],a:1},
+    {q:"Which expression sounds most natural?",opts:["Technology changed everything.","Technology has transformed our lives.","Technology is good.","Technology helps."],a:1},
+    {q:"I ______ English for five years.",opts:["study","studied","have studied","studying"],a:2},
+    {q:"While I ______ television, my friend called.",opts:["watched","was watching","watch","watches"],a:1},
+    {q:"I'd like ______ abroad.",opts:["work","working","to work","worked"],a:2},
+    {q:"The woman ______ helped me is my teacher.",opts:["who","where","when","whose"],a:0},
+    {q:"Home-cooked meals are ______ fast food.",opts:["healthier than","healthiest","healthy","more healthiest"],a:0},
+    {q:"I hope ______ my English this year.",opts:["improve","improving","to improve","improved"],a:2},
+    {q:"This phone is ______ than my old one.",opts:["expensive","more expensive","most expensive","expensiver"],a:1},
+    {q:"Technology ______ education in the future.",opts:["change","changed","will change","changing"],a:2},
+    {q:"My brother, ______ lives in Canada, is a doctor.",opts:["where","who","when","what"],a:1},
+    {q:"I enjoy ______ English.",opts:["learn","learning","learned","learns"],a:1},
+    {q:"\"I have a sweet tooth.\"",opts:["I like sweets.","My teeth hurt.","I visit the dentist often.","I eat quickly."],a:0},
+    {q:"\"Food brings people together.\"",opts:["Food makes people healthy.","Sharing meals strengthens relationships.","Food is expensive.","Restaurants are busy."],a:1},
+    {q:"\"It depends.\" Means...",opts:["Definitely yes.","Definitely no.","It varies according to the situation.","I don't know."],a:2},
+    {q:"\"Lead a hectic lifestyle.\" Means...",opts:["Live peacefully.","Have a very busy life.","Travel often.","Exercise regularly."],a:1},
+    {q:"\"Job satisfaction.\" Means...",opts:["Earning a high salary.","Enjoying your work.","Getting promoted.","Working overtime."],a:1},
+    {q:"How long do you have to prepare for IELTS Speaking Part 2?",opts:["30 seconds","1 minute","2 minutes","5 minutes"],a:1},
+    {q:"How long should you speak?",opts:["30 seconds","1 minute","Up to 2 minutes","5 minutes"],a:2},
+    {q:"What should you write during preparation?",opts:["Full sentences","Keywords","Nothing","Every word you'll say"],a:1},
+    {q:"Which method helps organise Part 2 answers?",opts:["S.T.A.R.","R.A.M.","P.E.T.","F.A.S.T."],a:0},
+    {q:"A good Part 2 answer should include...",opts:["Only facts","Only opinions","Personal examples and reflection","Memorised sentences"],a:2}
+  ]
 }
 ];
