@@ -1,0 +1,122 @@
+/* ==========================================================================
+   Responsive layout system
+   Breakpoints match responsive-layout-design.png:
+   Phone <=480 | Tablet 481-900 (icon rail) | Desktop 901-1599 (full sidebar)
+   Ultrawide >=1600 (full sidebar + study panel)
+   ========================================================================== */
+
+/* App shell becomes a grid so we can add a 3rd "study panel" column
+   on ultrawide screens without touching base.css structure. */
+.app{
+  display:grid;
+  grid-template-columns:280px minmax(0,1fr);
+  align-items:start;
+  min-height:100vh;
+}
+.app .sidebar{position:sticky;top:0;height:100vh;}
+.app main{width:100%;}
+
+/* Study panel: hidden by default, shown only on ultrawide screens */
+.study-panel{
+  display:none;
+  height:100vh;position:sticky;top:0;overflow-y:auto;
+  background:var(--card);
+  border-left:1px solid var(--line);
+  padding:1.5em 1.3em 3em;
+}
+.study-panel h3{
+  font-family:'Courier New',monospace;font-size:.72em;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--teal-dark);margin:1.4em 0 .6em;
+}
+.study-panel h3:first-child{margin-top:0;}
+.study-panel ul{margin:0;padding-left:1.1em;font-size:.88em;line-height:1.5;}
+.study-panel .sp-vocab{
+  display:flex;justify-content:space-between;gap:.6em;
+  padding:.4em 0;border-bottom:1px dashed var(--line);font-size:.86em;
+}
+.study-panel .sp-vocab b{color:var(--teal-dark);flex-shrink:0;}
+.study-panel .sp-quiz-mini{font-size:.85em;color:#556;}
+
+/* ---------- Bottom tab bar (phone only) ---------- */
+.bottom-nav{
+  display:none;
+  position:fixed;left:0;right:0;bottom:0;z-index:60;
+  background:var(--teal-darker);
+  border-top:1px solid rgba(255,255,255,.08);
+  padding:6px 4px calc(6px + env(safe-area-inset-bottom));
+  justify-content:space-between;
+}
+.bottom-nav button{
+  flex:1;background:none;border:none;color:#c9dbd6;
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+  font-family:Georgia,serif;font-size:.66em;padding:.35em 0;cursor:pointer;
+  border-radius:10px;
+}
+.bottom-nav button .bn-icon{font-size:1.25em;line-height:1;}
+.bottom-nav button.active{color:#fff;background:rgba(255,255,255,.08);}
+
+/* =========================== TABLET: 481–900px ===========================
+   Sidebar collapses to an icon rail. Titles hide, numbers/icons remain. */
+@media(min-width:481px) and (max-width:900px){
+  .app{grid-template-columns:76px minmax(0,1fr);}
+  .sidebar{width:76px;padding:1em 0 2em;position:sticky;left:0;}
+  .sidebar-toggle{display:none;}
+  .brand{padding:0 0 1em;text-align:center;}
+  .brand .eyebrow,.brand h1{display:none;}
+  .brand::after{content:"🎓";font-size:1.6em;display:block;}
+  .sidebar-progress,.progress-note{display:none;}
+  .unit-label{text-align:center;padding:1em 0 .4em;font-size:.62em;}
+  .unit-label span.label-text{display:none;}
+  .lesson-btn{
+    flex-direction:column;justify-content:center;width:56px;height:40px;
+    margin:6px auto;padding:.25em 0;gap:0;border-radius:10px;
+  }
+  .lesson-btn .lesson-title-text{display:none;}
+  .lesson-btn .num{margin:0;font-size:.82em;font-weight:600;}
+  .lesson-dot{position:absolute;transform:translate(20px,-13px);margin:0;width:5px;height:5px;}
+  main{max-width:none;padding:28px 22px 60px;}
+  .lesson-head h2{font-size:1.9rem;}
+  .topbar{flex-direction:column;align-items:stretch;gap:10px;}
+  .floating-score{right:16px;bottom:16px;width:200px;}
+}
+
+/* =========================== PHONE: <=480px ===========================
+   Sidebar is replaced entirely by a bottom tab bar. Single column, full
+   width content, large touch targets. */
+@media(max-width:480px){
+  .app{display:block;}
+  .sidebar{
+    position:fixed;inset:0 0 56px auto;left:0;right:0;top:0;height:100%;
+    width:82%;max-width:320px;left:-100%;z-index:70;
+    transition:left .3s ease;
+  }
+  .sidebar.open{left:0;}
+  .sidebar-scrim{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:65;}
+  .sidebar-scrim.show{display:block;}
+  .sidebar-toggle{display:none;} /* replaced by bottom-nav "Lessons" button */
+  main{max-width:none;padding:18px 14px 90px;}
+  .lesson-head h2{font-size:1.55rem;}
+  .lesson-meta{gap:.7em;flex-wrap:wrap;}
+  .topbar{flex-direction:column;align-items:stretch;gap:10px;padding:14px 16px;}
+  .topbar-stats{justify-content:space-between;}
+  .content-body{font-size:.98em;}
+  .floating-score{
+    left:12px;right:12px;bottom:64px;width:auto;
+    padding:12px 16px;
+  }
+  .nav-footer{flex-direction:column;gap:10px;}
+  .nav-footer button{width:100%;}
+  .bottom-nav{display:flex;}
+}
+
+/* =========================== ULTRAWIDE: >=1600px ===========================
+   Third column appears: vocab / quick quiz summary / notes. */
+@media(min-width:1600px){
+  .app{grid-template-columns:300px minmax(0,1fr) 320px;}
+  .sidebar{width:300px;}
+  .study-panel{display:block;}
+  main{max-width:960px;margin:0 auto;}
+}
+
+/* Hub-page-only helper: keep bottom nav off non-course pages */
+body.hub-page .bottom-nav{display:none !important;}

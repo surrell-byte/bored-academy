@@ -1,0 +1,123 @@
+/* ==========================================================================
+   Bored Academy — Welcome & Auth pages
+   Reuses the CSS variables defined in dashboard.css (load that file first).
+   ========================================================================== */
+
+.welcome-page{min-height:100vh;}
+
+/* ---------- Shared topbar ---------- */
+.welcome-topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.2em 2em;border-bottom:1px solid var(--line);
+}
+.welcome-brand{
+  display:flex;align-items:center;gap:.6em;font-weight:700;font-size:1.15em;
+  color:var(--ink);text-decoration:none;font-family:Georgia,serif;
+}
+.welcome-brand img{border-radius:7px;display:block;}
+.welcome-topbar-actions{display:flex;align-items:center;gap:.9em;}
+
+/* ---------- Buttons ---------- */
+.welcome-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  background:var(--teal);color:#fff;text-decoration:none;font-weight:600;
+  padding:.65em 1.3em;border-radius:10px;font-size:.92em;
+  border:none;cursor:pointer;transition:filter .15s ease;
+}
+.welcome-btn:hover{filter:brightness(1.08);}
+.welcome-btn.large{padding:.85em 1.7em;font-size:1em;}
+.welcome-btn.full{width:100%;padding:.8em 1.3em;font-size:1em;margin-top:.4em;}
+.welcome-link-btn{
+  color:var(--ink);text-decoration:none;font-weight:600;font-size:.92em;
+  padding:.65em .4em;
+}
+.welcome-link-btn.large{font-size:1em;}
+.welcome-link-btn:hover{color:var(--teal);}
+
+/* ---------- Hero ---------- */
+.welcome-hero{
+  display:flex;align-items:center;gap:3em;
+  max-width:1200px;margin:0 auto;padding:5em 2em 4em;
+}
+.welcome-hero-copy{flex:1;max-width:560px;}
+.welcome-eyebrow{
+  display:inline-block;font-family:'Courier New',monospace;font-size:.72em;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--flame);
+  background:var(--flame-soft);padding:.4em .8em;border-radius:999px;
+  margin-bottom:1em;
+}
+.welcome-hero h1{
+  font-family:Georgia,serif;font-size:2.6em;line-height:1.12;margin:0 0 .6em;
+  color:var(--ink);
+}
+.welcome-hero-copy p{
+  font-size:1.05em;line-height:1.55;color:var(--muted);margin:0 0 1.6em;
+}
+.welcome-cta-row{display:flex;align-items:center;gap:.6em;flex-wrap:wrap;}
+.welcome-hero-art{
+  flex-shrink:0;width:260px;height:260px;border-radius:28px;
+  background:var(--card);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 12px 30px rgba(0,0,0,.08);
+}
+.welcome-hero-art img{width:170px;height:170px;object-fit:contain;}
+
+/* ---------- Feature strip ---------- */
+.welcome-features{
+  max-width:1200px;margin:0 auto;padding:1em 2em 5em;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.4em;
+}
+.welcome-feature{
+  background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:1.6em 1.5em;
+}
+.wf-icon{font-size:1.8em;margin-bottom:.5em;}
+.welcome-feature h3{margin:0 0 .35em;font-size:1.05em;font-family:Georgia,serif;color:var(--ink);}
+.welcome-feature p{margin:0;font-size:.88em;color:var(--muted);line-height:1.5;}
+
+.welcome-footer{
+  text-align:center;padding:2em;color:var(--muted-3,var(--muted));font-size:.82em;
+  border-top:1px solid var(--line);
+}
+
+/* ---------- Auth card ---------- */
+.auth-shell{
+  min-height:calc(100vh - 76px);display:flex;align-items:center;justify-content:center;
+  padding:2em;
+}
+.auth-card{
+  width:100%;max-width:420px;background:var(--card);border:1px solid var(--line);
+  border-radius:18px;padding:2em 2.2em 1.6em;box-shadow:0 12px 30px rgba(0,0,0,.06);
+}
+.auth-tabs{display:flex;gap:.4em;margin-bottom:1.4em;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:4px;}
+.auth-tab{
+  flex:1;border:none;background:none;padding:.6em 0;border-radius:9px;
+  font-weight:600;font-size:.88em;color:var(--muted);cursor:pointer;transition:.15s;
+}
+.auth-tab.active{background:var(--teal);color:#fff;}
+.auth-form h2{margin:0 0 .2em;font-family:Georgia,serif;font-size:1.35em;color:var(--ink);}
+.auth-hint{margin:0 0 1.2em;color:var(--muted);font-size:.88em;}
+.auth-form label{
+  display:block;font-size:.82em;font-weight:600;color:var(--ink);margin-bottom:.9em;
+}
+.auth-form input{
+  display:block;width:100%;margin-top:.35em;padding:.65em .8em;
+  border:1px solid var(--line);border-radius:9px;background:var(--paper);
+  color:var(--ink);font-size:.95em;font-family:inherit;
+}
+.auth-form input:focus{outline:2px solid var(--teal);outline-offset:1px;}
+.auth-field-hint{display:block;font-weight:400;color:var(--muted-3,var(--muted));font-size:.85em;margin-top:.3em;}
+.auth-error{
+  min-height:1.4em;color:var(--bad);font-size:.85em;margin:-.3em 0 .4em;
+}
+.auth-fineprint{
+  margin:1.4em 0 0;text-align:center;font-size:.76em;color:var(--muted-3,var(--muted));line-height:1.4;
+}
+
+@media (max-width: 760px){
+  .welcome-hero{flex-direction:column;padding-top:2.5em;text-align:center;}
+  .welcome-hero-copy{max-width:100%;}
+  .welcome-cta-row{justify-content:center;}
+  .welcome-hero h1{font-size:2.1em;}
+  .welcome-features{grid-template-columns:1fr;}
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in — Bored Academy</title>
+<link rel="icon" href="favicon.ico?v=2" sizes="any">
+<link rel="icon" type="image/png" href="assets/img/favicon.png?v=2">
+<link rel="apple-touch-icon" href="assets/img/favicon.png?v=2">
+<link rel="stylesheet" href="assets/css/dashboard.css">
+<link rel="stylesheet" href="assets/css/welcome.css">
+<script src="assets/js/auth.js"></script>
+<script src="assets/js/theme.js"></script>
+</head>
+<body class="dash-page welcome-page">
+
+<script>
+  if(window.BoredAuth && BoredAuth.currentUser()){
+    window.location.href = 'index.html';
+  }
+</script>
+
+<header class="welcome-topbar">
+  <a class="welcome-brand" href="welcome.html">
+    <img src="assets/img/logo.png" alt="Bored Academy logo" width="30" height="30">
+    <span>Bored Academy</span>
+  </a>
+</header>
+
+<main class="auth-shell">
+  <div class="auth-card">
+    <div class="auth-tabs">
+      <button type="button" class="auth-tab" data-tab="login">Log In</button>
+      <button type="button" class="auth-tab" data-tab="signup">Sign Up</button>
+    </div>
+
+    <form id="loginForm" class="auth-form">
+      <h2>Welcome back</h2>
+      <p class="auth-hint">Log in to pick up right where you left off.</p>
+      <label>Email
+        <input type="email" id="loginEmail" required autocomplete="email">
+      </label>
+      <label>Password
+        <input type="password" id="loginPassword" required autocomplete="current-password">
+      </label>
+      <div class="auth-error" id="loginError"></div>
+      <button type="submit" class="welcome-btn full">Log In</button>
+    </form>
+
+    <form id="signupForm" class="auth-form" style="display:none">
+      <h2>Create your account</h2>
+      <p class="auth-hint">Free — takes about 20 seconds.</p>
+      <label>Name
+        <input type="text" id="signupName" required autocomplete="name">
+      </label>
+      <label>Email
+        <input type="email" id="signupEmail" required autocomplete="email">
+      </label>
+      <label>Password
+        <input type="password" id="signupPassword" required autocomplete="new-password" minlength="6">
+        <span class="auth-field-hint">At least 6 characters.</span>
+      </label>
+      <div class="auth-error" id="signupError"></div>
+      <button type="submit" class="welcome-btn full">Create Account</button>
+    </form>
+
+    <p class="auth-fineprint">
+      This runs entirely in your browser — your account is stored on this device only, not on a server.
+    </p>
+  </div>
+</main>
+
+<script>
+  const loginForm = document.getElementById('loginForm');
+  const signupForm = document.getElementById('signupForm');
+  const tabs = document.querySelectorAll('.auth-tab');
+
+  function showTab(name){
+    tabs.forEach(t=>t.classList.toggle('active', t.dataset.tab===name));
+    loginForm.style.display = name==='login' ? '' : 'none';
+    signupForm.style.display = name==='signup' ? '' : 'none';
+  }
+  tabs.forEach(t=> t.addEventListener('click', ()=> showTab(t.dataset.tab)));
+
+  const params = new URLSearchParams(location.search);
+  showTab(params.get('mode') === 'signup' ? 'signup' : 'login');
+
+  loginForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+    const errEl = document.getElementById('loginError');
+    const result = BoredAuth.login(email, password);
+    if(!result.ok){ errEl.textContent = result.error; return; }
+    window.location.href = 'index.html';
+  });
+
+  signupForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('signupName').value;
+    const email = document.getElementById('signupEmail').value;
+    const password = document.getElementById('signupPassword').value;
+    const errEl = document.getElementById('signupError');
+    const result = BoredAuth.signUp(name, email, password);
+    if(!result.ok){ errEl.textContent = result.error; return; }
+    window.location.href = 'index.html';
+  });
+</script>
+</body>
+</html>

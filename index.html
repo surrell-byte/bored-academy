@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bored Academy — Dashboard</title>
+<link rel="icon" href="favicon.ico?v=2" sizes="any">
+<link rel="icon" type="image/png" href="assets/img/favicon.png?v=2">
+<link rel="apple-touch-icon" href="assets/img/favicon.png?v=2">
+<link rel="stylesheet" href="assets/css/dashboard.css">
+<script src="assets/js/auth.js"></script>
+<script>
+  // Bounce to the welcome/login flow if nobody's signed in yet.
+  if(window.BoredAuth) BoredAuth.requireAuth();
+</script>
+<script src="assets/js/theme.js"></script>
+</head>
+<body class="dash-page">
+
+<div class="dash-shell">
+  <aside class="dash-sidebar" id="shellSidebar"></aside>
+
+  <main class="dash-main">
+    <div class="dash-topbar" id="shellTopbar"></div>
+
+    <div class="dash-content">
+      <div class="dash-welcome">
+        <h2 id="welcomeHeading">Welcome back!</h2>
+        <p>Ready to continue your learning journey?</p>
+      </div>
+
+      <div class="dash-grid">
+        <div class="dash-col-main">
+          <div class="hero-card" id="heroCard"></div>
+
+          <div>
+            <div class="dash-section-head"><h3>Your Progress Overview</h3></div>
+            <div class="stat-row" id="statRow"></div>
+          </div>
+
+          <div>
+            <div class="dash-section-head"><h3>Your Courses</h3><a href="courses.html">See all →</a></div>
+            <div class="course-grid" id="courseGrid"></div>
+          </div>
+
+          <div>
+            <div class="dash-section-head"><h3>Achievements</h3><a href="achievements.html">See all →</a></div>
+            <div class="achv-card"><div class="achv-row" id="achvRow"></div></div>
+          </div>
+        </div>
+
+        <div class="dash-col-side">
+          <div class="goal-card" id="goalCard"></div>
+
+          <div>
+            <div class="dash-section-head"><h3>Recent Activity</h3></div>
+            <div class="activity-card"><div id="activityList"></div></div>
+          </div>
+
+          <div class="tip-card" id="tipCard">
+            <div class="t-icon"></div>
+            <div><h4>Study Tip of the Day</h4><p></p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<nav class="phone-bottom-nav" id="shellPhoneNav"></nav>
+
+<script src="assets/js/icons.js"></script>
+<script src="assets/js/shell.js"></script>
+<script src="assets/js/data/courses.js"></script>
+<script src="assets/js/progress-store.js"></script>
+<script src="assets/js/data/chemistry-data.js"></script>
+<script>
+  // chemistry-data.js sets window.COURSE_DATA; alias it so future course
+  // data files can each set their own COURSE_DATA on their own page without
+  // clobbering this one.
+  window.COURSE_DATA_CHEMISTRY = window.COURSE_DATA;
+</script>
+<script src="assets/js/data/ielts-data.js"></script>
+<script>
+  window.COURSE_DATA_IELTS = window.COURSE_DATA;
+</script>
+<script src="assets/js/data/cet4-data.js"></script>
+<script>
+  window.COURSE_DATA_CET4 = window.COURSE_DATA;
+  (function personalizeName(){
+    try{
+      const user = window.BoredAuth ? BoredAuth.currentUser() : null;
+      const name = (user && user.name) || localStorage.getItem('boredacademy:name');
+      if(name) document.getElementById('welcomeHeading').textContent = `Welcome back, ${name}!`;
+    }catch(e){}
+  })();
+</script>
+<script src="assets/js/dashboard.js"></script>
+<script>
+  window.CURRENT_TAB = 'dashboard';
+  renderDashboardPage();
+</script>
+</body>
+</html>
