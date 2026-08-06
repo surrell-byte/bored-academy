@@ -428,6 +428,50 @@ function renderSettingsView(){
   highlightThemeBtn();
 }
 
+// BOREDACADEMY_ROLE_SWITCHER
+function renderRoleCard(){
+  const card = document.getElementById('roleCard');
+  if(!card || !window.BoredAuth) return;
+  const user = window.BoredAuth.currentUser();
+  if(!user || !window.BoredRoles) { card.style.display = 'none'; return; }
+
+  const Roles = window.BoredRoles.ROLES;
+  const isTeacher = window.BoredRoles.isTeacher(user.role);
+  const isPremium = window.BoredRoles.isPremium(user.role);
+  const isAdmin = window.BoredRoles.isAdmin(user.role);
+  const label = (user.role || '').replace('_', ' ');
+
+  let upgradeHtml = '';
+  if(isAdmin){
+    upgradeHtml = '<p class=\"settings-hint\">Admin accounts already have full access.</p>';
+  } else if(isPremium){
+    upgradeHtml = '<p class=\"settings-hint\">You have Premium access. Every course and game is unlocked.</p>';
+  } else {
+    const targetRole = isTeacher ? Roles.TEACHER_PREMIUM : Roles.STUDENT_PREMIUM;
+    const targetLabel = isTeacher ? 'Premium Teacher' : 'Premium Student';
+    upgradeHtml =
+      '<p class=\"settings-hint\">Unlock every course, game and AI feature.</p>' +
+      '<button class=\"settings-btn\" id=\"upgradeRoleBtn\" data-target-role=\"' + targetRole + '\">Upgrade to ' + targetLabel + '</button>' +
+      '<p class=\"settings-hint\" style=\"margin-top:.6em;margin-bottom:0;\">Local/testing switch only — wire a real payment provider in billing.js before launch.</p>';
+  }
+
+  card.innerHTML =
+    '<h4>Account &amp; role</h4>' +
+    '<p class=\"settings-hint\">Signed in as ' + (user.email || '') + '</p>' +
+    '<span class=\"dash-role-badge\">' + label + '</span>' +
+    '<div style=\"margin-top:1em;\">' + upgradeHtml + '</div>';
+
+  const btn = document.getElementById('upgradeRoleBtn');
+  if(btn){
+    btn.addEventListener('click', function(){
+      const target = btn.dataset.targetRole;
+      if(window.BoredBilling) window.BoredBilling.startCheckout(target);
+      window.BoredAuth.setRole(user.email, target);
+      renderRoleCard();
+    });
+  }
+}
+
 function renderSettingsStandalone(){
   const container = document.getElementById('settingsContent');
   if(!container) return;
@@ -456,12 +500,16 @@ function renderSettingsStandalone(){
         ${themes.map(t=>`<button type="button" class="settings-theme-btn ${t.id===currentTheme?'active':''}" data-theme-id="${t.id}">${icon(t.icon)}<span>${t.label}</span></button>`).join('')}
       </div>
     </div>
+    <div class="settings-card" id="roleCard"></div>
     <div class="settings-card">
       <h4>Reset progress</h4>
       <p class="settings-hint">Clears all saved quiz answers, streaks and activity on this device. This can't be undone.</p>
       <button class="settings-btn danger" id="resetProgressBtn">Reset all progress</button>
     </div>
   `;
+
+  // BOREDACADEMY_ROLE_SWITCHER
+  renderRoleCard();
 
   document.getElementById('saveNameBtn').addEventListener('click', function(){
     const nameEl = document.getElementById('settingsName');

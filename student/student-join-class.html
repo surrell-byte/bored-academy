@@ -19,7 +19,7 @@
 
 <script>
   if(!window.BoredAuth || !BoredAuth.currentUser()){
-    window.location.href = 'auth.html?mode=login';
+    window.location.href = (window.BoredAuth.rootRelative ? window.BoredAuth.rootRelative('auth.html?mode=login') : '../auth.html?mode=login');
   }
 </script>
 

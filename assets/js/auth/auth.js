@@ -138,9 +138,19 @@
     try{ localStorage.removeItem('boredacademy:name'); }catch(e){}
   }
 
+  // BOREDACADEMY_REQUIREAUTH_DEPTH_FIX
+  // Pages one folder deep (teacher/*.html, student/*.html, courses/*.html)
+  // need '../welcome.html', not 'welcome.html' — otherwise a logged-out
+  // user hitting one of those pages gets redirected to a 404 in that same
+  // subfolder instead of the real welcome page.
+  function rootRelative(path){
+    const inSubfolder = /\/(teacher|student|courses)\/[^/]*$/.test(window.location.pathname);
+    return inSubfolder ? '../' + path : path;
+  }
+
   function requireAuth(){
     if(!currentUser()){
-      window.location.href = 'welcome.html';
+      window.location.href = rootRelative('welcome.html');
       return false;
     }
     return true;
@@ -159,5 +169,5 @@
     return localStorage.getItem('boredacademy:teacher_access') === '1';
   }
 
-  window.BoredAuth = { currentUser, signUp, login, logout, requireAuth, setRole, addClass, firebaseAvailable, markOnboardingDone, needsOnboarding, setTeacherAccess, hasTeacherAccess };
+  window.BoredAuth = { currentUser, signUp, login, logout, requireAuth, setRole, addClass, firebaseAvailable, markOnboardingDone, needsOnboarding, setTeacherAccess, hasTeacherAccess, rootRelative };
 })();
