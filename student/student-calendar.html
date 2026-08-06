@@ -17,6 +17,7 @@
   <script src="../assets/js/auth/permissions.js"></script>
   <script src="../assets/js/classroom/classroom.js"></script>
   <script src="../assets/js/classroom/assignments.js"></script>
+  <script src="../assets/js/classroom/grading.js"></script>
   <script src="../assets/js/data/lesson-index.js"></script>
   <script src="../assets/js/app/router.js"></script>
   <script src="../assets/js/app/shell.js"></script>
@@ -59,13 +60,13 @@
     <div class="dash-content">
       <div class="dash-welcome">
         <h2>Calendar</h2>
-        <p>Upcoming assignment due dates across your classes.</p>
+        <p>Upcoming assignment and test due dates across your classes.</p>
       </div>
 
       <section class="block" style="margin-top:1.4em;">
-        <h3 class="block-title">Upcoming assignments</h3>
+        <h3 class="block-title">Upcoming</h3>
         <div id="calendarList"></div>
-        <p id="noCalendar" style="color:var(--muted);display:none;">No upcoming assignments.</p>
+        <p id="noCalendar" style="color:var(--muted);display:none;">Nothing upcoming.</p>
       </section>
     </div>
   </main>
@@ -78,7 +79,7 @@
   const LESSON_INDEX = window.LESSON_INDEX || {};
 
   function escapeHtml(str){
-    return String(str).replace(/[&<>"']/g, function(m){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\\'':'&#39;'})[m]; });
+    return String(str).replace(/[&<>"']/g, function(m){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'})[m]; });
   }
 
   function renderCalendar(){
@@ -89,18 +90,17 @@
     classes.forEach(function(klass){
       (BoredAssignments.forClass(klass.id) || []).forEach(function(a){
         const course = COURSES.find(function(c){ return c.id === a.courseId; });
-        const lesson = (LESSON_INDEX[a.courseId] || []).find(function(l){ return l.id === a.lessonId; });
+        const test = window.BoredGrading ? BoredGrading.getTest(a.lessonId) : null;
+        const lesson = test ? null : (LESSON_INDEX[a.courseId] || []).find(function(l){ return l.id === a.lessonId; });
         const due = a.dueDate ? new Date(a.dueDate) : null;
-        const unlock = a.unlockDate ? new Date(a.unlockDate) : null;
         if(due && due >= now){
           items.push({
+            type: test ? 'test' : 'assignment',
             dueDate: a.dueDate,
-            unlockDate: a.unlockDate,
             courseTitle: course ? course.title : a.courseId,
-            lessonTitle: lesson ? lesson.title : a.lessonId,
+            itemTitle: test ? (test.title || 'Untitled test') : (lesson ? lesson.title : a.lessonId),
             className: klass.name,
-            points: a.points,
-            classId: klass.id,
+            points: test ? (test.totalPoints || 100) : a.points,
             lessonId: a.lessonId,
             courseId: a.courseId
           });
@@ -112,15 +112,19 @@
     document.getElementById('calendarList').innerHTML = items.map(function(it){
       const due = new Date(it.dueDate);
       const dueStr = due.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+      const kindLabel = it.type === 'test' ? 'Test' : 'Assignment';
+      const kindColor = it.type === 'test' ? 'var(--gold)' : 'var(--teal)';
       const courseUrl = COURSES.find(function(c){ return c.id === it.courseId; });
-      const lessonLink = courseUrl && courseUrl.url
-        ? '<a href="../' + courseUrl.url + '#lesson=' + encodeURIComponent(it.lessonId) + '" style="color:var(--teal);">Open lesson →</a>'
-        : '<span style="color:var(--muted);">Locked</span>';
+      const actionLink = it.type === 'test'
+        ? '<a href="student-tests.html" style="color:var(--teal);">Take test →</a>'
+        : (courseUrl && courseUrl.url
+          ? '<a href="../' + courseUrl.url + '#lesson=' + encodeURIComponent(it.lessonId) + '" style="color:var(--teal);">Open lesson →</a>'
+          : '<span style="color:var(--muted);">Locked</span>');
       return '<div class="stat-card" style="align-items:flex-start;flex-direction:column;gap:.4em;margin-bottom:.6em;">' +
-        '<div style="font-weight:700;">' + escapeHtml(it.lessonTitle) + '</div>' +
+        '<div style="font-weight:700;">' + escapeHtml(it.itemTitle) + ' <span style="font-weight:600;font-size:.75em;color:' + kindColor + ';">· ' + kindLabel + '</span></div>' +
         '<div style="color:var(--muted);font-size:.85em;">' + escapeHtml(it.courseTitle) + ' · ' + escapeHtml(it.className) + '</div>' +
         '<div style="font-size:.85em;color:var(--teal);">Due: ' + dueStr + (it.points ? ' · ' + it.points + ' pts' : '') + '</div>' +
-        '<div style="font-size:.85em;">' + lessonLink + '</div>' +
+        '<div style="font-size:.85em;">' + actionLink + '</div>' +
       '</div>';
     }).join('');
   }

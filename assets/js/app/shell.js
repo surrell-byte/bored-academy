@@ -9,7 +9,7 @@
   const NAV_ITEMS = [
     { tab:'dashboard',    href:'index.html',        icon:'home',        label:'Dashboard' },
     { tab:'courses',      href:'courses.html',      icon:'book-open',   label:'Courses' },
-    { tab:'quizzes',      href:'quizzes.html',      icon:'help-circle', label:'Quizzes' },
+    { tab:'quizzes',      href:'quizzes.html',      icon:'pencil',      label:'Quizzes' },
     { tab:'progress',     href:'progress.html',     icon:'trending-up', label:'Progress' },
     { tab:'achievements', href:'achievements.html', icon:'trophy',      label:'Achievements' },
     { tab:'vocabulary',   href:'vocabulary.html',   icon:'bookmark',    label:'Vocabulary' },

@@ -77,7 +77,7 @@
   const COURSES = window.COURSES || [];
 
   function escapeHtml(str){
-    return String(str).replace(/[&<>"']/g, function(m){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\\'':'&#39;'})[m]; });
+    return String(str).replace(/[&<>"']/g, function(m){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'})[m]; });
   }
 
   function renderTests(){

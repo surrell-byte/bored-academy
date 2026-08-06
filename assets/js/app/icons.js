@@ -34,7 +34,11 @@ const ICONS = {
   'ruler': '<rect x="3" y="8.5" width="18" height="7" rx="1.2" transform="rotate(-8 12 12)"/><path d="M7.3 9.4l.9 2M10.6 8.9l.9 2M13.9 8.4l.9 2M17.2 7.9l.9 2" transform="rotate(-8 12 12)"/>',
   'globe': '<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.8 2.5 4.2 5.7 4.2 9s-1.4 6.5-4.2 9c-2.8-2.5-4.2-5.7-4.2-9S9.2 5.5 12 3z"/>',
   'monitor': '<rect x="3" y="4.5" width="18" height="12" rx="1.5"/><path d="M8 20h8"/><path d="M12 16.5v3.5"/>',
-  'x': '<line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/>'
+  'x': '<line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/>',
+  'lightbulb': '<path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.7.5 1.1 1.3 1.1 2.1h4.8c0-.8.4-1.6 1.1-2.1A6 6 0 0 0 12 3z"/>',
+  'folder': '<path d="M3 7a1 1 0 0 1 1-1h5l2 2.5h9a1 1 0 0 1 1 1V18a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7z"/>',
+  'award': '<circle cx="12" cy="15" r="5.2"/><path d="M9.5 10.5L7 3l-3 1.3L8 12"/><path d="M14.5 10.5L17 3l3 1.3L16 12"/>',
+  'mic': '<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/><path d="M9 21h6"/>'
 };
 
 /** Returns an inline <svg> string for the given icon name. */

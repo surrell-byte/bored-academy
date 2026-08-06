@@ -103,7 +103,7 @@ function renderHero(){
   const pct = getCoursePct(courseId);
   el.className = 'hero-card';
   el.innerHTML = `
-    <div class="h-icon">${icon(course.icon)}</div>
+    <div class="h-icon">${icon(course.svgIcon)}</div>
     <div class="h-body">
       <div class="h-eyebrow">Continue Learning</div>
       <h3>${last.unit ? last.unit.replace(/^(Unit|Module) \d+\s*[—-]\s*/,'') : course.title}</h3>
@@ -164,7 +164,7 @@ function renderCourses(){
     if(!c.available){
       return `
         <div class="course-card soon">
-          <div class="c-icon">${icon(c.icon)}</div>
+          <div class="c-icon">${icon(c.svgIcon)}</div>
           <h4>${c.title}</h4>
           <div class="c-lessons">${c.blurb}</div>
           <div class="c-action">Coming Soon</div>
@@ -173,7 +173,7 @@ function renderCourses(){
     const pct = getCoursePct(c.id);
     return `
       <a class="course-card" href="courses/${c.id}.html">
-        <div class="c-icon">${icon(c.icon)}</div>
+        <div class="c-icon">${icon(c.svgIcon)}</div>
         <h4>${c.title}</h4>
         <div class="c-lessons">${c.lessons} Lessons</div>
         <div class="c-bar"><span style="width:${pct}%"></span></div>
@@ -189,7 +189,7 @@ function renderCoursesView(){
     if(!c.available){
       return `
         <div class="course-card soon">
-          <div class="c-icon">${icon(c.icon)}</div>
+          <div class="c-icon">${icon(c.svgIcon)}</div>
           <h4>${c.title}</h4>
           <div class="c-lessons">${c.blurb}</div>
           <div class="c-action">Coming Soon</div>
@@ -198,7 +198,7 @@ function renderCoursesView(){
     const pct = getCoursePct(c.id);
     return `
       <a class="course-card" href="courses/${c.id}.html">
-        <div class="c-icon">${icon(c.icon)}</div>
+        <div class="c-icon">${icon(c.svgIcon)}</div>
         <h4>${c.title}</h4>
         <div class="c-lessons">${c.lessons} Lessons</div>
         <div class="c-bar"><span style="width:${pct}%"></span></div>
@@ -341,7 +341,7 @@ function buildVocabIndex(){
       html += `
         <div class="vocab-category">
           <div class="vocab-category-header">
-            <span class="vocab-category-icon">${icon(c.icon)}</span>
+            <span class="vocab-category-icon">${icon(c.svgIcon)}</span>
             <span class="vocab-category-title">${c.title}</span>
             <span class="vocab-category-count">${courseWords.length} words</span>
           </div>
