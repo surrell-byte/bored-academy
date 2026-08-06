@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quizzes — Bored Academy</title>
+<link rel="icon" href="favicon.ico?v=2" sizes="any">
+<link rel="icon" type="image/png" href="assets/img/favicon.png?v=2">
+<link rel="apple-touch-icon" href="assets/img/favicon.png?v=2">
+<link rel="stylesheet" href="assets/css/dashboard.css">
+<script src="assets/js/firebase/firebase-config.js"></script>
+<script src="assets/js/firebase/firestore.js"></script>
+<script src="assets/js/auth/auth.js"></script>
+<script>if(window.BoredAuth) BoredAuth.requireAuth();</script>
+<script src="assets/js/app/theme.js"></script>
+</head>
+<body class="dash-page">
+
+<div class="dash-shell">
+  <aside class="dash-sidebar" id="shellSidebar"></aside>
+
+  <main class="dash-main">
+    <div class="dash-topbar" id="shellTopbar"></div>
+
+    <div class="dash-content">
+      <div class="dash-welcome">
+        <h2>Quizzes</h2>
+        <p>All available quizzes across your courses. Answer inline and track your progress.</p>
+      </div>
+      <div class="quiz-toolbar">
+        <input type="text" id="quizSearch" class="vocab-search-input" placeholder="Search quizzes by course or lesson…">
+        <select id="quizCourseFilter" class="vocab-filter-select">
+          <option value="all">All courses</option>
+        </select>
+        <span class="vocab-count" id="quizCount"></span>
+      </div>
+      <div id="quizList" class="quiz-list"></div>
+    </div>
+  </main>
+</div>
+
+<nav class="phone-bottom-nav" id="shellPhoneNav"></nav>
+
+<script src="assets/js/app/icons.js"></script>
+<script src="assets/js/app/shell.js"></script>
+<script src="assets/js/data/courses.js"></script>
+<script src="assets/js/courses/progress.js"></script>
+<script src="assets/js/data/chemistry-data.js"></script>
+<script>window.COURSE_DATA_CHEMISTRY = window.COURSE_DATA;</script>
+<script src="assets/js/data/ielts-data.js"></script>
+<script>window.COURSE_DATA_IELTS = window.COURSE_DATA;</script>
+<script src="assets/js/data/cet4-data.js"></script>
+<script>window.COURSE_DATA_CET4 = window.COURSE_DATA;</script>
+<script src="assets/js/app/dashboard.js"></script>
+<script>
+  window.CURRENT_TAB = 'quizzes';
+  renderQuizzesPage();
+</script>
+</body>
+</html>

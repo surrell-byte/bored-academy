@@ -9,6 +9,7 @@
   const NAV_ITEMS = [
     { tab:'dashboard',    href:'index.html',        icon:'home',        label:'Dashboard' },
     { tab:'courses',      href:'courses.html',      icon:'book-open',   label:'Courses' },
+    { tab:'quizzes',      href:'quizzes.html',      icon:'help-circle', label:'Quizzes' },
     { tab:'progress',     href:'progress.html',     icon:'trending-up', label:'Progress' },
     { tab:'achievements', href:'achievements.html', icon:'trophy',      label:'Achievements' },
     { tab:'vocabulary',   href:'vocabulary.html',   icon:'bookmark',    label:'Vocabulary' },
@@ -17,8 +18,8 @@
   ];
   // The phone bottom nav only has room for a few items; "Courses" isn't
   // included since it's just an anchor within the dashboard.
-  const PHONE_NAV_TABS = ['dashboard','courses','progress','achievements','settings'];
-  const PHONE_NAV_LABELS = { dashboard:'Home', courses:'Courses', progress:'Progress', achievements:'Achv.', settings:'More' };
+  const PHONE_NAV_TABS = ['dashboard','courses','quizzes','progress','achievements','settings'];
+  const PHONE_NAV_LABELS = { dashboard:'Home', courses:'Courses', quizzes:'Quizzes', progress:'Progress', achievements:'Achv.', settings:'More' };
 
   function renderSidebar(activeTab){
     const el = document.getElementById('shellSidebar');

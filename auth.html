@@ -9,14 +9,22 @@
 <link rel="apple-touch-icon" href="assets/img/favicon.png?v=2">
 <link rel="stylesheet" href="assets/css/dashboard.css">
 <link rel="stylesheet" href="assets/css/welcome.css">
-<script src="assets/js/auth.js"></script>
-<script src="assets/js/theme.js"></script>
+<script src="assets/js/firebase/firebase-config.js"></script>
+<script src="assets/js/firebase/firestore.js"></script>
+<!-- BOREDACADEMY_SIGNUP_PATCH -->
+<script src="assets/js/auth/roles.js"></script>
+<script src="assets/js/auth/permissions.js"></script>
+<script src="assets/js/auth/auth.js"></script>
+<script src="assets/js/classroom/classroom.js"></script>
+<script src="assets/js/app/router.js"></script>
+<script src="assets/js/app/theme.js"></script>
 </head>
 <body class="dash-page welcome-page">
 
 <script>
   if(window.BoredAuth && BoredAuth.currentUser()){
-    window.location.href = 'index.html';
+    if(window.BoredRouter){ BoredRouter.goToDashboard(BoredAuth.currentUser()); }
+    else { window.location.href = 'index.html'; }
   }
 </script>
 
@@ -50,6 +58,13 @@
     <form id="signupForm" class="auth-form" style="display:none">
       <h2>Create your account</h2>
       <p class="auth-hint">Free — takes about 20 seconds.</p>
+
+      <label>I am a...</label>
+      <div class="auth-tabs" id="accountTypeToggle" role="group" aria-label="Account type">
+        <button type="button" class="auth-tab active" data-account-type="student">Student</button>
+        <button type="button" class="auth-tab" data-account-type="teacher">Teacher</button>
+      </div>
+
       <label>Name
         <input type="text" id="signupName" required autocomplete="name">
       </label>
@@ -59,6 +74,9 @@
       <label>Password
         <input type="password" id="signupPassword" required autocomplete="new-password" minlength="6">
         <span class="auth-field-hint">At least 6 characters.</span>
+      </label>
+      <label id="classCodeLabel">Class code <span class="auth-field-hint">(optional — your teacher gives you this)</span>
+        <input type="text" id="signupClassCode" placeholder="ABCX-93KD" autocomplete="off">
       </label>
       <div class="auth-error" id="signupError"></div>
       <button type="submit" class="welcome-btn full">Create Account</button>
@@ -92,7 +110,22 @@
     const errEl = document.getElementById('loginError');
     const result = BoredAuth.login(email, password);
     if(!result.ok){ errEl.textContent = result.error; return; }
-    window.location.href = 'index.html';
+    goToDashboardOrHome(result.user);
+  });
+
+  // --- account type toggle (student/teacher) --------------------------
+  let accountType = 'student';
+  const accountTypeToggle = document.getElementById('accountTypeToggle');
+  const classCodeLabel = document.getElementById('classCodeLabel');
+  function setAccountType(type){
+    accountType = type;
+    accountTypeToggle.querySelectorAll('.auth-tab').forEach(function(btn){
+      btn.classList.toggle('active', btn.dataset.accountType === type);
+    });
+    classCodeLabel.style.display = type === 'student' ? '' : 'none';
+  }
+  accountTypeToggle.querySelectorAll('.auth-tab').forEach(function(btn){
+    btn.addEventListener('click', function(){ setAccountType(btn.dataset.accountType); });
   });
 
   signupForm.addEventListener('submit', function(e){
@@ -100,11 +133,31 @@
     const name = document.getElementById('signupName').value;
     const email = document.getElementById('signupEmail').value;
     const password = document.getElementById('signupPassword').value;
+    const classCode = document.getElementById('signupClassCode').value.trim();
     const errEl = document.getElementById('signupError');
-    const result = BoredAuth.signUp(name, email, password);
+    errEl.textContent = '';
+
+    const result = BoredAuth.signUp(name, email, password, accountType);
     if(!result.ok){ errEl.textContent = result.error; return; }
-    window.location.href = 'index.html';
+
+    if(accountType === 'student' && classCode && window.BoredClassroom){
+      const joinResult = BoredClassroom.joinClass(result.user.email, classCode);
+      if(joinResult.ok){
+        BoredAuth.addClass(result.user.email, joinResult.class.id);
+      } else {
+        // Account was still created successfully — just surface the
+        // class-code problem so the student can join later from settings.
+        errEl.textContent = joinResult.error + ' Your account was created — you can join a class later from Settings.';
+      }
+    }
+
+    goToDashboardOrHome(BoredAuth.currentUser());
   });
+
+  function goToDashboardOrHome(user){
+    if(window.BoredRouter){ BoredRouter.goToDashboard(user); }
+    else { window.location.href = 'index.html'; }
+  }
 </script>
 </body>
 </html>

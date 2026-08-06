@@ -3,6 +3,63 @@ const COURSE_ID = window.COURSE_ID || 'course';
 const PROGRESS_KEY = `boredacademy:progress:${COURSE_ID}`;
 
 let current = 0;
+
+// BOREDACADEMY_HASH_JUMP_PATCH
+// Supports links like chemistry.html#lesson=1.5 (used by the student
+// dashboard's "Open lesson" links) by jumping straight to that lesson.
+(function jumpToHashLesson(){
+  const m = /lesson=([^&]+)/.exec(window.location.hash || '');
+  if(!m) return;
+  const idx = DATA.findIndex(l => l.id === decodeURIComponent(m[1]));
+  if(idx !== -1) current = idx;
+})();
+
+// BOREDACADEMY_LOCK_PATCH
+// BOREDACADEMY_ASSIGNMENT_UNLOCK_PATCH
+// First 2 lessons of each unit are free demo lessons (matches the "Guest
+// can complete first 2-3 lessons of every course" rule). Everything else
+// needs BoredPermissions.canAccessLesson() to return true, which checks
+// lesson.assignedTo against the user's classIds — populated below from
+// real BoredAssignments entries for classes the signed-in user is in.
+(function markFreeLessons(){
+  const seen = {};
+  DATA.forEach(l => {
+    seen[l.unit] = seen[l.unit] || 0;
+    l.free = seen[l.unit] < 2;
+    seen[l.unit]++;
+  });
+})();
+
+(function applyAssignments(){
+  if(!window.BoredAssignments) return;
+  const user = window.BoredAuth ? window.BoredAuth.currentUser() : null;
+  const classIds = (user && user.classIds) || [];
+  if(!classIds.length) return;
+
+  const now = Date.now();
+  DATA.forEach(l => { l.assignedTo = l.assignedTo || []; });
+
+  classIds.forEach(function(classId){
+    BoredAssignments.forClass(classId).forEach(function(a){
+      if(a.courseId !== COURSE_ID) return;
+      if(!BoredAssignments.isUnlocked(a, now)) return; // not open yet
+      const lesson = DATA.find(function(l){ return l.id === a.lessonId; });
+      if(lesson && lesson.assignedTo.indexOf(classId) === -1){
+        lesson.assignedTo.push(classId);
+      }
+    });
+  });
+})();
+
+function currentBoredUser(){
+  return window.BoredAuth ? window.BoredAuth.currentUser() : null;
+}
+
+function isLessonLocked(l){
+  if(!window.BoredPermissions) return false; // permissions.js not loaded — fail open, don't break the page
+  return !window.BoredPermissions.canAccessLesson(currentBoredUser(), l);
+}
+
 let searchTerm = '';
 const quizState = {}; // id -> {answered:[]}
 DATA.forEach(l => quizState[l.id] = { answered: new Array(l.quiz.length).fill(null) });
@@ -170,6 +227,16 @@ function renderMain(){
       <div class="vocab-grid">${vocabHtml}</div>
     </section>
 
+    ${isLessonLocked(l) ? `
+    <section class="block lock-block">
+      <h3 class="block-title">🔒 This lesson is locked</h3>
+      <p>Join a classroom with a teacher's code, or go Premium, to unlock this lesson and its notes/quiz.</p>
+      <div class="lock-actions">
+        <a class="btn" href="../auth.html">Join a classroom</a>
+        <a class="btn btn-primary" href="../settings.html">Go Premium</a>
+      </div>
+    </section>
+    ` : `
     <section class="block">
       <h3 class="block-title">Lesson Notes</h3>
       ${l.html}
@@ -179,6 +246,7 @@ function renderMain(){
       <h3 class="block-title">Check Your Understanding</h3>
       ${quizHtml}
     </section>
+    `}
 
     <div class="nav-footer">
       <button ${current===0?'disabled':''} onclick="goTo(${current-1})">← Previous lesson</button>
@@ -201,6 +269,8 @@ function renderMain(){
 }
 
 function answer(id, qi, oi){
+  const l0 = DATA.find(x=>x.id===id);
+  if(l0 && isLessonLocked(l0)) return; // guard against calls from stale/cached DOM
   quizState[id].answered[qi] = oi;
   saveProgress();
   const l = DATA.find(x=>x.id===id);

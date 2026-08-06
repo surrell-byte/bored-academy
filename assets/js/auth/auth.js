@@ -1,0 +1,140 @@
+/* ==========================================================================
+   Bored Academy — Auth with optional Firestore sync
+
+   Local auth is stored in localStorage so the app still works without a
+   network or Firebase project. When Firebase is configured and available,
+   user accounts and progress are also synced to Cloud Firestore so data
+   survives across devices.
+
+   Configure Firebase in assets/js/firebase-config.js.
+   ========================================================================== */
+(function(){
+  const USERS_KEY = 'boredacademy:users';
+  const SESSION_KEY = 'boredacademy:session';
+
+  function readUsers(){
+    try{ return JSON.parse(localStorage.getItem(USERS_KEY) || '{}'); }
+    catch(e){ return {}; }
+  }
+  function writeUsers(users){
+    try{ localStorage.setItem(USERS_KEY, JSON.stringify(users)); }catch(e){}
+  }
+  function hash(str){
+    let h = 0;
+    for(let i=0;i<str.length;i++){ h = (h<<5) - h + str.charCodeAt(i); h |= 0; }
+    return 'v1_' + h;
+  }
+
+  function currentUser(){
+    try{ return JSON.parse(localStorage.getItem(SESSION_KEY) || 'null'); }
+    catch(e){ return null; }
+  }
+
+  function firebaseAvailable(){
+    return !!(window.BoredFirebase && window.BoredFirebase.isEnabled && window.BoredFirebase.isEnabled());
+  }
+
+  function firebaseDb(){
+    if(!firebaseAvailable()) return null;
+    return window.BoredFirebase.db;
+  }
+
+  function firebaseUserDoc(email){
+    if(!firebaseAvailable()) return Promise.resolve();
+    const db = window.BoredFirebase.db;
+    return db.collection("users").doc(email).set({
+      name: currentUser()?.name || email.split("@")[0],
+      email,
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    }, { merge: true }).catch(()=>{});
+  }
+
+  function defaultRoleFor(accountType){
+    const Roles = window.BoredRoles ? window.BoredRoles.ROLES : {};
+    return accountType === 'teacher' ? Roles.TEACHER_FREE : Roles.STUDENT_FREE;
+  }
+
+  function signUp(name, email, password, accountType){
+    email = (email||'').trim().toLowerCase();
+    name = (name||'').trim();
+    accountType = accountType === 'teacher' ? 'teacher' : 'student';
+    if(!email || !password) return { ok:false, error:'Enter an email and password.' };
+    if(password.length < 6) return { ok:false, error:'Password must be at least 6 characters.' };
+    const users = readUsers();
+    if(users[email]) return { ok:false, error:'An account with that email already exists.' };
+    users[email] = {
+      name: name || email.split('@')[0],
+      passHash: hash(password),
+      role: defaultRoleFor(accountType),
+      classIds: []
+    };
+    writeUsers(users);
+    const session = { email, name: users[email].name, role: users[email].role, classIds: users[email].classIds };
+    try{ localStorage.setItem(SESSION_KEY, JSON.stringify(session)); }catch(e){}
+    try{ localStorage.setItem('boredacademy:name', session.name); }catch(e){}
+    firebaseUserDoc(email);
+    return { ok:true, user: session };
+  }
+
+  function setRole(email, role){
+    email = (email||'').trim().toLowerCase();
+    const users = readUsers();
+    if(!users[email]) return { ok:false, error:'No such account.' };
+    users[email].role = role;
+    writeUsers(users);
+    const session = currentUser();
+    if(session && session.email === email){
+      session.role = role;
+      try{ localStorage.setItem(SESSION_KEY, JSON.stringify(session)); }catch(e){}
+    }
+    return { ok:true };
+  }
+
+  function addClass(email, classId){
+    email = (email||'').trim().toLowerCase();
+    const users = readUsers();
+    if(!users[email]) return { ok:false, error:'No such account.' };
+    users[email].classIds = users[email].classIds || [];
+    if(users[email].classIds.indexOf(classId) === -1) users[email].classIds.push(classId);
+    if(users[email].role === (window.BoredRoles && window.BoredRoles.ROLES.STUDENT_FREE)){
+      users[email].role = window.BoredRoles.ROLES.STUDENT_CLASSROOM;
+    }
+    writeUsers(users);
+    const session = currentUser();
+    if(session && session.email === email){
+      session.classIds = users[email].classIds;
+      session.role = users[email].role;
+      try{ localStorage.setItem(SESSION_KEY, JSON.stringify(session)); }catch(e){}
+    }
+    return { ok:true };
+  }
+
+  function login(email, password){
+    email = (email||'').trim().toLowerCase();
+    const users = readUsers();
+    const record = users[email];
+    if(!record || record.passHash !== hash(password||'')){
+      return { ok:false, error:'Incorrect email or password.' };
+    }
+    const session = { email, name: record.name, role: record.role || defaultRoleFor('student'), classIds: record.classIds || [] };
+    try{ localStorage.setItem(SESSION_KEY, JSON.stringify(session)); }catch(e){}
+    try{ localStorage.setItem('boredacademy:name', session.name); }catch(e){}
+    firebaseUserDoc(email);
+    return { ok:true, user: session };
+  }
+
+  function logout(){
+    try{ localStorage.removeItem(SESSION_KEY); }catch(e){}
+    try{ localStorage.removeItem('boredacademy:name'); }catch(e){}
+  }
+
+  function requireAuth(){
+    if(!currentUser()){
+      window.location.href = 'welcome.html';
+      return false;
+    }
+    return true;
+  }
+
+  window.BoredAuth = { currentUser, signUp, login, logout, requireAuth, setRole, addClass, firebaseAvailable };
+})();

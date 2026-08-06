@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Class — Bored Academy</title>
+<link rel="icon" href="../favicon.ico?v=2" sizes="any">
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/dashboard.css">
+<link rel="stylesheet" href="../assets/css/responsive.css">
+<script src="../assets/js/auth/roles.js"></script>
+<script src="../assets/js/auth/permissions.js"></script>
+<script src="../assets/js/auth/auth.js"></script>
+<script src="../assets/js/classroom/classroom.js"></script>
+<script src="../assets/js/classroom/assignments.js"></script>
+<script src="../assets/js/app/router.js"></script>
+<script src="../assets/js/app/theme.js"></script>
+<script src="../assets/js/data/courses.js"></script>
+<script src="../assets/js/data/lesson-index.js"></script>
+</head>
+<body class="dash-page">
+
+<script>
+  (function(){
+    if(!window.BoredAuth || !BoredAuth.requireAuth()) return;
+    const user = BoredAuth.currentUser();
+    const isTeacher = window.BoredRoles && (BoredRoles.isTeacher(user.role) || BoredRoles.isAdmin(user.role));
+    if(!isTeacher){ window.location.href = '../student/student-dashboard.html'; }
+  })();
+</script>
+
+<div class="dash-shell">
+  <aside class="dash-sidebar" id="shellSidebar">
+    <div class="dash-brand">
+      <span class="logo"><img src="../assets/img/logo.png" alt="Bored Academy logo" width="28" height="28"></span>
+      <h1>Bored Academy</h1>
+    </div>
+    <nav class="dash-nav">
+      <a href="teacher-dashboard.html"><span class="n-label">Dashboard</span></a>
+      <a href="teacher-assignments.html"><span class="n-label">Assignments</span></a>
+      <a href="teacher-tests.html"><span class="n-label">Tests</span></a>
+      <a href="teacher-gradebook.html"><span class="n-label">Gradebook</span></a>
+      <a href="teacher-calendar.html"><span class="n-label">Calendar</span></a>
+      <a href="teacher-settings.html"><span class="n-label">Settings</span></a>
+    </nav>
+  </aside>
+
+  <main class="dash-main">
+    <div class="dash-content">
+      <p><a href="teacher-dashboard.html">← All classes</a></p>
+      <div class="dash-welcome">
+        <h2 id="className">Class</h2>
+        <p>Join code: <span id="joinCode" style="font-family:'Courier New',monospace;letter-spacing:.05em;"></span></p>
+      </div>
+
+      <section class="block" style="margin-top:1.4em;">
+        <h3 class="block-title">Roster</h3>
+        <div id="roster"></div>
+        <p id="noStudents" style="color:var(--muted);display:none;">No students have joined yet. Share the join code above.</p>
+      </section>
+
+      <section class="block" style="margin-top:1.4em;">
+        <h3 class="block-title">Assign a lesson</h3>
+        <form id="assignForm" style="display:flex;gap:.6em;flex-wrap:wrap;align-items:flex-end;">
+          <label style="min-width:180px;">Course
+            <select id="assignCourse" required style="display:block;width:100%;padding:.55em .7em;border:1px solid var(--line);border-radius:8px;margin-top:.3em;"></select>
+          </label>
+          <label style="min-width:220px;">Lesson
+            <select id="assignLesson" required style="display:block;width:100%;padding:.55em .7em;border:1px solid var(--line);border-radius:8px;margin-top:.3em;"></select>
+          </label>
+          <label>Unlock date
+            <input type="date" id="assignUnlock" style="display:block;padding:.55em .7em;border:1px solid var(--line);border-radius:8px;margin-top:.3em;">
+          </label>
+          <label>Due date
+            <input type="date" id="assignDue" style="display:block;padding:.55em .7em;border:1px solid var(--line);border-radius:8px;margin-top:.3em;">
+          </label>
+          <label style="width:90px;">Points
+            <input type="number" id="assignPoints" value="10" min="0" style="display:block;width:100%;padding:.55em .7em;border:1px solid var(--line);border-radius:8px;margin-top:.3em;">
+          </label>
+          <button type="submit" class="welcome-btn">Assign</button>
+        </form>
+      </section>
+
+      <section class="block" style="margin-top:1.4em;">
+        <h3 class="block-title">Current assignments</h3>
+        <table style="width:100%;border-collapse:collapse;" id="assignTable">
+          <thead>
+            <tr style="text-align:left;border-bottom:1px solid var(--line);">
+              <th style="padding:.5em .3em;">Course</th>
+              <th style="padding:.5em .3em;">Lesson</th>
+              <th style="padding:.5em .3em;">Unlocks</th>
+              <th style="padding:.5em .3em;">Due</th>
+              <th style="padding:.5em .3em;">Points</th>
+            </tr>
+          </thead>
+          <tbody id="assignBody"></tbody>
+        </table>
+        <p id="noAssignments" style="color:var(--muted);display:none;">No lessons assigned to this class yet.</p>
+      </section>
+    </div>
+  </main>
+</div>
+
+<script>
+  const params = new URLSearchParams(location.search);
+  const classId = params.get('classId');
+  const user = BoredAuth.currentUser();
+
+  const allClasses = BoredClassroom.classesForTeacher(user.email);
+  const klass = allClasses.find(function(c){ return c.id === classId; });
+
+  if(!klass){
+    document.querySelector('.dash-content').innerHTML =
+      '<p>Class not found, or you don\'t have access to it. <a href="teacher-dashboard.html">Back to dashboard</a>.</p>';
+  } else {
+    document.getElementById('className').textContent = klass.name;
+    document.getElementById('joinCode').textContent = klass.joinCode;
+
+    // --- roster ---
+    function renderRoster(){
+      const studentEmails = BoredClassroom.studentsInClass(klass.id);
+      document.getElementById('noStudents').style.display = studentEmails.length ? 'none' : '';
+      document.getElementById('roster').innerHTML = studentEmails.map(function(email){
+        return '<div style="padding:.5em 0;border-bottom:1px solid var(--line);">' + email + '</div>';
+      }).join('');
+    }
+    renderRoster();
+
+    // --- assign lesson form ---
+    const courseSelect = document.getElementById('assignCourse');
+    const lessonSelect = document.getElementById('assignLesson');
+    const LESSON_INDEX = window.LESSON_INDEX || {};
+
+    (window.COURSES || []).filter(function(c){ return c.available; }).forEach(function(c){
+      const opt = document.createElement('option');
+      opt.value = c.id;
+      opt.textContent = c.title;
+      courseSelect.appendChild(opt);
+    });
+
+    function refreshLessonOptions(){
+      const courseId = courseSelect.value;
+      const lessons = LESSON_INDEX[courseId] || [];
+      lessonSelect.innerHTML = lessons.map(function(l){
+        return '<option value="' + l.id + '">' + l.unit + ' — ' + l.title + '</option>';
+      }).join('');
+    }
+    courseSelect.addEventListener('change', refreshLessonOptions);
+    refreshLessonOptions();
+
+    function renderAssignments(){
+      const assignments = BoredAssignments.forClass(klass.id);
+      document.getElementById('noAssignments').style.display = assignments.length ? 'none' : '';
+      document.getElementById('assignBody').innerHTML = assignments.map(function(a){
+        const courseTitle = ((window.COURSES || []).find(function(c){ return c.id === a.courseId; }) || {}).title || a.courseId;
+        const lesson = (LESSON_INDEX[a.courseId] || []).find(function(l){ return l.id === a.lessonId; });
+        return '<tr style="border-bottom:1px solid var(--line);">' +
+          '<td style="padding:.5em .3em;">' + courseTitle + '</td>' +
+          '<td style="padding:.5em .3em;">' + (lesson ? lesson.title : a.lessonId) + '</td>' +
+          '<td style="padding:.5em .3em;">' + (a.unlockDate || '—') + '</td>' +
+          '<td style="padding:.5em .3em;">' + (a.dueDate || '—') + '</td>' +
+          '<td style="padding:.5em .3em;">' + (a.points || 0) + '</td>' +
+        '</tr>';
+      }).join('');
+    }
+    renderAssignments();
+
+    document.getElementById('assignForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      BoredAssignments.create({
+        classId: klass.id,
+        courseId: courseSelect.value,
+        lessonId: lessonSelect.value,
+        unlockDate: document.getElementById('assignUnlock').value || null,
+        dueDate: document.getElementById('assignDue').value || null,
+        points: Number(document.getElementById('assignPoints').value) || 0
+      });
+      renderAssignments();
+    });
+  }
+</script>
+</body>
+</html>

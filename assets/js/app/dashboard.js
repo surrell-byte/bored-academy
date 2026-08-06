@@ -491,6 +491,139 @@ function renderSettingsStandalone(){
   });
 }
 
+function renderQuizzesPage(){
+  const listEl = document.getElementById('quizList');
+  const countEl = document.getElementById('quizCount');
+  const searchEl = document.getElementById('quizSearch');
+  const filterEl = document.getElementById('quizCourseFilter');
+  if(!listEl) return;
+
+  const available = window.COURSES.filter(c=>c.available && COURSE_DATASETS[c.id]);
+  const allQuizzes = [];
+  available.forEach(c=>{
+    const data = COURSE_DATASETS[c.id];
+    (data||[]).forEach(l=>{
+      (l.quiz||[]).forEach((q,qi)=>{
+        allQuizzes.push({ courseId:c.id, courseTitle:c.title, courseIcon:c.icon, lessonId:l.id, lessonTitle:l.title, q, qi, total: l.quiz.length });
+      });
+    });
+  });
+
+  if(filterEl && !filterEl.dataset.wired){
+    filterEl.dataset.wired = '1';
+    available.forEach(c=>{
+      const opt = document.createElement('option');
+      opt.value = c.id;
+      opt.textContent = c.title;
+      filterEl.appendChild(opt);
+    });
+  }
+
+  function getSaved(courseId){
+    try{ return JSON.parse(localStorage.getItem(`boredacademy:progress:${courseId}`) || '{}'); }catch(e){ return {}; }
+  }
+
+  function saveAnswer(courseId, lessonId, qi, oi){
+    const saved = getSaved(courseId);
+    if(!saved[lessonId]) saved[lessonId] = new Array(COURSE_DATASETS[courseId].find(l=>l.id===lessonId).quiz.length).fill(null);
+    saved[lessonId][qi] = oi;
+    try{ localStorage.setItem(`boredacademy:progress:${courseId}`, JSON.stringify(saved)); }catch(e){}
+    const data = COURSE_DATASETS[courseId];
+    const l = data.find(x=>x.id===lessonId);
+    const allAnswered = saved[lessonId].every(a=>a!==null);
+    if(allAnswered && window.ProgressStore){
+      const correct = saved[lessonId].filter((a,idx)=>a===l.quiz[idx].a).length;
+      const pct = Math.round((correct/l.quiz.length)*100);
+      ProgressStore.logActivity({ type:'quiz', text:`${l.title} Quiz`, detail:`${pct}%`, courseId });
+    }
+  }
+
+  function render(){
+    const term = (searchEl.value || '').trim().toLowerCase();
+    const courseFilter = filterEl ? filterEl.value : 'all';
+
+    const filtered = allQuizzes.filter(item=>{
+      if(courseFilter !== 'all' && item.courseId !== courseFilter) return false;
+      if(!term) return true;
+      return item.courseTitle.toLowerCase().includes(term) || item.lessonTitle.toLowerCase().includes(term) || item.q.q.toLowerCase().includes(term);
+    });
+
+    countEl.textContent = `${filtered.length} question${filtered.length===1?'':'s'}`;
+
+    const grouped = {};
+    filtered.forEach(item=>{
+      const key = item.courseId + '::' + item.lessonId;
+      if(!grouped[key]) grouped[key] = { courseId: item.courseId, courseTitle: item.courseTitle, courseIcon: item.courseIcon, lessonId: item.lessonId, lessonTitle: item.lessonTitle, items: [] };
+      grouped[key].items.push(item);
+    });
+
+    let html = '';
+    Object.values(grouped).forEach(group=>{
+      const saved = getSaved(group.courseId);
+      const lessonData = COURSE_DATASETS[group.courseId].find(l=>l.id===group.lessonId);
+      const answeredCount = (saved[group.lessonId]||[]).filter(a=>a!==null).length;
+      const totalQ = lessonData.quiz.length;
+      const correctCount = (saved[group.lessonId]||[]).filter((a,i)=>a===lessonData.quiz[i].a).length;
+      const scorePct = answeredCount > 0 ? Math.round((correctCount/answeredCount)*100) : null;
+      const done = answeredCount === totalQ && totalQ > 0;
+
+      html += `<div class="quiz-course-card">
+        <div class="quiz-course-head">
+          <div class="quiz-course-icon">${group.courseIcon}</div>
+          <div class="quiz-course-meta">
+            <div class="quiz-course-title">${group.courseTitle}</div>
+            <div class="quiz-lesson-title">${group.lessonId} · ${group.lessonTitle}</div>
+            <div class="quiz-progress-row">
+              <span class="quiz-progress-text">${answeredCount}/${totalQ} answered</span>
+              ${scorePct !== null ? `<span class="quiz-score ${scorePct>=70?'good':scorePct>=40?'medium':'bad'}">${scorePct}%</span>` : ''}
+              ${done ? '<span class="quiz-done-badge">Completed</span>' : ''}
+            </div>
+          </div>
+          <a class="quiz-lesson-link" href="courses/${group.courseId}.html" title="Open lesson">Open lesson →</a>
+        </div>
+        <div class="quiz-questions">
+          ${group.items.map(item=>{
+            const chosen = (saved[item.lessonId]||[])[item.qi];
+            const isCorrect = chosen === item.q.a;
+            const isWrong = chosen !== null && chosen !== item.q.a;
+            return `<div class="quiz-q-card ${chosen!==null?(isCorrect?'correct':'incorrect'):''}">
+              <div class="quiz-q-text">${item.qi+1}. ${item.q.q}</div>
+              <div class="quiz-opts">
+                ${item.q.opts.map((o,oi)=>{
+                  let cls = 'quiz-opt';
+                  if(chosen!==null){
+                    if(oi===item.q.a) cls += ' correct';
+                    else if(oi===chosen) cls += ' incorrect';
+                  }
+                  return `<button class="${cls}" ${chosen!==null?'disabled':''} onclick="window._answerQuiz('${group.courseId}','${group.lessonId}',${item.qi},${oi})">${o}</button>`;
+                }).join('')}
+              </div>
+            </div>`;
+          }).join('')}
+        </div>
+      </div>`;
+    });
+
+    if(!html) html = `<div class="activity-empty">No quizzes match your search.</div>`;
+    listEl.innerHTML = html;
+  }
+
+  window._answerQuiz = function(courseId, lessonId, qi, oi){
+    saveAnswer(courseId, lessonId, qi, oi);
+    render();
+  };
+
+  render();
+  if(searchEl && !searchEl.dataset.wired){
+    searchEl.dataset.wired = '1';
+    searchEl.addEventListener('input', render);
+  }
+  if(filterEl && !filterEl.dataset.wired){
+    filterEl.dataset.wired = '1';
+    filterEl.addEventListener('change', render);
+  }
+}
+
 function renderSettingsPage(){
   const standalone = document.getElementById('settingsContent');
   if(standalone) return renderSettingsStandalone();
@@ -545,6 +678,7 @@ function renderCalendarPage(){ renderCalendarView(buildStats()); }
 
 window.renderDashboardPage = renderDashboardPage;
 window.renderCoursesPage = renderCoursesPage;
+window.renderQuizzesPage = renderQuizzesPage;
 window.renderProgressPage = renderProgressPage;
 window.renderAchievementsPage = renderAchievementsPage;
 window.renderVocabularyPage = renderVocabularyPage;
