@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Teacher access — Bored Academy</title>
+  <link rel="icon" href="../favicon.webp?v=2" sizes="any">
+  <link rel="icon" type="image/webp" href="../assets/img/favicon.webp?v=2">
+  <link rel="apple-touch-icon" href="../assets/img/favicon.webp?v=2">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/dashboard.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+  <script src="../assets/js/firebase/firebase-config.js"></script>
+  <script src="../assets/js/firebase/firestore.js"></script>
+  <script src="../assets/js/auth/auth.js"></script>
+  <script src="../assets/js/auth/roles.js"></script>
+  <script src="../assets/js/app/router.js"></script>
+  <script src="../assets/js/app/theme.js"></script>
+</head>
+<body class="dash-page">
+
+<script>
+  if(!window.BoredAuth || !BoredAuth.currentUser()){
+    window.location.href = 'auth.html?mode=login';
+  }
+</script>
+
+<div class="dash-shell">
+  <aside class="dash-sidebar" id="shellSidebar">
+    <div class="dash-brand">
+      <span class="logo"><img src="../assets/img/logo.webp" alt="Bored Academy logo" width="28" height="28"></span>
+      <h1>Bored Academy</h1>
+    </div>
+    <nav class="dash-nav">
+      <a href="teacher-dashboard.html"><span class="n-label">Dashboard</span></a>
+      <a href="teacher-assignments.html"><span class="n-label">Assignments</span></a>
+      <a href="teacher-tests.html"><span class="n-label">Tests</span></a>
+      <a href="teacher-gradebook.html"><span class="n-label">Gradebook</span></a>
+      <a href="teacher-calendar.html"><span class="n-label">Calendar</span></a>
+      <a href="teacher-settings.html"><span class="n-label">Settings</span></a>
+    </nav>
+  </aside>
+
+  <main class="dash-main">
+    <div class="dash-topbar">
+      <div class="dash-topbar-right">
+        <span class="dash-role-badge" id="roleBadge"></span>
+      </div>
+    </div>
+
+    <div class="dash-content">
+      <div class="dash-welcome">
+        <h2>Unlock teacher features</h2>
+        <p>Enter your teacher access code for full access, or continue with the free plan.</p>
+      </div>
+
+      <section class="block" style="margin-top:1.4em;max-width:520px;">
+        <h3 class="block-title">Access code</h3>
+        <form id="accessForm" style="display:flex;flex-direction:column;gap:1em;">
+          <label>Access code
+            <input type="text" id="accessCode" placeholder="B4RI$H97" autocomplete="off" style="display:block;width:100%;padding:.55em .7em;border:1px solid var(--line);border-radius:8px;margin-top:.3em;text-transform:uppercase;letter-spacing:.08em;font-family:'Courier New',monospace;font-size:1.1em;">
+          </label>
+          <div class="auth-error" id="accessError" style="min-height:1.4em;"></div>
+          <button type="submit" class="welcome-btn">Unlock full access</button>
+          <button type="button" class="welcome-link-btn" id="skipBtn">Continue with free plan</button>
+        </form>
+
+        <div style="margin-top:1.4em;padding:1em;background:var(--flame-soft);border-radius:12px;border-left:4px solid var(--flame);">
+          <p style="margin:.2em 0;font-size:.92em;"><strong>Full access code:</strong> <code style="background:var(--paper);padding:.15em .4em;border-radius:6px;font-family:'Courier New',monospace;letter-spacing:.06em;">B4RI$H97</code></p>
+          <p style="margin:.4em 0 0;font-size:.82em;color:var(--muted);">Free plan: limited classes and students.<br>Full access: unlimited classes, students, and premium content.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<script>
+  const user = BoredAuth.currentUser();
+  document.getElementById('roleBadge').textContent = user.role.replace('_', ' ');
+  const accessForm = document.getElementById('accessForm');
+  const accessCodeInput = document.getElementById('accessCode');
+  const accessError = document.getElementById('accessError');
+  const skipBtn = document.getElementById('skipBtn');
+  const FULL_ACCESS_CODE = 'B4RI$H97';
+
+  accessForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    accessError.textContent = '';
+    const code = accessCodeInput.value.trim();
+    if(!code){
+      accessError.textContent = 'Please enter an access code.';
+      return;
+    }
+    if(code !== FULL_ACCESS_CODE){
+      accessError.textContent = 'Invalid access code. Please check with your administrator.';
+      return;
+    }
+    if(window.BoredAuth){
+      BoredAuth.setRole(user.email, (window.BoredRoles && window.BoredRoles.ROLES.TEACHER_PREMIUM) || 'teacher_premium');
+      BoredAuth.setTeacherAccess(true);
+      BoredAuth.markOnboardingDone();
+    }
+    window.location.href = 'teacher-dashboard.html';
+  });
+
+  skipBtn.addEventListener('click', function(){
+    BoredAuth.markOnboardingDone();
+    window.location.href = 'teacher-dashboard.html';
+  });
+</script>
+
+</body>
+</html>

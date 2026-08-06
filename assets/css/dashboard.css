@@ -368,6 +368,7 @@ html[data-theme="dark"] .course-card.soon{opacity:.45;}
 .quiz-opt:disabled{cursor:not-allowed;opacity:.85;}
 .quiz-opt.correct{background:var(--good-soft);border-color:var(--good);color:var(--good);font-weight:700;}
 .quiz-opt.incorrect{background:#f5e4e2;border-color:var(--bad);color:var(--bad);}
+.quiz-opt.selected{background:var(--paper);border-color:var(--teal-dark);color:var(--ink);font-weight:600;}
 
 /* =========================== TABLET: 481–900px =========================== */
 @media(min-width:481px) and (max-width:900px){

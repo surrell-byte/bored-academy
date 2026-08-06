@@ -39,14 +39,19 @@
     return window.BoredFirebase.db;
   }
 
-  function firebaseUserDoc(email){
+  // BOREDACADEMY_AUTH_FIX
+  function firebaseUserDoc(email, extra){
     if(!firebaseAvailable()) return Promise.resolve();
     const db = window.BoredFirebase.db;
-    return db.collection("users").doc(email).set({
-      name: currentUser()?.name || email.split("@")[0],
+    const user = currentUser();
+    const data = {
+      name: user?.name || email.split("@")[0],
       email,
       updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-    }, { merge: true }).catch(()=>{});
+    };
+    if(extra && extra.role !== undefined) data.role = extra.role;
+    if(extra && extra.classIds !== undefined) data.classIds = extra.classIds;
+    return db.collection("users").doc(email).set(data, { merge: true }).catch(()=>{});
   }
 
   function defaultRoleFor(accountType){
@@ -72,7 +77,7 @@
     const session = { email, name: users[email].name, role: users[email].role, classIds: users[email].classIds };
     try{ localStorage.setItem(SESSION_KEY, JSON.stringify(session)); }catch(e){}
     try{ localStorage.setItem('boredacademy:name', session.name); }catch(e){}
-    firebaseUserDoc(email);
+    firebaseUserDoc(email, { role: session.role, classIds: session.classIds });
     return { ok:true, user: session };
   }
 
@@ -87,6 +92,7 @@
       session.role = role;
       try{ localStorage.setItem(SESSION_KEY, JSON.stringify(session)); }catch(e){}
     }
+    firebaseUserDoc(email, { role });
     return { ok:true };
   }
 
@@ -106,6 +112,7 @@
       session.role = users[email].role;
       try{ localStorage.setItem(SESSION_KEY, JSON.stringify(session)); }catch(e){}
     }
+    firebaseUserDoc(email, { classIds: users[email].classIds, role: users[email].role });
     return { ok:true };
   }
 
@@ -119,7 +126,10 @@
     const session = { email, name: record.name, role: record.role || defaultRoleFor('student'), classIds: record.classIds || [] };
     try{ localStorage.setItem(SESSION_KEY, JSON.stringify(session)); }catch(e){}
     try{ localStorage.setItem('boredacademy:name', session.name); }catch(e){}
-    firebaseUserDoc(email);
+    const firestoreUpdate = {};
+    if(record.role) firestoreUpdate.role = session.role;
+    if(record.classIds) firestoreUpdate.classIds = session.classIds;
+    firebaseUserDoc(email, firestoreUpdate);
     return { ok:true, user: session };
   }
 
@@ -136,5 +146,18 @@
     return true;
   }
 
-  window.BoredAuth = { currentUser, signUp, login, logout, requireAuth, setRole, addClass, firebaseAvailable };
+  function markOnboardingDone(){
+    try{ localStorage.setItem('boredacademy:onboarding_done', '1'); }catch(e){}
+  }
+  function needsOnboarding(){
+    return !localStorage.getItem('boredacademy:onboarding_done');
+  }
+  function setTeacherAccess(hasAccess){
+    try{ localStorage.setItem('boredacademy:teacher_access', hasAccess ? '1' : '0'); }catch(e){}
+  }
+  function hasTeacherAccess(){
+    return localStorage.getItem('boredacademy:teacher_access') === '1';
+  }
+
+  window.BoredAuth = { currentUser, signUp, login, logout, requireAuth, setRole, addClass, firebaseAvailable, markOnboardingDone, needsOnboarding, setTeacherAccess, hasTeacherAccess };
 })();

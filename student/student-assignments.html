@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Assignments — Bored Academy</title>
+  <link rel="icon" href="../favicon.webp?v=2" sizes="any">
+  <link rel="icon" type="image/webp" href="../assets/img/favicon.webp?v=2">
+  <link rel="apple-touch-icon" href="../assets/img/favicon.webp?v=2">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/dashboard.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+  <script src="../assets/js/firebase/firebase-config.js"></script>
+  <script src="../assets/js/firebase/firestore.js"></script>
+  <script src="../assets/js/auth/auth.js"></script>
+  <script src="../assets/js/auth/roles.js"></script>
+  <script src="../assets/js/auth/permissions.js"></script>
+  <script src="../assets/js/classroom/classroom.js"></script>
+  <script src="../assets/js/classroom/assignments.js"></script>
+  <script src="../assets/js/classroom/grading.js"></script>
+  <script src="../assets/js/data/lesson-index.js"></script>
+  <script src="../assets/js/app/router.js"></script>
+  <script src="../assets/js/app/shell.js"></script>
+</head>
+<body class="dash-page">
+
+<script>
+  (function(){
+    if(!window.BoredAuth || !BoredAuth.requireAuth()) return;
+    const user = BoredAuth.currentUser();
+    const isTeacher = window.BoredRoles && (BoredRoles.isTeacher(user.role) || BoredRoles.isAdmin(user.role));
+    if(isTeacher){
+      window.location.href = '../teacher/teacher-assignments.html';
+    }
+  })();
+</script>
+
+<div class="dash-shell">
+  <aside class="dash-sidebar" id="shellSidebar">
+    <div class="dash-brand">
+      <span class="logo"><img src="../assets/img/logo.webp" alt="Bored Academy logo" width="28" height="28"></span>
+      <h1>Bored Academy</h1>
+    </div>
+    <nav class="dash-nav">
+      <a href="student-dashboard.html"><span class="n-label">Dashboard</span></a>
+      <a href="../courses.html"><span class="n-label">Courses</span></a>
+      <a href="student-leaderboard.html"><span class="n-label">Leaderboard</span></a>
+      <a href="student-calendar.html"><span class="n-label">Calendar</span></a>
+      <a href="student-settings.html"><span class="n-label">Settings</span></a>
+    </nav>
+  </aside>
+
+  <main class="dash-main">
+    <div class="dash-topbar">
+      <div class="dash-topbar-right">
+        <span class="dash-role-badge" id="roleBadge"></span>
+      </div>
+    </div>
+
+    <div class="dash-content">
+      <div class="dash-welcome">
+        <h2>My assignments</h2>
+        <p>View and submit your assigned work.</p>
+      </div>
+
+      <section class="block" style="margin-top:1.4em;">
+        <h3 class="block-title">Assigned work</h3>
+        <div id="assignmentList"></div>
+        <p id="noAssignments" style="color:var(--muted);display:none;">No assignments yet. Join a class to get started.</p>
+      </section>
+    </div>
+  </main>
+</div>
+
+<script>
+  const user = BoredAuth.currentUser();
+  document.getElementById('roleBadge').textContent = user.role.replace('_', ' ');
+  const COURSES = window.COURSES || [];
+  const LESSON_INDEX = window.LESSON_INDEX || {};
+
+  function escapeHtml(str){
+    return String(str).replace(/[&<>"']/g, function(m){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\\'':'&#39;'})[m]; });
+  }
+
+  function renderAssignments(){
+    const classes = BoredClassroom.classesForStudent(user.email);
+    const now = Date.now();
+    let items = [];
+    classes.forEach(function(klass){
+      (BoredAssignments.forClass(klass.id) || []).forEach(function(a){
+        const course = COURSES.find(function(c){ return c.id === a.courseId; });
+        const lesson = (LESSON_INDEX[a.courseId] || []).find(function(l){ return l.id === a.lessonId; });
+        const unlocked = BoredAssignments.isUnlocked(a, now);
+        const submission = (BoredGrading.submissionsForAssignment(a.id) || []).find(function(s){ return s.studentEmail === user.email; });
+        items.push({
+          id: a.id,
+          className: klass.name,
+          classId: klass.id,
+          courseTitle: course ? course.title : a.courseId,
+          lessonTitle: lesson ? lesson.title : a.lessonId,
+          courseUrl: course ? course.url : null,
+          lessonId: a.lessonId,
+          unlockDate: a.unlockDate,
+          dueDate: a.dueDate,
+          points: a.points,
+          unlocked: unlocked,
+          submission: submission
+        });
+      });
+    });
+
+    items.sort(function(a,b){
+      function rank(it){
+        if(!it.unlocked) return 3;
+        if(it.submission && it.submission.status === 'submitted') return 2;
+        if(it.dueDate) return 1;
+        return 0;
+      }
+      return rank(a) - rank(b);
+    });
+
+    document.getElementById('noAssignments').style.display = items.length ? 'none' : '';
+    document.getElementById('assignmentList').innerHTML = items.map(function(it){
+      const unlocked = it.unlocked;
+      const submission = it.submission;
+      let statusLabel, statusColor, actionHtml;
+
+      if(!unlocked){
+        statusLabel = 'Opens ' + it.unlockDate;
+        statusColor = 'var(--muted)';
+        actionHtml = '<span style="color:var(--muted);">Locked</span>';
+      } else if(submission && submission.status === 'submitted'){
+        statusLabel = 'Submitted' + (submission.grade !== null ? ' · Graded: ' + submission.grade + '/' + (it.points || 100) : ' · Pending grade');
+        statusColor = submission.grade !== null ? 'var(--good)' : 'var(--teal)';
+        actionHtml = submission.grade !== null
+          ? '<span style="color:var(--good);font-weight:600;">Grade: ' + submission.grade + '/' + (it.points || 100) + '</span>' +
+            (submission.feedback ? '<div style="font-size:.85em;color:var(--muted);margin-top:.3em;">Feedback: ' + escapeHtml(submission.feedback) + '</div>' : '')
+          : '<span style="color:var(--teal);">Awaiting grade</span>';
+      } else if(submission && submission.status === 'draft'){
+        statusLabel = 'Draft saved';
+        statusColor = 'var(--gold)';
+        actionHtml = '<button class="welcome-btn" onclick="window._openSubmit(\'' + it.id + '\')">Submit assignment</button>';
+      } else {
+        statusLabel = it.dueDate ? 'Due ' + it.dueDate : 'No due date';
+        statusColor = 'var(--teal)';
+        const courseUrl = it.courseUrl
+          ? '<a href="../' + it.courseUrl + '#lesson=' + encodeURIComponent(it.lessonId) + '" style="color:var(--teal);font-size:.85em;margin-right:.6em;">Open lesson →</a>'
+          : '';
+        actionHtml = courseUrl + '<button class="welcome-btn" onclick="window._openSubmit(\'' + it.id + '\')">Submit work</button>';
+      }
+
+      return '<div class="stat-card" style="align-items:flex-start;flex-direction:column;gap:.4em;margin-bottom:.6em;">' +
+        '<div style="font-weight:700;">' + escapeHtml(it.lessonTitle) + '</div>' +
+        '<div style="color:var(--muted);font-size:.85em;">' + escapeHtml(it.courseTitle) + ' · ' + escapeHtml(it.className) + '</div>' +
+        '<div style="font-size:.85em;color:' + statusColor + ';">' + statusLabel + (it.points ? ' · ' + it.points + ' pts' : '') + '</div>' +
+        '<div style="font-size:.85em;margin-top:.2em;">' + actionHtml + '</div>' +
+      '</div>';
+    }).join('');
+  }
+
+  window._openSubmit = function(assignmentId){
+    const assignment = null;
+    const classes = BoredClassroom.classesForStudent(user.email);
+    let found = null;
+    classes.forEach(function(klass){
+      (BoredAssignments.forClass(klass.id) || []).forEach(function(a){
+        if(a.id === assignmentId) found = a;
+      });
+    });
+    if(!found) return;
+
+    const existing = (BoredGrading.submissionsForAssignment(assignmentId) || []).find(function(s){ return s.studentEmail === user.email; });
+    const draftText = existing ? existing.text : '';
+
+    const html = '<div id="submitModal" style="position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:100;padding:1em;">' +
+      '<div style="background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1.5em 1.7em;max-width:600px;width:100%;max-height:90vh;overflow-y:auto;">' +
+        '<h3 style="margin:0 0 .5em;font-family:Georgia,serif;">Submit assignment</h3>' +
+        '<p style="color:var(--muted);font-size:.85em;margin:0 0 1em;">Write your answer or paste your work below. You can save as draft or submit for grading.</p>' +
+        '<textarea id="submissionText" style="width:100%;min-height:200px;padding:.7em;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);font-family:Georgia,serif;font-size:.95em;resize:vertical;">' + escapeHtml(draftText) + '</textarea>' +
+        '<div style="display:flex;gap:.6em;margin-top:1em;flex-wrap:wrap;">' +
+          '<button class="welcome-btn" id="submitBtn">Submit for grading</button>' +
+          '<button class="welcome-link-btn" id="draftBtn">Save draft</button>' +
+          '<button class="welcome-link-btn" id="cancelBtn" style="color:var(--bad);">Cancel</button>' +
+        '</div>' +
+        '<div class="auth-error" id="submitError" style="min-height:1.4em;"></div>' +
+      '</div>' +
+    '</div>';
+
+    const modal = document.createElement('div');
+    modal.innerHTML = html;
+    document.body.appendChild(modal);
+
+    document.getElementById('cancelBtn').addEventListener('click', function(){
+      document.body.removeChild(modal);
+    });
+
+    document.getElementById('draftBtn').addEventListener('click', function(){
+      const text = document.getElementById('submissionText').value.trim();
+      if(!text){
+        document.getElementById('submitError').textContent = 'Please write something before saving.';
+        return;
+      }
+      if(existing){
+        BoredGrading.updateSubmission(existing.id, { text: text, status: 'draft', updatedAt: Date.now() });
+      } else {
+        BoredGrading.createSubmission({ assignmentId: assignmentId, classId: found.classId, studentEmail: user.email, studentName: user.name, text: text, status: 'draft', points: found.points || 100 });
+      }
+      document.body.removeChild(modal);
+      renderAssignments();
+    });
+
+    document.getElementById('submitBtn').addEventListener('click', function(){
+      const text = document.getElementById('submissionText').value.trim();
+      if(!text){
+        document.getElementById('submitError').textContent = 'Please write your answer before submitting.';
+        return;
+      }
+      if(existing){
+        BoredGrading.updateSubmission(existing.id, { text: text, status: 'submitted', submittedAt: Date.now(), updatedAt: Date.now() });
+      } else {
+        BoredGrading.createSubmission({ assignmentId: assignmentId, classId: found.classId, studentEmail: user.email, studentName: user.name, text: text, status: 'submitted', points: found.points || 100 });
+      }
+      document.body.removeChild(modal);
+      renderAssignments();
+    });
+  };
+
+  renderAssignments();
+</script>
+
+</body>
+</html>

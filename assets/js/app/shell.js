@@ -26,7 +26,7 @@
     if(!el) return;
     el.innerHTML = `
       <div class="dash-brand">
-        <span class="logo"><img src="assets/img/logo.png" alt="Bored Academy logo" width="28" height="28"></span>
+        <span class="logo"><img src="assets/img/logo.webp" alt="Bored Academy logo" width="28" height="28"></span>
         <h1>Bored Academy</h1>
       </div>
       <nav class="dash-nav">

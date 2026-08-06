@@ -9,10 +9,10 @@
    the existing localStorage demo implementation so the app keeps working.
    ========================================================================== */
 window.FIREBASE_CONFIG = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyA_9c1AggW9mzdgWdlSDiAEnzhVu4RQ_ug",
+  authDomain: "bored-academy-app.firebaseapp.com",
+  projectId: "bored-academy-app",
+  storageBucket: "bored-academy-app.firebasestorage.app",
+  messagingSenderId: "38967220472",
+  appId: "1:38967220472:web:3ffca653fa92fb5cfd430d"
 };

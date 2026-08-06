@@ -1,5 +1,35 @@
 const DATA = window.COURSE_DATA;
 const COURSE_ID = window.COURSE_ID || 'course';
+
+// BOREDACADEMY_LOCKING_PATCH
+// First 2 lessons of every course are free. Everything else needs the
+// signed-in user to be premium/admin, or the lesson assigned (and unlocked)
+// to one of the user's classes via BoredAssignments.
+(function computeLessonAccess(){
+  const user = (window.BoredAuth && window.BoredAuth.currentUser) ? window.BoredAuth.currentUser() : null;
+  const classIds = (user && user.classIds) || [];
+  let assignedByLesson = {};
+  if(window.BoredAssignments && classIds.length){
+    classIds.forEach(function(classId){
+      window.BoredAssignments.forClass(classId).forEach(function(a){
+        if(a.courseId !== COURSE_ID) return;
+        if(!window.BoredAssignments.isUnlocked(a)) return;
+        assignedByLesson[a.lessonId] = assignedByLesson[a.lessonId] || [];
+        assignedByLesson[a.lessonId].push(classId);
+      });
+    });
+  }
+  DATA.forEach(function(l, i){
+    l.free = i < 2;
+    l.assignedTo = assignedByLesson[l.id] || [];
+  });
+})();
+
+function canOpenLesson(l){
+  if(!window.BoredPermissions) return true; // permissions script not loaded — fail open rather than lock everyone out
+  const user = window.BoredAuth ? window.BoredAuth.currentUser() : null;
+  return window.BoredPermissions.canAccessLesson(user, l);
+}
 const PROGRESS_KEY = `boredacademy:progress:${COURSE_ID}`;
 
 let current = 0;
@@ -131,9 +161,10 @@ function renderSidebar(){
       if(l.unit!==u) return;
       if(term && !(l.title.toLowerCase().includes(term) || l.id.includes(term))) return;
       const done = isLessonDone(l);
-      h += `<button class="lesson-btn ${i===current?'active':''}" onclick="goTo(${i})">
+      const locked = !canOpenLesson(l);
+      h += `<button class="lesson-btn ${i===current?'active':''} ${locked?'locked':''}" onclick="goTo(${i})">
               <span class="num">${l.id}</span><span class="lesson-title-text">${l.title}</span>
-              <span class="lesson-dot ${done?'done':''}"></span>
+              <span class="lesson-dot ${locked?'':(done?'done':'')}">${locked?'🔒':''}</span>
             </button>`;
     });
     h += `</div>`;
@@ -142,6 +173,7 @@ function renderSidebar(){
 }
 
 function goTo(i){
+  if(!canOpenLesson(DATA[i])) return;
   current = i; render(); window.scrollTo(0,0);
   document.getElementById('sidebar').classList.remove('open');
   document.getElementById('scrim').classList.remove('show');
@@ -164,6 +196,27 @@ function renderMain(){
   const l = DATA[current];
   const m = document.getElementById('main');
   const st = quizState[l.id];
+
+  if(!canOpenLesson(l)){
+    m.innerHTML = `
+      <div class="topbar">
+        <div class="topbar-search">🔍 <input placeholder="Search lessons..." value="${searchTerm}" oninput="onSearch(this.value)"></div>
+      </div>
+      <div class="lesson-head">
+        <div class="eyebrow">${l.unit} · Lesson ${l.id}</div>
+        <h2>🔒 ${l.title}</h2>
+      </div>
+      <section class="block">
+        <h3 class="block-title">This lesson is locked</h3>
+        <p>Ask your teacher to assign it to your class, or upgrade to Premium to unlock every lesson.</p>
+      </section>
+      <div class="nav-footer">
+        <button ${current===0?'disabled':''} onclick="goTo(${current-1})">← Previous lesson</button>
+        <button ${current===DATA.length-1?'disabled':''} onclick="goTo(${current+1})">Next lesson →</button>
+      </div>
+    `;
+    return;
+  }
 
   let vocabHtml = l.vocab.map(([term,def])=>`
     <div class="flash" onclick="toggleFlash(this)">

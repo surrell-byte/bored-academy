@@ -60,7 +60,7 @@
   display:flex;align-items:center;justify-content:center;
   box-shadow:0 12px 30px rgba(0,0,0,.08);
 }
-.welcome-hero-art img{width:170px;height:170px;object-fit:contain;}
+.welcome-hero-art img{width:100%;height:100%;object-fit:cover;}
 
 /* ---------- Feature strip ---------- */
 .welcome-features{
@@ -100,12 +100,12 @@
 .auth-form label{
   display:block;font-size:.82em;font-weight:600;color:var(--ink);margin-bottom:.9em;
 }
-.auth-form input{
+.auth-form input, .auth-form select{
   display:block;width:100%;margin-top:.35em;padding:.65em .8em;
   border:1px solid var(--line);border-radius:9px;background:var(--paper);
   color:var(--ink);font-size:.95em;font-family:inherit;
 }
-.auth-form input:focus{outline:2px solid var(--teal);outline-offset:1px;}
+.auth-form input:focus, .auth-form select:focus{outline:2px solid var(--teal);outline-offset:1px;}
 .auth-field-hint{display:block;font-weight:400;color:var(--muted-3,var(--muted));font-size:.85em;margin-top:.3em;}
 .auth-error{
   min-height:1.4em;color:var(--bad);font-size:.85em;margin:-.3em 0 .4em;
@@ -113,6 +113,19 @@
 .auth-fineprint{
   margin:1.4em 0 0;text-align:center;font-size:.76em;color:var(--muted-3,var(--muted));line-height:1.4;
 }
+
+/* ---------- Account type toggle (student/teacher) ---------- */
+.account-type-toggle{display:flex;gap:.4em;margin-bottom:1.2em;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:4px;}
+.account-type-toggle .auth-tab{flex:1;padding:.55em 0;font-size:.9em;}
+.account-type-toggle .auth-tab.active{background:var(--flame);color:#fff;}
+.account-type-toggle .auth-tab[data-account-type="student"].active{background:var(--teal);color:#fff;}
+.account-type-toggle .auth-tab[data-account-type="teacher"].active{background:var(--flame);color:#fff;}
+
+/* ---------- Onboarding pages ---------- */
+.onboarding-icon{font-size:3em;text-align:center;margin-bottom:.6em;}
+.onboarding-card{max-width:480px;}
+.onboarding-card h2{text-align:center;}
+.onboarding-card .auth-hint{text-align:center;}
 
 @media (max-width: 760px){
   .welcome-hero{flex-direction:column;padding-top:2.5em;text-align:center;}

@@ -496,28 +496,13 @@ function renderQuizzesPage(){
   const countEl = document.getElementById('quizCount');
   const searchEl = document.getElementById('quizSearch');
   const filterEl = document.getElementById('quizCourseFilter');
+  const backEl = document.getElementById('quizBack');
   if(!listEl) return;
 
   const available = window.COURSES.filter(c=>c.available && COURSE_DATASETS[c.id]);
-  const allQuizzes = [];
-  available.forEach(c=>{
-    const data = COURSE_DATASETS[c.id];
-    (data||[]).forEach(l=>{
-      (l.quiz||[]).forEach((q,qi)=>{
-        allQuizzes.push({ courseId:c.id, courseTitle:c.title, courseIcon:c.icon, lessonId:l.id, lessonTitle:l.title, q, qi, total: l.quiz.length });
-      });
-    });
-  });
 
-  if(filterEl && !filterEl.dataset.wired){
-    filterEl.dataset.wired = '1';
-    available.forEach(c=>{
-      const opt = document.createElement('option');
-      opt.value = c.id;
-      opt.textContent = c.title;
-      filterEl.appendChild(opt);
-    });
-  }
+  if(backEl) backEl.style.display = (listEl.dataset.selectedCourseId || '') ? '' : 'none';
+  if(filterEl) filterEl.style.display = (listEl.dataset.selectedCourseId || '') ? 'none' : '';
 
   function getSaved(courseId){
     try{ return JSON.parse(localStorage.getItem(`boredacademy:progress:${courseId}`) || '{}'); }catch(e){ return {}; }
@@ -538,64 +523,68 @@ function renderQuizzesPage(){
     }
   }
 
-  function render(){
+  function isQuizFinished(courseId, lessonId){
+    try{ return localStorage.getItem(`boredacademy:quiz-finished:${courseId}:${lessonId}`) === '1'; }
+    catch(e){ return false; }
+  }
+
+  function renderCourseQuizzes(courseId, searchEl, countEl, listEl){
+    const data = COURSE_DATASETS[courseId];
+    const course = window.COURSES.find(c=>c.id === courseId);
     const term = (searchEl.value || '').trim().toLowerCase();
-    const courseFilter = filterEl ? filterEl.value : 'all';
-
-    const filtered = allQuizzes.filter(item=>{
-      if(courseFilter !== 'all' && item.courseId !== courseFilter) return false;
-      if(!term) return true;
-      return item.courseTitle.toLowerCase().includes(term) || item.lessonTitle.toLowerCase().includes(term) || item.q.q.toLowerCase().includes(term);
-    });
-
-    countEl.textContent = `${filtered.length} question${filtered.length===1?'':'s'}`;
-
-    const grouped = {};
-    filtered.forEach(item=>{
-      const key = item.courseId + '::' + item.lessonId;
-      if(!grouped[key]) grouped[key] = { courseId: item.courseId, courseTitle: item.courseTitle, courseIcon: item.courseIcon, lessonId: item.lessonId, lessonTitle: item.lessonTitle, items: [] };
-      grouped[key].items.push(item);
-    });
+    const lessons = (data||[]).filter(l=>l.quiz && l.quiz.length);
 
     let html = '';
-    Object.values(grouped).forEach(group=>{
-      const saved = getSaved(group.courseId);
-      const lessonData = COURSE_DATASETS[group.courseId].find(l=>l.id===group.lessonId);
-      const answeredCount = (saved[group.lessonId]||[]).filter(a=>a!==null).length;
-      const totalQ = lessonData.quiz.length;
-      const correctCount = (saved[group.lessonId]||[]).filter((a,i)=>a===lessonData.quiz[i].a).length;
-      const scorePct = answeredCount > 0 ? Math.round((correctCount/answeredCount)*100) : null;
-      const done = answeredCount === totalQ && totalQ > 0;
+    if(course){
+      html += `<div style="margin-bottom:1em;display:flex;align-items:center;gap:.8em;">
+        <div style="font-size:1.4em;">${course.icon}</div>
+        <div>
+          <div style="font-weight:700;font-size:1.1em;">${course.title}</div>
+          <div style="color:var(--muted);font-size:.85em;">${lessons.length} quizzes · ${lessons.reduce((s,l)=>s+l.quiz.length,0)} questions</div>
+        </div>
+      </div>`;
+    }
+
+    lessons.forEach(l=>{
+      const saved = getSaved(courseId);
+      const answeredCount = (saved[l.id]||[]).filter(a=>a!==null).length;
+      const totalQ = l.quiz.length;
+      const finished = isQuizFinished(courseId, l.id);
+
+      const filteredIndices = term
+        ? l.quiz.map((q,i)=>q.q.toLowerCase().includes(term)?i:-1).filter(i=>i!==-1)
+        : l.quiz.map((_,i)=>i);
 
       html += `<div class="quiz-course-card">
         <div class="quiz-course-head">
-          <div class="quiz-course-icon">${group.courseIcon}</div>
           <div class="quiz-course-meta">
-            <div class="quiz-course-title">${group.courseTitle}</div>
-            <div class="quiz-lesson-title">${group.lessonId} · ${group.lessonTitle}</div>
+            <div class="quiz-lesson-title">${l.id} · ${l.title}</div>
             <div class="quiz-progress-row">
               <span class="quiz-progress-text">${answeredCount}/${totalQ} answered</span>
-              ${scorePct !== null ? `<span class="quiz-score ${scorePct>=70?'good':scorePct>=40?'medium':'bad'}">${scorePct}%</span>` : ''}
-              ${done ? '<span class="quiz-done-badge">Completed</span>' : ''}
+              ${finished ? '<span class="quiz-done-badge">Completed</span>' : ''}
             </div>
           </div>
-          <a class="quiz-lesson-link" href="courses/${group.courseId}.html" title="Open lesson">Open lesson →</a>
+          ${finished ? '' : `<button class="welcome-btn" onclick="window._finishQuiz('${courseId}','${l.id}')" style="margin-left:auto;">Finish Quiz</button>`}
         </div>
         <div class="quiz-questions">
-          ${group.items.map(item=>{
-            const chosen = (saved[item.lessonId]||[])[item.qi];
-            const isCorrect = chosen === item.q.a;
-            const isWrong = chosen !== null && chosen !== item.q.a;
-            return `<div class="quiz-q-card ${chosen!==null?(isCorrect?'correct':'incorrect'):''}">
-              <div class="quiz-q-text">${item.qi+1}. ${item.q.q}</div>
+          ${filteredIndices.map(qi=>{
+            const q = l.quiz[qi];
+            const chosen = (saved[l.id]||[])[qi];
+            const isCorrect = chosen === q.a;
+            const isWrong = chosen !== null && chosen !== q.a;
+            const showResult = finished;
+            return `<div class="quiz-q-card ${showResult?(isCorrect?'correct':(isWrong?'incorrect':'')):''}">
+              <div class="quiz-q-text">${qi+1}. ${q.q}</div>
               <div class="quiz-opts">
-                ${item.q.opts.map((o,oi)=>{
+                ${q.opts.map((o,oi)=>{
                   let cls = 'quiz-opt';
-                  if(chosen!==null){
-                    if(oi===item.q.a) cls += ' correct';
+                  if(showResult){
+                    if(oi===q.a) cls += ' correct';
                     else if(oi===chosen) cls += ' incorrect';
+                  } else if(chosen !== null && oi === chosen){
+                    cls += ' selected';
                   }
-                  return `<button class="${cls}" ${chosen!==null?'disabled':''} onclick="window._answerQuiz('${group.courseId}','${group.lessonId}',${item.qi},${oi})">${o}</button>`;
+                  return `<button class="${cls}" ${showResult?'disabled':''} onclick="window._answerQuiz('${courseId}','${l.id}',${qi},${oi})">${o}</button>`;
                 }).join('')}
               </div>
             </div>`;
@@ -605,12 +594,86 @@ function renderQuizzesPage(){
     });
 
     if(!html) html = `<div class="activity-empty">No quizzes match your search.</div>`;
+    listEl.className = 'quiz-list';
     listEl.innerHTML = html;
+  }
+
+  function render(){
+    const selectedCourseId = listEl.dataset.selectedCourseId || null;
+
+    if(selectedCourseId){
+      renderCourseQuizzes(selectedCourseId, searchEl, countEl, listEl);
+      return;
+    }
+
+    const term = (searchEl.value || '').trim().toLowerCase();
+    const courseFilter = filterEl ? filterEl.value : 'all';
+
+    const filtered = available.filter(c=>{
+      if(courseFilter !== 'all' && c.id !== courseFilter) return false;
+      if(!term) return true;
+      return c.title.toLowerCase().includes(term);
+    });
+
+    countEl.textContent = `${filtered.length} course${filtered.length===1?'':'s'}`;
+
+    listEl.className = 'course-grid';
+    listEl.innerHTML = filtered.map(c=>{
+      const data = COURSE_DATASETS[c.id];
+      const totalQ = (data||[]).reduce((s,l)=>s+l.quiz.length, 0);
+      const totalLessons = data ? data.length : 0;
+      let totalScore = 0, scoreCount = 0;
+      (data||[]).forEach(l=>{
+        const saved = getSaved(c.id);
+        const answered = (saved[l.id]||[]).filter(a=>a!==null).length;
+        if(answered > 0){
+          const correct = (saved[l.id]||[]).filter((a,i)=>a===l.quiz[i].a).length;
+          totalScore += Math.round((correct/answered)*100);
+          scoreCount++;
+        }
+      });
+      const avgScore = scoreCount > 0 ? Math.round(totalScore/scoreCount) : null;
+      return `
+        <a class="course-card" href="javascript:void(0)" onclick="window._selectQuizCourse('${c.id}')">
+          <div class="c-icon">${c.icon}</div>
+          <h4>${c.title}</h4>
+          <div class="c-lessons">${totalLessons} Lessons · ${totalQ} Questions</div>
+          <div class="c-bar"><span style="width:${avgScore !== null ? avgScore : 0}%"></span></div>
+          <div class="c-action">${avgScore !== null ? avgScore + '% Average' : 'Start Quizzes →'}</div>
+        </a>`;
+    }).join('');
+
+    if(filterEl && !filterEl.dataset.wired){
+      filterEl.dataset.wired = '1';
+      available.forEach(c=>{
+        const opt = document.createElement('option');
+        opt.value = c.id;
+        opt.textContent = c.title;
+        filterEl.appendChild(opt);
+      });
+    }
   }
 
   window._answerQuiz = function(courseId, lessonId, qi, oi){
     saveAnswer(courseId, lessonId, qi, oi);
     render();
+  };
+
+  window._finishQuiz = function(courseId, lessonId){
+    try{ localStorage.setItem(`boredacademy:quiz-finished:${courseId}:${lessonId}`, '1'); }catch(e){}
+    renderQuizzesPage();
+  };
+
+  window._selectQuizCourse = function(courseId){
+    const listEl = document.getElementById('quizList');
+    if(listEl) listEl.dataset.selectedCourseId = courseId;
+    renderQuizzesPage();
+  };
+
+  window._backToQuizCourses = function(){
+    const listEl = document.getElementById('quizList');
+    if(listEl) listEl.dataset.selectedCourseId = '';
+    renderQuizzesPage();
   };
 
   render();

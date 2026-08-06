@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sign in — Bored Academy</title>
-<link rel="icon" href="favicon.ico?v=2" sizes="any">
-<link rel="icon" type="image/png" href="assets/img/favicon.png?v=2">
-<link rel="apple-touch-icon" href="assets/img/favicon.png?v=2">
+<link rel="icon" href="favicon.webp?v=2" sizes="any">
+<link rel="icon" type="image/webp" href="assets/img/favicon.webp?v=2">
+<link rel="apple-touch-icon" href="assets/img/favicon.webp?v=2">
 <link rel="stylesheet" href="assets/css/dashboard.css">
 <link rel="stylesheet" href="assets/css/welcome.css">
 <script src="assets/js/firebase/firebase-config.js"></script>
@@ -30,7 +30,7 @@
 
 <header class="welcome-topbar">
   <a class="welcome-brand" href="welcome.html">
-    <img src="assets/img/logo.png" alt="Bored Academy logo" width="30" height="30">
+    <img src="assets/img/logo.webp" alt="Bored Academy logo" width="30" height="30">
     <span>Bored Academy</span>
   </a>
 </header>
@@ -60,7 +60,7 @@
       <p class="auth-hint">Free — takes about 20 seconds.</p>
 
       <label>I am a...</label>
-      <div class="auth-tabs" id="accountTypeToggle" role="group" aria-label="Account type">
+      <div class="account-type-toggle" id="accountTypeToggle" role="group" aria-label="Account type">
         <button type="button" class="auth-tab active" data-account-type="student">Student</button>
         <button type="button" class="auth-tab" data-account-type="teacher">Teacher</button>
       </div>
@@ -82,9 +82,10 @@
       <button type="submit" class="welcome-btn full">Create Account</button>
     </form>
 
-    <p class="auth-fineprint">
+    <p class="auth-fineprint" id="authFineprint">
       This runs entirely in your browser — your account is stored on this device only, not on a server.
     </p>
+    <!-- BOREDACADEMY_AUTH_HTML_FIX -->
   </div>
 </main>
 
@@ -145,19 +146,41 @@
       if(joinResult.ok){
         BoredAuth.addClass(result.user.email, joinResult.class.id);
       } else {
-        // Account was still created successfully — just surface the
-        // class-code problem so the student can join later from settings.
         errEl.textContent = joinResult.error + ' Your account was created — you can join a class later from Settings.';
       }
     }
 
-    goToDashboardOrHome(BoredAuth.currentUser());
+    BoredAuth.markOnboardingDone();
+    if(accountType === 'teacher'){
+      window.location.href = 'teacher/teacher-access.html';
+    } else {
+      window.location.href = 'student/student-join-class.html';
+    }
   });
 
   function goToDashboardOrHome(user){
+    if(!user) return;
+    const isTeacher = window.BoredRoles && (BoredRoles.isTeacher(user.role) || BoredRoles.isAdmin(user.role));
+    if(BoredAuth.needsOnboarding()){
+      if(isTeacher){
+        window.location.href = 'teacher/teacher-access.html';
+      } else {
+        window.location.href = 'student/student-join-class.html';
+      }
+      return;
+    }
     if(window.BoredRouter){ BoredRouter.goToDashboard(user); }
     else { window.location.href = 'index.html'; }
   }
+
+  // Update fineprint if Firebase is available
+  (function updateFineprint(){
+    const el = document.getElementById('authFineprint');
+    if(!el) return;
+    if(window.BoredFirebase && window.BoredFirebase.isEnabled && window.BoredFirebase.isEnabled()){
+      el.textContent = 'Your account is stored locally and synced to the cloud so you can log in from any device.';
+    }
+  })();
 </script>
 </body>
 </html>

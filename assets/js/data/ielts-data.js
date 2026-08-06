@@ -1196,4 +1196,1266 @@ window.COURSE_DATA = [
     {q:"A good Part 2 answer should include...",opts:["Only facts","Only opinions","Personal examples and reflection","Memorised sentences"],a:2}
   ]
 }
+
+,
+{
+  unit:"Module 3 — Mastering IELTS Speaking Part 2",
+  id:"3.3",
+  title:"Describing Objects, Gifts, and Possessions",
+  objectives:[
+    "Describe everyday objects and meaningful possessions in detail.",
+    "Talk naturally about gifts and memorable items.",
+    "Explain why an object is important.",
+    "Use descriptive adjectives and precise vocabulary.",
+    "Speak confidently for two minutes using a logical structure."
+  ],
+  success:[
+    "Describe objects using rich and precise vocabulary.",
+    "Explain both practical and sentimental value.",
+    "Use speculation naturally.",
+    "Tell a personal story connected to an object.",
+    "Speak confidently for 2 minutes with clear organisation and reflection."
+  ],
+  vocab:[
+    ["old","antique"],
+    ["new","brand-new"],
+    ["expensive","valuable"],
+    ["cheap","affordable"],
+    ["useful","practical"],
+    ["special","meaningful"],
+    ["beautiful","elegant"],
+    ["small","compact"],
+    ["big","spacious / oversized"],
+    ["strong","durable"],
+    ["light","lightweight"],
+    ["heavy","solid"],
+    ["important","significant"],
+    ["like","be attached to"],
+    ["keep","treasure"],
+    ["remember","remind me of"],
+    ["gift","present"],
+    ["buy","purchase"],
+    ["own","possess"],
+    ["collect","build a collection of"],
+    ["broken","damaged"],
+    ["repair","restore"]
+  ],
+  html:`
+  <div class="content-body">
+  <p><strong>Duration:</strong> 90 minutes &nbsp;|&nbsp; <strong>Target Band:</strong> 6.5 → 7.0 &nbsp;|&nbsp; <strong>Focus:</strong> IELTS Speaking Part 2 + Descriptive Language + Speculation</p>
+
+  <h4>Lesson Objectives</h4>
+  <p>By the end of this lesson, the student will be able to:</p>
+  <ul class="obj-list">
+    <li>Describe everyday objects and meaningful possessions in detail.</li>
+    <li>Talk naturally about gifts and memorable items.</li>
+    <li>Explain why an object is important.</li>
+    <li>Use descriptive adjectives and precise vocabulary.</li>
+    <li>Speak confidently for two minutes using a logical structure.</li>
+  </ul>
+
+  <h4>Materials</h4>
+  <p>Notebook &nbsp;·&nbsp; Whiteboard &nbsp;·&nbsp; Timer &nbsp;·&nbsp; Several everyday objects (optional)</p>
+
+  <h4>Warm-up (10 Minutes)</h4>
+  <p>Ask naturally.</p>
+  <div class="example-box">
+    <p><strong>Questions</strong></p>
+    <ul>
+      <li>What's your favourite possession?</li>
+      <li>Have you ever received a memorable gift?</li>
+      <li>Is there something you own that you couldn't live without?</li>
+      <li>Do you enjoy buying gifts for other people?</li>
+      <li>What's the oldest thing you own?</li>
+    </ul>
+    <p><strong>Teacher Focus</strong> — Listen for: descriptive vocabulary, reasons, personal stories, fluency.</p>
+  </div>
+
+  <h4>Vocabulary Theme: Objects & Possessions (20 Minutes)</h4>
+  <table class="data-table"><tr><th>Basic</th><th>Better</th></tr>
+  <tr><td>old</td><td>antique</td></tr>
+  <tr><td>new</td><td>brand-new</td></tr>
+  <tr><td>expensive</td><td>valuable</td></tr>
+  <tr><td>cheap</td><td>affordable</td></tr>
+  <tr><td>useful</td><td>practical</td></tr>
+  <tr><td>special</td><td>meaningful</td></tr>
+  <tr><td>beautiful</td><td>elegant</td></tr>
+  <tr><td>small</td><td>compact</td></tr>
+  <tr><td>big</td><td>spacious / oversized</td></tr>
+  <tr><td>strong</td><td>durable</td></tr>
+  <tr><td>light</td><td>lightweight</td></tr>
+  <tr><td>heavy</td><td>solid</td></tr>
+  </table>
+
+  <h4>Talking About Value</h4>
+  <table class="data-table"><tr><th>Basic</th><th>Better</th></tr>
+  <tr><td>important</td><td>significant</td></tr>
+  <tr><td>like</td><td>be attached to</td></tr>
+  <tr><td>keep</td><td>treasure</td></tr>
+  <tr><td>remember</td><td>remind me of</td></tr>
+  <tr><td>gift</td><td>present</td></tr>
+  <tr><td>buy</td><td>purchase</td></tr>
+  <tr><td>own</td><td>possess</td></tr>
+  <tr><td>collect</td><td>build a collection of</td></tr>
+  <tr><td>broken</td><td>damaged</td></tr>
+  <tr><td>repair</td><td>restore</td></tr>
+  </table>
+
+  <h4>Useful Expressions</h4>
+  <div class="example-box">
+    <p>It means a great deal to me.<br>
+    I wouldn't trade it for anything.<br>
+    It reminds me of...<br>
+    It's one of my most treasured possessions.<br>
+    It's been in my family for years.<br>
+    I received it as a gift.<br>
+    It holds sentimental value.<br>
+    It's practical as well as meaningful.<br>
+    I use it on a daily basis.<br>
+    Every time I see it, I remember...</p>
+  </div>
+
+  <h4>Grammar Focus (15 Minutes)</h4>
+  <p><strong>Speculating About Objects</strong></p>
+  <div class="example-box">
+    <p><strong>Useful phrases:</strong> It might have... / It must have... / It could be... / It probably... / I imagine... / I'm fairly certain... / It seems to...</p>
+    <p><strong>Examples:</strong></p>
+    <p>This watch must have belonged to my grandfather for many years.<br>
+    It might have been made by hand.<br>
+    It could be worth quite a lot now.<br>
+    I imagine it will stay in my family for generations.</p>
+  </div>
+
+  <h4>Speaking Strategy (10 Minutes)</h4>
+  <p><strong>The O.B.J.E.C.T. Formula</strong></p>
+  <div class="example-box">
+    <p><strong>O — Object</strong> — What is it?<br>
+    <strong>B — Background</strong> — Where did it come from?<br>
+    <strong>J — Job</strong> — What is it used for?<br>
+    <strong>E — Emotion</strong> — Why is it important?<br>
+    <strong>C — Connection</strong> — What memory does it bring back?<br>
+    <strong>T — Takeaway</strong> — What have you learned or why will you always keep it?</p>
+  </div>
+
+  <h4>Fluency Challenge (10 Minutes)</h4>
+  <p><strong>Two-Minute Talk</strong></p>
+  <div class="example-box">
+    <p><strong>Topic:</strong> Describe something you own that is very important to you.</p>
+    <p><strong>Include:</strong> What it is / Where it came from / What it looks like / Why it is meaningful / A memory connected to it / Whether you would ever replace it</p>
+    <p><strong>Use:</strong> at least 8 vocabulary expressions / one speculation phrase / one personal story / one reflection</p>
+  </div>
+
+  <h4>Mini IELTS Speaking Test (10 Minutes)</h4>
+  <p><strong>Part 2 Cue Card</strong></p>
+  <div class="example-box">
+    <p>Describe a gift you have received that is important to you.</p>
+    <p>You should say: what the gift was / who gave it to you / when you received it / and explain why it is important to you.</p>
+    <p>Preparation: 1 minute &nbsp;·&nbsp; Speaking: 2 minutes</p>
+  </div>
+
+  <h4>Pronunciation Focus (5 Minutes)</h4>
+  <p>Practice sentence stress and connected speech. Repeat:</p>
+  <div class="example-box">
+    <p>It means a great deal to me.<br>
+    It holds sentimental value.<br>
+    I wouldn't trade it for anything.<br>
+    Every time I see it...<br>
+    It's one of my most treasured possessions.<br>
+    It reminds me of...<br>
+    I'll always treasure it.</p>
+  </div>
+
+  <h4>Homework</h4>
+  <p><strong>Part 1 – Vocabulary:</strong> Write one original sentence using each expression: antique, durable, meaningful, treasured possession, sentimental value, reminds me of, practical, restore, wouldn't trade it for anything, means a great deal to me.</p>
+  <p><strong>Part 2 – Speaking:</strong> Record yourself speaking for 2 minutes. Topic: Describe an object that is important to you. Use at least 10 expressions, one speculation phrase, one personal story, one reflection.</p>
+  <p><strong>Part 3 – Writing:</strong> Write 200–250 words describing one of your most valuable possessions.</p>
+
+  <h4>Teacher Notes</h4>
+  <p><strong>Common Band 5.5 Habits:</strong> Describes only appearance; doesn't explain emotional significance; uses repetitive vocabulary; gives few personal examples.</p>
+  <p><strong>Success Criteria:</strong> Describe objects using rich vocabulary; explain practical and sentimental value; use speculation naturally; tell a personal story; speak confidently for 2 minutes.</p>
+  <p><strong>Examiner Tip:</strong> High-scoring candidates don't just describe the object—they explain its significance, tell a story, and reflect on why it matters.</p>
+  <div class="example-box"><strong>Key Takeaway:</strong> A Band 7 response turns an ordinary object into an interesting story. By describing appearance, history, personal meaning, and lasting impact, you demonstrate strong vocabulary, clear organisation, and natural idea development.</div>
+  </div>`,
+  quiz:[
+    {q:"Which word is the best replacement for 'old' when describing an antique?",opts:["ancient","antique","aged","traditional"],a:1},
+    {q:"Which expression means 'very beautiful'?",opts:["pretty","nice","stunning","lovely"],a:2},
+    {q:"What does 'It means a great deal to me' mean?",opts:["It is expensive","It is very important to me","It is heavy","It is useful"],a:1},
+    {q:"Which phrase describes someone who always helps others?",opts:["Selfish","Kind-hearted","Serious","Dedicated"],a:1},
+    {q:"Choose the best replacement for 'I like this gift.'",opts:["I enjoy this present.","I'm attached to this gift.","I bought this present.","I treasure this present."],a:3},
+    {q:"Which word means 'relax'?",opts:["Improve","Develop","Unwind","Spend"],a:2},
+    {q:"Which expression means 'become better'?",opts:["improve","develop","learn","teach"],a:1},
+    {q:"What does 'sentimental value' mean?",opts:["Monetary worth","Emotional importance","Practical use","Historical age"],a:1},
+    {q:"Which phrase means 'I started enjoying photography'?",opts:["I made photography.","I got into photography.","I studied photography.","I tried photography."],a:1},
+    {q:"Choose the strongest adjective: The film was ________.",opts:["good","nice","excellent","okay"],a:2}
+  ]
+},
+{
+  unit:"Module 3 — Mastering IELTS Speaking Part 2",
+  id:"3.4",
+  title:"Describing Places and Buildings",
+  objectives:[
+    "Describe places and buildings vividly and naturally.",
+    "Use sensory language to make descriptions more engaging.",
+    "Organize a two-minute answer confidently.",
+    "Compare places effectively.",
+    "Explain why a place is memorable or important."
+  ],
+  success:[
+    "Describe places vividly using sensory language.",
+    "Organise answers with the P.L.A.C.E. Formula.",
+    "Use advanced descriptive vocabulary naturally.",
+    "Speak for 2 minutes with clear structure and personal examples.",
+    "Create memorable descriptions through atmosphere and reflection."
+  ],
+  vocab:[
+    ["beautiful","breathtaking"],
+    ["beautiful","picturesque"],
+    ["peaceful","tranquil"],
+    ["busy","bustling"],
+    ["modern","contemporary"],
+    ["old","historic"],
+    ["clean","spotless"],
+    ["green","surrounded by lush greenery"],
+    ["crowded","packed with people"],
+    ["quiet","calm and serene"],
+    ["big","impressive"],
+    ["small","compact"],
+    ["old","centuries-old"],
+    ["tall","towering"],
+    ["interesting","architecturally unique"],
+    ["nice","elegant"],
+    ["colourful","vibrant"],
+    ["bright","well-lit"],
+    ["comfortable","welcoming"],
+    ["famous","iconic"]
+  ],
+  html:`
+  <div class="content-body">
+  <p><strong>Duration:</strong> 90 minutes &nbsp;|&nbsp; <strong>Target Band:</strong> 6.5 → 7.0 &nbsp;|&nbsp; <strong>Focus:</strong> IELTS Speaking Part 2 + Descriptive Language + Sensory Details</p>
+
+  <h4>Lesson Objectives</h4>
+  <p>By the end of this lesson, the student will be able to:</p>
+  <ul class="obj-list">
+    <li>Describe places and buildings vividly and naturally.</li>
+    <li>Use sensory language to make descriptions more engaging.</li>
+    <li>Organize a two-minute answer confidently.</li>
+    <li>Compare places effectively.</li>
+    <li>Explain why a place is memorable or important.</li>
+  </ul>
+
+  <h4>Vocabulary Theme: Places & Buildings (20 Minutes)</h4>
+  <p><strong>Describing Places</strong></p>
+  <table class="data-table"><tr><th>Basic</th><th>Better</th></tr>
+  <tr><td>beautiful</td><td>breathtaking</td></tr>
+  <tr><td>beautiful</td><td>picturesque</td></tr>
+  <tr><td>peaceful</td><td>tranquil</td></tr>
+  <tr><td>busy</td><td>bustling</td></tr>
+  <tr><td>modern</td><td>contemporary</td></tr>
+  <tr><td>old</td><td>historic</td></tr>
+  <tr><td>clean</td><td>spotless</td></tr>
+  <tr><td>green</td><td>surrounded by lush greenery</td></tr>
+  <tr><td>crowded</td><td>packed with people</td></tr>
+  <tr><td>quiet</td><td>calm and serene</td></tr>
+  </table>
+
+  <p><strong>Sensory Vocabulary</strong></p>
+  <div class="example-box">
+    <p><strong>What you see:</strong> spectacular scenery / panoramic views / colourful flowers / winding streets / crystal-clear water / impressive skyline<br>
+    <strong>What you hear:</strong> birds singing / gentle waves / lively conversations / traffic in the distance / peaceful silence<br>
+    <strong>What you smell:</strong> freshly baked bread / salty sea air / fresh flowers / coffee from nearby cafés<br>
+    <strong>What you feel:</strong> a cool breeze / warm sunshine / a relaxing atmosphere / positive energy</p>
+  </div>
+
+  <h4>Speaking Strategy (10 Minutes)</h4>
+  <p><strong>The P.L.A.C.E. Formula</strong></p>
+  <div class="example-box">
+    <p><strong>P — Place</strong> — What is the place?<br>
+    <strong>L — Location</strong> — Where is it?<br>
+    <strong>A — Appearance</strong> — What does it look like? (Colours, size, nature, architecture)<br>
+    <strong>C — Characteristics</strong> — Why is it special? (Atmosphere, activities, history, people)<br>
+    <strong>E — Experience</strong> — Tell a personal story and explain why you'll always remember it.</p>
+  </div>
+
+  <h4>Fluency Challenge (10 Minutes)</h4>
+  <p><strong>Two-Minute Talk</strong></p>
+  <div class="example-box">
+    <p><strong>Topic:</strong> Describe a place where you feel relaxed.<br>
+    <strong>Include:</strong> Where it is / What it looks like / What you do there / Why you enjoy it / A memorable experience<br>
+    <strong>Use:</strong> at least 8 vocabulary expressions / one relative clause / one comparison / one personal story</p>
+  </div>
+
+  <h4>Mini IELTS Speaking Test (10 Minutes)</h4>
+  <p><strong>Part 2 Cue Card</strong></p>
+  <div class="example-box">
+    <p>Describe a place that you enjoy visiting.<br>
+    You should say: where it is / how often you go there / what you do there / and explain why it is special to you.<br>
+    Preparation: 1 minute &nbsp;·&nbsp; Speaking: 2 minutes</p>
+  </div>
+
+  <h4>Pronunciation Focus (5 Minutes)</h4>
+  <p>Practice stress and intonation. Repeat:</p>
+  <div class="example-box">
+    <p>It has a unique charm.<br>
+    One thing that stands out is...<br>
+    It's the perfect place to unwind.<br>
+    It feels like a home away from home.<br>
+    I never get tired of visiting it.<br>
+    It's always full of life.<br>
+    I'd recommend it to anyone.</p>
+  </div>
+
+  <h4>Homework</h4>
+  <p><strong>Part 1 – Vocabulary:</strong> Write one original sentence using each expression: picturesque, tranquil, architecturally unique, panoramic views, lush greenery, unique charm, home away from home, perfect place to unwind, stands out, breathtaking scenery.</p>
+  <p><strong>Part 2 – Speaking:</strong> Record yourself speaking for 2 minutes. Topic: Describe a place that is special to you. Use at least 10 expressions, one relative clause, one comparison, one personal story.</p>
+  <p><strong>Part 3 – Writing:</strong> Write 200–250 words describing your favourite place.</p>
+
+  <h4>Teacher Notes</h4>
+  <p><strong>Common Band 5.5 Habits:</strong> Repeats beautiful, nice, and good; gives only visual descriptions; doesn't explain why the place is memorable; uses very few linking expressions.</p>
+  <p><strong>Examiner Tip:</strong> The highest-scoring candidates go beyond appearance—they describe how the place feels, what happens there, and why it matters to them.</p>
+  <div class="example-box"><strong>Key Takeaway:</strong> A Band 7 candidate helps the examiner imagine being there. By combining vivid vocabulary, sensory details, personal experiences, and a logical structure, you can transform a simple description into a compelling story.</div>
+  </div>`,
+  quiz:[
+    {q:"Which word is the best replacement for 'beautiful' when describing scenery?",opts:["pretty","nice","breathtaking","lovely"],a:2},
+    {q:"What does 'picturesque' mean?",opts:["Busy","Quiet","Visually attractive like a picture","Historic"],a:2},
+    {q:"Which phrase describes a very busy place?",opts:["calm and serene","bustling","tranquil","packed with people"],a:1},
+    {q:"What does 'architecturally unique' mean?",opts:["Old and historic","Having a distinctive design","Tall and impressive","Colourful and vibrant"],a:1},
+    {q:"Which word means 'peaceful'?",opts:["bustling","tranquil","packed","crowded"],a:1},
+    {q:"Choose the best replacement for 'The city is busy.'",opts:["The city is bustling.","The city is tranquil.","The city is packed.","The city is historic."],a:0},
+    {q:"Which expression means 'It is a good place to relax'?",opts:["It's always full of life.","It's the perfect place to unwind.","It has a unique charm.","It's architecturally unique."],a:1},
+    {q:"What does 'home away from home' mean?",opts:["A place you visit once","A place that feels comfortable and familiar","A historic building","A tourist attraction"],a:1},
+    {q:"Which word means 'impressive' when describing a building?",opts:["compact","towering","elegant","welcoming"],a:1},
+    {q:"What does 'panoramic views' mean?",opts:["Narrow views","Wide views in all directions","High views","Beautiful views"],a:1}
+  ]
+},
+{
+  unit:"Module 4 — Mastering IELTS Speaking Part 3",
+  id:"4.2",
+  title:"Giving Extended Opinions",
+  objectives:[
+    "Give well-developed opinions in IELTS Speaking Part 3.",
+    "Support opinions with clear reasons and examples.",
+    "Compare different viewpoints naturally.",
+    "Avoid short, one-sentence answers.",
+    "Speak confidently about abstract topics."
+  ],
+  success:[
+    "Give extended opinions confidently.",
+    "Use the P.R.E.P. Method naturally.",
+    "Support opinions with reasons and examples.",
+    "Discuss abstract topics in detail.",
+    "Speak for 45–60 seconds with logical development and balanced ideas."
+  ],
+  vocab:[
+    ["I think","In my opinion..."],
+    ["I think","Personally speaking..."],
+    ["I think","As far as I'm concerned..."],
+    ["I think","From my point of view..."],
+    ["I think","If you ask me..."],
+    ["There's no doubt that...","I'm convinced that..."],
+    ["It's clear to me that...","I firmly believe..."],
+    ["I completely agree","I partly agree"],
+    ["That's a good point, however...","On the other hand..."],
+    ["I can understand that view, but...","I see it differently because..."],
+    ["One of the main reasons is that...","For instance..."],
+    ["A good example would be...","This is especially true when..."],
+    ["As a result...","Generally speaking..."],
+    ["In the long run...","It depends on the situation."],
+    ["That's not always the case.","There are both advantages and disadvantages."]
+  ],
+  html:`
+  <div class="content-body">
+  <p><strong>Duration:</strong> 90 minutes &nbsp;|&nbsp; <strong>Target Band:</strong> 6.5 → 7.0 &nbsp;|&nbsp; <strong>Focus:</strong> IELTS Speaking Part 3 + Developing Ideas + Justifying Opinions</p>
+
+  <h4>Lesson Objectives</h4>
+  <p>By the end of this lesson, the student will be able to:</p>
+  <ul class="obj-list">
+    <li>Give well-developed opinions in IELTS Speaking Part 3.</li>
+    <li>Support opinions with clear reasons and examples.</li>
+    <li>Compare different viewpoints naturally.</li>
+    <li>Avoid short, one-sentence answers.</li>
+    <li>Speak confidently about abstract topics.</li>
+  </ul>
+
+  <h4>Understanding IELTS Speaking Part 3 (10 Minutes)</h4>
+  <p>Part 3 is different from Part 2. Students should: Express an opinion, explain reasoning, give an example, consider another viewpoint, conclude naturally. A Band 7 answer usually lasts 30–60 seconds for each question.</p>
+
+  <h4>Vocabulary Theme: Expressing Opinions (20 Minutes)</h4>
+  <p><strong>Opinion Expressions</strong></p>
+  <table class="data-table"><tr><th>Basic</th><th>Better</th></tr>
+  <tr><td>I think...</td><td>In my opinion...</td></tr>
+  <tr><td>I think...</td><td>Personally speaking...</td></tr>
+  <tr><td>I think...</td><td>As far as I'm concerned...</td></tr>
+  <tr><td>I think...</td><td>From my point of view...</td></tr>
+  <tr><td>I think...</td><td>If you ask me...</td></tr>
+  </table>
+
+  <p><strong>Strong Opinions</strong></p>
+  <div class="example-box">
+    <p>There's no doubt that...<br>
+    I'm convinced that...<br>
+    It's clear to me that...<br>
+    I firmly believe...</p>
+  </div>
+
+  <p><strong>Useful Expressions</strong></p>
+  <div class="example-box">
+    <p>One of the main reasons is that...<br>
+    For instance...<br>
+    A good example would be...<br>
+    This is especially true when...<br>
+    As a result...<br>
+    Generally speaking...<br>
+    In the long run...<br>
+    It depends on the situation.<br>
+    That's not always the case.<br>
+    There are both advantages and disadvantages.</p>
+  </div>
+
+  <h4>Speaking Strategy (10 Minutes)</h4>
+  <p><strong>The P.R.E.P. Method</strong></p>
+  <div class="example-box">
+    <p><strong>P — Point</strong> — Answer the question directly.<br>
+    <strong>R — Reason</strong> — Explain your opinion.<br>
+    <strong>E — Example</strong> — Give a real or imagined example.<br>
+    <strong>P — Point Again</strong> — Finish by reinforcing your opinion.</p>
+  </div>
+
+  <h4>Fluency Challenge (10 Minutes)</h4>
+  <p>Answer three random Part 3 questions. Speak for 45–60 seconds each. Use: at least 8 vocabulary expressions / two opinion phrases / one comparison / one example / one concluding sentence.</p>
+
+  <h4>Mini IELTS Speaking Test (10 Minutes)</h4>
+  <div class="example-box">
+    <p><strong>Question:</strong> Some people think technology has made people less social. To what extent do you agree or disagree?</p>
+  </div>
+
+  <h4>Homework</h4>
+  <p><strong>Part 1 – Vocabulary:</strong> Write one original sentence using each expression: Personally speaking, As far as I'm concerned, There's no doubt that, I firmly believe, On the other hand, Generally speaking, In the long run, The main reason is that, A good example would be, That's not always the case.</p>
+  <p><strong>Part 2 – Speaking:</strong> Record yourself answering Part 3 questions. Speak for 45–60 seconds for each answer.</p>
+  <p><strong>Part 3 – Writing:</strong> Write 250 words answering: Do the advantages of technology outweigh the disadvantages?</p>
+
+  <h4>Key Takeaway</h4>
+  <div class="example-box">Band 7 candidates don't stop after answering the question. They develop ideas with reasons, examples, comparisons, and balanced opinions. Following the P.R.E.P. Method helps produce clear, well-organized answers.</div>
+  </div>`,
+  quiz:[
+    {q:"Which phrase expresses a strong opinion?",opts:["I think...","There's no doubt that...","It depends...","Maybe..."],a:1},
+    {q:"What does P.R.E.P. stand for in IELTS Speaking Part 3?",opts:["Point, Reason, Example, Point","Prepare, Reason, Example, Practice","Point, Reason, Explain, Practice","Present, Reason, Example, Present"],a:0},
+    {q:"Which expression means 'from my perspective'?",opts:["Generally speaking","From my point of view","In the long run","For instance"],a:1},
+    {q:"How long should a strong Part 3 answer last?",opts:["10–20 seconds","30–60 seconds","1–2 minutes","2–3 minutes"],a:1},
+    {q:"Which phrase introduces a comparison?",opts:["For instance","On the other hand","Generally speaking","As a result"],a:1},
+    {q:"What does 'That's not always the case' mean?",opts:["I agree completely","I disagree","The statement is not always true","That is possible"],a:2},
+    {q:"Which expression means 'as a consequence'?",opts:["For instance","As a result","In my opinion","Generally speaking"],a:1},
+    {q:"What should a Band 7 Part 3 answer include?",opts:["Only one sentence","Reasons and examples","Only personal stories","Memorised answers"],a:1},
+    {q:"Which phrase means 'I believe'?",opts:["It depends","I firmly believe","Maybe","That's not always the case"],a:1},
+    {q:"Why is it important to consider another viewpoint in Part 3?",opts:["To show you disagree","To demonstrate balanced thinking","To avoid answering","To use more vocabulary"],a:1}
+  ]
+},
+{
+  unit:"Module 4 — Mastering IELTS Speaking Part 3",
+  id:"4.3",
+  title:"Comparing Ideas and Discussing Advantages & Disadvantages",
+  objectives:[
+    "Compare two or more ideas confidently.",
+    "Discuss advantages and disadvantages in a balanced way.",
+    "Support comparisons with reasons and examples.",
+    "Use a wide range of comparison language naturally.",
+    "Give well-developed answers in IELTS Speaking Part 3."
+  ],
+  success:[
+    "Compare ideas using a variety of language.",
+    "Discuss both advantages and disadvantages naturally.",
+    "Give balanced answers supported by examples.",
+    "Speak confidently for 45–60 seconds on comparison topics.",
+    "Use the C.A.R.E. Method to organize Part 3 responses."
+  ],
+  vocab:[
+    ["better","more beneficial"],
+    ["worse","less effective"],
+    ["same","similar"],
+    ["different","quite different"],
+    ["more","considerably more"],
+    ["less","significantly less"],
+    ["good","advantageous"],
+    ["bad","disadvantageous"],
+    ["important","essential"],
+    ["useful","valuable"]
+  ],
+  html:`
+  <div class="content-body">
+  <p><strong>Duration:</strong> 90 minutes &nbsp;|&nbsp; <strong>Target Band:</strong> 6.5 → 7.0 &nbsp;|&nbsp; <strong>Focus:</strong> IELTS Speaking Part 3 + Comparisons + Balanced Discussions</p>
+
+  <h4>Lesson Objectives</h4>
+  <p>By the end of this lesson, the student will be able to:</p>
+  <ul class="obj-list">
+    <li>Compare two or more ideas confidently.</li>
+    <li>Discuss advantages and disadvantages in a balanced way.</li>
+    <li>Support comparisons with reasons and examples.</li>
+    <li>Use a wide range of comparison language naturally.</li>
+    <li>Give well-developed answers in IELTS Speaking Part 3.</li>
+  </ul>
+
+  <h4>Vocabulary Theme: Comparing & Evaluating (20 Minutes)</h4>
+  <p><strong>Comparison Language</strong></p>
+  <table class="data-table"><tr><th>Basic</th><th>Better</th></tr>
+  <tr><td>better</td><td>more beneficial</td></tr>
+  <tr><td>worse</td><td>less effective</td></tr>
+  <tr><td>same</td><td>similar</td></tr>
+  <tr><td>different</td><td>quite different</td></tr>
+  <tr><td>more</td><td>considerably more</td></tr>
+  <tr><td>less</td><td>significantly less</td></tr>
+  <tr><td>good</td><td>advantageous</td></tr>
+  <tr><td>bad</td><td>disadvantageous</td></tr>
+  <tr><td>important</td><td>essential</td></tr>
+  <tr><td>useful</td><td>valuable</td></tr>
+  </table>
+
+  <p><strong>Advantage Expressions</strong></p>
+  <div class="example-box">
+    <p>One major advantage is...<br>
+    One significant benefit is...<br>
+    One positive aspect is...<br>
+    One clear strength is...<br>
+    This allows people to...</p>
+  </div>
+
+  <p><strong>Disadvantage Expressions</strong></p>
+  <div class="example-box">
+    <p>One drawback is...<br>
+    One potential problem is...<br>
+    One limitation is...<br>
+    One concern is...<br>
+    This can lead to...</p>
+  </div>
+
+  <h4>Speaking Strategy (10 Minutes)</h4>
+  <p><strong>The C.A.R.E. Method</strong></p>
+  <div class="example-box">
+    <p><strong>C — Compare</strong> — State the two options.<br>
+    <strong>A — Advantages</strong> — Explain the benefits of each.<br>
+    <strong>R — Risks</strong> — Discuss disadvantages or limitations.<br>
+    <strong>E — Evaluation</strong> — Give your final opinion.</p>
+  </div>
+
+  <h4>Fluency Challenge (10 Minutes)</h4>
+  <p>Answer three comparison questions. Speak for 45–60 seconds each. Use: at least 8 comparison expressions / one comparison / one example / one advantage / one disadvantage / one balanced conclusion.</p>
+
+  <h4>Mini IELTS Speaking Test (10 Minutes)</h4>
+  <div class="example-box">
+    <p><strong>Question:</strong> Some people believe living in large cities offers a better quality of life than living in rural areas. What do you think?</p>
+  </div>
+
+  <h4>Homework</h4>
+  <p><strong>Part 1 – Vocabulary:</strong> Write one original sentence using each expression: compared with, by contrast, one major advantage, one drawback, considerably more, significantly less, both options have their merits, strike a balance, it varies from person to person, overall, I would say.</p>
+  <p><strong>Part 2 – Speaking:</strong> Record yourself answering: Is it better to work from home or in an office? Should children spend more time outdoors than indoors? Are books more useful than online resources?</p>
+  <p><strong>Part 3 – Writing:</strong> Write 250 words answering: Do the advantages of living in a large city outweigh the disadvantages?</p>
+
+  <h4>Key Takeaway</h4>
+  <div class="example-box">Band 7 candidates recognise that many questions don't have one correct answer. They compare alternatives, explain strengths and weaknesses, support ideas with examples, and finish with a balanced evaluation.</div>
+  </div>`,
+  quiz:[
+    {q:"Which phrase means 'more beneficial'?",opts:["better","more beneficial","worse","advantageous"],a:1},
+    {q:"What does C.A.R.E. stand for?",opts:["Compare, Advantages, Risks, Evaluation","Cause, Advantage, Result, Example","Compare, Assess, Reason, Evaluate","Consider, Advantages, Results, Evaluate"],a:0},
+    {q:"Which expression introduces a disadvantage?",opts:["One major advantage is...","One drawback is...","One significant benefit is...","One clear strength is..."],a:1},
+    {q:"Which linking expression shows contrast?",opts:["Similarly","By contrast","In addition","Generally speaking"],a:1},
+    {q:"What does 'strike a balance' mean?",opts:["Choose one side","Find a middle ground","Compare two ideas","Give an example"],a:1},
+    {q:"Which phrase means 'both options have good points'?",opts:["It varies from person to person","Both options have their merits","It's difficult to generalise","Overall, I would say..."],a:1},
+    {q:"How should a Band 7 answer compare ideas?",opts:["Only discuss one side","Use simple words like better/worse","Consider multiple perspectives","Give a yes/no answer"],a:2},
+    {q:"Which word means 'significantly less effective'?",opts:["considerably more","significantly less","quite different","advantageous"],a:1},
+    {q:"What does 'On the other hand' signal?",opts:["An example","A contrasting point","A conclusion","A reason"],a:1},
+    {q:"Which expression means 'it depends on the individual'?",opts:["That largely depends on...","It's difficult to generalise.","Overall, I would say...","There isn't a simple answer."],a:0}
+  ]
+},
+{
+  unit:"Module 4 — Mastering IELTS Speaking Part 3",
+  id:"4.4",
+  title:"Explaining Causes, Effects, and Solutions",
+  objectives:[
+    "Explain why problems happen.",
+    "Discuss the effects of social issues.",
+    "Suggest realistic solutions.",
+    "Develop complex answers with logical reasoning.",
+    "Speak confidently about abstract IELTS Part 3 topics."
+  ],
+  success:[
+    "Explain causes and consequences clearly.",
+    "Suggest realistic and well-developed solutions.",
+    "Use cause-and-effect vocabulary naturally.",
+    "Apply the C.E.S. Method to organize Part 3 answers.",
+    "Speak confidently for 45–60 seconds with logical development."
+  ],
+  vocab:[
+    ["because","The main reason is that..."],
+    ["because","This is mainly due to..."],
+    ["because","One contributing factor is..."],
+    ["because","This can largely be explained by..."],
+    ["because","One possible explanation is..."],
+    ["so","As a result..."],
+    ["so","Consequently..."],
+    ["because of that","Therefore..."],
+    ["this makes","This leads to..."],
+    ["happens","Results in..."],
+    ["should","could"],
+    ["fix","address"],
+    ["help","make a positive difference"],
+    ["solve","tackle"],
+    ["improve","enhance"]
+  ],
+  html:`
+  <div class="content-body">
+  <p><strong>Duration:</strong> 90 minutes &nbsp;|&nbsp; <strong>Target Band:</strong> 6.5 → 7.5 &nbsp;|&nbsp; <strong>Focus:</strong> IELTS Speaking Part 3 + Cause & Effect + Problem Solving</p>
+
+  <h4>Lesson Objectives</h4>
+  <p>By the end of this lesson, the student will be able to:</p>
+  <ul class="obj-list">
+    <li>Explain why problems happen.</li>
+    <li>Discuss the effects of social issues.</li>
+    <li>Suggest realistic solutions.</li>
+    <li>Develop complex answers with logical reasoning.</li>
+    <li>Speak confidently about abstract IELTS Part 3 topics.</li>
+  </ul>
+
+  <h4>Vocabulary Theme: Causes, Effects & Solutions (20 Minutes)</h4>
+  <p><strong>Cause Expressions</strong></p>
+  <div class="example-box">
+    <p>The main reason is that...<br>
+    This is mainly due to...<br>
+    One contributing factor is...<br>
+    This can largely be explained by...<br>
+    One possible explanation is...</p>
+  </div>
+
+  <p><strong>Effect Expressions</strong></p>
+  <div class="example-box">
+    <p>As a result...<br>
+    Consequently...<br>
+    Therefore...<br>
+    This leads to...<br>
+    Results in...</p>
+  </div>
+
+  <p><strong>Solution Expressions</strong></p>
+  <div class="example-box">
+    <p>One possible solution would be...<br>
+    Governments could...<br>
+    Schools should encourage...<br>
+    Individuals also have a responsibility to...<br>
+    Raising awareness is essential.<br>
+    Long-term planning is important.<br>
+    Small changes can make a big difference.<br>
+    Prevention is often better than cure.<br>
+    It requires cooperation from everyone.<br>
+    Education plays a key role.</p>
+  </div>
+
+  <h4>Grammar Focus (15 Minutes)</h4>
+  <p><strong>First Conditional for Solutions</strong></p>
+  <div class="example-box">
+    <p>If + present simple + will + verb<br>
+    Examples: If governments invest more in public transport, traffic congestion will decrease. If people recycle more, less waste will end up in landfills.</p>
+  </div>
+
+  <h4>Speaking Strategy (10 Minutes)</h4>
+  <p><strong>The C.E.S. Method</strong></p>
+  <div class="example-box">
+    <p><strong>C — Cause</strong> — Why does the problem happen?<br>
+    <strong>E — Effect</strong> — What happens because of it?<br>
+    <strong>S — Solution</strong> — What could be done?</p>
+  </div>
+
+  <h4>Fluency Challenge (10 Minutes)</h4>
+  <p>Answer three Part 3 questions. Speak for 45–60 seconds each. Use: at least 8 vocabulary expressions / one cause / one effect / one solution / one example / one concluding opinion.</p>
+
+  <h4>Mini IELTS Speaking Test (10 Minutes)</h4>
+  <div class="example-box">
+    <p><strong>Question:</strong> Many people believe young people today spend too much time using technology. Why do you think this happens? What can be done about it?</p>
+  </div>
+
+  <h4>Homework</h4>
+  <p><strong>Part 1 – Vocabulary:</strong> Write one original sentence using each expression: one contributing factor, this is mainly due to, as a result, consequently, one possible solution would be, tackle, enhance, raising awareness, prevention is better than cure, make a positive difference.</p>
+  <p><strong>Part 2 – Speaking:</strong> Record yourself answering Part 3 questions. Use the C.E.S. Method.</p>
+  <p><strong>Part 3 – Writing:</strong> Write 250 words answering: What are the main causes of traffic congestion in cities, and what solutions would you recommend?</p>
+
+  <h4>Key Takeaway</h4>
+  <div class="example-box">Band 7 candidates think like problem-solvers. They explain causes, discuss consequences, propose realistic solutions, and support ideas with examples. This demonstrates strong coherence, vocabulary range, and ability to discuss complex issues in depth.</div>
+  </div>`,
+  quiz:[
+    {q:"Which phrase expresses a cause?",opts:["As a result","The main reason is that...","Consequently...","Therefore..."],a:1},
+    {q:"What does C.E.S. stand for?",opts:["Cause, Effect, Solution","Compare, Evaluate, Suggest","Cause, Example, Solution","Conclusion, Evidence, Summary"],a:0},
+    {q:"Which expression means 'as a consequence'?",opts:["One contributing factor","As a result","This is mainly due to","One possible solution"],a:1},
+    {q:"Which phrase introduces a solution?",opts:["One contributing factor is...","As a result...","One possible solution would be...","This leads to..."],a:2},
+    {q:"What does 'Raising awareness is essential' mean?",opts:["People need more information","Education is important","Governments should act","Small changes help"],a:0},
+    {q:"Which word means 'solve' or 'address' a problem?",opts:["tackle","enhance","restore","treasure"],a:0},
+    {q:"Which sentence uses the first conditional correctly?",opts:["If people exercise regularly, they will be healthier.","If people exercise regularly, they would be healthier.","If people exercise regularly, they are healthier.","If people exercise regularly, they were healthier."],a:0},
+    {q:"What does 'Prevention is often better than cure' mean?",opts:["Cures are expensive","Stopping problems before they start is better","Education is essential","Solutions are difficult"],a:1},
+    {q:"Which phrase means 'make a positive difference'?",opts:["tackle","enhance","make a positive difference","raise awareness"],a:2},
+    {q:"Why is it important to suggest realistic solutions in Part 3?",opts:["To show you agree","To demonstrate problem-solving ability","To use more vocabulary","To avoid questions"],a:1}
+  ]
+},
+{
+  unit:"Module 4 — Mastering IELTS Speaking Part 3",
+  id:"4.5",
+  title:"Making Predictions and Talking About the Future",
+  objectives:[
+    "Make well-supported predictions about the future.",
+    "Speculate confidently using a range of grammatical structures.",
+    "Discuss future trends in society, technology, education, health, and the environment.",
+    "Support predictions with logical reasons and examples.",
+    "Speak naturally about abstract future-related topics."
+  ],
+  success:[
+    "Make realistic and well-supported predictions.",
+    "Use a variety of future and speculation structures.",
+    "Discuss future trends confidently.",
+    "Apply the F.U.T.U.R.E. Method to organise answers.",
+    "Speak for 45–60 seconds with logical development and balanced ideas."
+  ],
+  vocab:[
+    ["I think","I predict that..."],
+    ["maybe","It's likely that..."],
+    ["maybe","There's a good chance that..."],
+    ["maybe","I wouldn't be surprised if..."],
+    ["maybe","It's highly unlikely that..."],
+    ["It's possible that...","It seems likely that..."],
+    ["There's every reason to believe...","I imagine we'll see..."],
+    ["I expect that...","I suspect..."],
+    ["My prediction is...","In the coming decades..."],
+    ["Sooner or later...","Over the next few years..."],
+    ["Society is becoming increasingly...","Technology is advancing rapidly."],
+    ["This trend is likely to continue.","It's difficult to predict with certainty."],
+    ["I believe we'll see significant changes.","Future generations may..."],
+    ["One possible outcome is...","This could completely transform..."],
+    ["There will probably be...","Only time will tell."]
+  ],
+  html:`
+  <div class="content-body">
+  <p><strong>Duration:</strong> 90 Minutes &nbsp;|&nbsp; <strong>Target Band:</strong> 6.5 → 7.5 &nbsp;|&nbsp; <strong>Focus:</strong> IELTS Speaking Part 3 + Future Trends + Predictions + Speculation</p>
+
+  <h4>Lesson Objectives</h4>
+  <p>By the end of this lesson, the student will be able to:</p>
+  <ul class="obj-list">
+    <li>Make well-supported predictions about the future.</li>
+    <li>Speculate confidently using a range of grammatical structures.</li>
+    <li>Discuss future trends in society, technology, education, health, and the environment.</li>
+    <li>Support predictions with logical reasons and examples.</li>
+    <li>Speak naturally about abstract future-related topics.</li>
+  </ul>
+
+  <h4>Vocabulary Theme: Predicting the Future (20 Minutes)</h4>
+  <p><strong>Prediction Expressions</strong></p>
+  <div class="example-box">
+    <p>I predict that...<br>
+    It's likely that...<br>
+    There's a good chance that...<br>
+    I wouldn't be surprised if...<br>
+    It's highly unlikely that...</p>
+  </div>
+
+  <p><strong>Trend Vocabulary</strong></p>
+  <table class="data-table"><tr><th>Topic</th><th>Vocabulary</th></tr>
+  <tr><td>Technology</td><td>automation, artificial intelligence, robotics, innovation</td></tr>
+  <tr><td>Environment</td><td>renewable energy, sustainability, climate change</td></tr>
+  <tr><td>Education</td><td>online learning, lifelong learning, digital classrooms</td></tr>
+  <tr><td>Society</td><td>ageing population, urbanisation, remote working</td></tr>
+  <tr><td>Health</td><td>mental well-being, preventive healthcare, medical advances</td></tr>
+  </table>
+
+  <h4>Speaking Strategy (10 Minutes)</h4>
+  <p><strong>The F.U.T.U.R.E. Method</strong></p>
+  <div class="example-box">
+    <p><strong>F — Focus</strong> — Answer the question directly.<br>
+    <strong>U — Understand</strong> — Explain why this prediction is reasonable.<br>
+    <strong>T — Trend</strong> — Describe the current trend.<br>
+    <strong>U — Uncertainty</strong> — Mention that the future is never certain.<br>
+    <strong>R — Result</strong> — Explain the likely consequences.<br>
+    <strong>E — Ending</strong> — Finish with a balanced conclusion.</p>
+  </div>
+
+  <h4>Fluency Challenge (10 Minutes)</h4>
+  <p>Answer three future-related Part 3 questions. Speak for 45–60 seconds each. Use: at least 8 future expressions / one speculation phrase / one trend / one consequence / one balanced conclusion.</p>
+
+  <h4>Mini IELTS Speaking Test (10 Minutes)</h4>
+  <div class="example-box">
+    <p><strong>Question:</strong> How do you think technology will change the workplace over the next twenty years?</p>
+  </div>
+
+  <h4>Homework</h4>
+  <p><strong>Part 1 – Vocabulary:</strong> Write one original sentence using each expression: it's likely that, I wouldn't be surprised if, over the next few decades, artificial intelligence, renewable energy, lifelong learning, only time will tell, this trend is likely to continue, one possible outcome is, with complete certainty.</p>
+  <p><strong>Part 2 – Speaking:</strong> Record yourself answering future-related Part 3 questions. Use the F.U.T.U.R.E. Method.</p>
+  <p><strong>Part 3 – Writing:</strong> Write 250 words answering: How do you think technology will change people's lives over the next 30 years?</p>
+
+  <h4>Key Takeaway</h4>
+  <div class="example-box">Band 7 candidates don't simply predict the future—they explain why they think something is likely, refer to current trends, recognise uncertainty, and discuss possible consequences.</div>
+  </div>`,
+  quiz:[
+    {q:"Which phrase expresses a strong prediction?",opts:["maybe","I predict that...","It's highly unlikely","I wouldn't be surprised if"],a:1},
+    {q:"What does F.U.T.U.R.E. stand for?",opts:["Focus, Understand, Trend, Uncertainty, Result, Ending","Future, Uncertainty, Trend, Understand, Result, Evaluate","Focus, Uncertainty, Trend, Uncertainty, Result, Example","Future, Use, Trend, Uncertainty, Result, Ending"],a:0},
+    {q:"Which phrase means 'it's possible that something will happen'?",opts:["It's highly unlikely","There's a good chance that...","Only time will tell","I suspect"],a:1},
+    {q:"What does 'Only time will tell' mean?",opts:["We know the answer","The future is uncertain","Technology will change","Predictions are wrong"],a:1},
+    {q:"Which word is associated with future technology trends?",opts:["renewable energy","artificial intelligence","urbanisation","preventive healthcare"],a:1},
+    {q:"Which phrase means 'this is likely to continue'?",opts:["It's difficult to predict","This trend is likely to continue","One possible outcome is","I wouldn't be surprised if"],a:1},
+    {q:"What does 'I wouldn't be surprised if...' express?",opts:["Certainty","Possibility","Doubt","Surprise"],a:1},
+    {q:"Which expression introduces a balanced conclusion?",opts:["In the coming decades...","Overall, I believe...","One possible outcome is...","I expect that..."],a:1},
+    {q:"What does 'over the next few decades' refer to?",opts:["The past","The present","The near future","The distant future"],a:3},
+    {q:"Why is it important to mention uncertainty in predictions?",opts:["To show you don't know","To demonstrate realistic thinking","To avoid answering","To use more grammar"],a:1}
+  ]
+},
+{
+  unit:"Module 5 — Advanced Fluency & Band 7 Strategies",
+  id:"5.1",
+  title:"Speaking More Fluently Without Hesitation",
+  objectives:[
+    "Speak for extended periods without long pauses.",
+    "Use natural fillers effectively without overusing them.",
+    "Buy thinking time while remaining fluent.",
+    "Extend answers naturally instead of stopping after one idea.",
+    "Improve Fluency and Coherence, one of the four IELTS Speaking marking criteria."
+  ],
+  success:[
+    "Speak continuously for 45–60 seconds with minimal hesitation.",
+    "Use natural time-gaining expressions.",
+    "Extend answers with reasons and examples.",
+    "Self-correct without losing fluency.",
+    "Apply the F.L.O.W. Method consistently."
+  ],
+  vocab:[
+    ["Umm...","That's an interesting question."],
+    ["Er...","Let me think for a moment."],
+    ["Ah...","I've never really thought about that before."],
+    ["Well...","Off the top of my head..."],
+    ["So...","If I had to choose..."],
+    ["You know...","The first thing that comes to mind is..."],
+    ["Basically...","Well, I'd probably say..."],
+    ["I don't know...","That's quite difficult to answer."],
+    ["I guess...","I'd have to say..."],
+    ["The main reason is...","Another point is..."],
+    ["In addition...","What's more..."],
+    ["On top of that...","For example..."],
+    ["One experience I remember...","Looking back..."],
+    ["Overall...","From my experience..."],
+    ["Without a doubt...","Generally speaking..."]
+  ],
+  html:`
+  <div class="content-body">
+  <p><strong>Duration:</strong> 90 Minutes &nbsp;|&nbsp; <strong>Target Band:</strong> 6.5 → 7.5 &nbsp;|&nbsp; <strong>Focus:</strong> Fluency & Coherence + Reducing Hesitation + Natural Speaking</p>
+
+  <h4>Lesson Objectives</h4>
+  <p>By the end of this lesson, the student will be able to:</p>
+  <ul class="obj-list">
+    <li>Speak for extended periods without long pauses.</li>
+    <li>Use natural fillers effectively without overusing them.</li>
+    <li>Buy thinking time while remaining fluent.</li>
+    <li>Extend answers naturally instead of stopping after one idea.</li>
+    <li>Improve Fluency and Coherence, one of the four IELTS Speaking marking criteria.</li>
+  </ul>
+
+  <h4>Vocabulary Theme: Natural Fillers & Time-Gaining Expressions (20 Minutes)</h4>
+  <p><strong>Better Fillers</strong></p>
+  <div class="example-box">
+    <p>Instead of: Umm... / Er... / Ah...<br>
+    Use: That's an interesting question. / Let me think for a moment. / I've never really thought about that before. / Off the top of my head... / If I had to choose... / The first thing that comes to mind is... / Well, I'd probably say... / It depends, actually. / That's quite difficult to answer. / I'd have to say...</p>
+  </div>
+
+  <p><strong>Extending Answers</strong></p>
+  <div class="example-box">
+    <p>The main reason is...<br>
+    Another point is...<br>
+    In addition...<br>
+    What's more...<br>
+    On top of that...<br>
+    For example...<br>
+    One experience I remember...<br>
+    Looking back...<br>
+    Overall...</p>
+  </div>
+
+  <h4>Speaking Strategy (10 Minutes)</h4>
+  <p><strong>The F.L.O.W. Method</strong></p>
+  <div class="example-box">
+    <p><strong>F — First Answer</strong> — Answer the question directly.<br>
+    <strong>L — Link</strong> — Connect to another idea.<br>
+    <strong>O — Offer an Example</strong> — Give a personal experience.<br>
+    <strong>W — Wrap Up</strong> — Finish with a short conclusion.</p>
+  </div>
+
+  <h4>Fluency Challenge (10 Minutes)</h4>
+  <p><strong>One-Minute Expansion</strong> — Teacher gives one simple topic. Student must continue speaking for one full minute without stopping. Topics: Coffee / Mobile phones / Rain / Libraries / Family / Sports / Music / Public transport / Shopping / School.</p>
+
+  <h4>Pronunciation Focus (5 Minutes)</h4>
+  <p>Practice connected speech. Repeat naturally: That's an interesting question / Come to think of it... / The first thing that comes to mind... / If I had to choose... / Overall, I'd say... / From my experience... / What I mean is... / Looking back...</p>
+
+  <h4>Homework</h4>
+  <p><strong>Part 1 – Vocabulary:</strong> Write one original sentence using each expression: off the top of my head, come to think of it, from my experience, generally speaking, without a doubt, if I had to choose, the first thing that comes to mind, what I mean is, looking back, on top of that.</p>
+  <p><strong>Part 2 – Speaking:</strong> Record yourself answering 10 Part 1 IELTS questions. Speak for 20–30 seconds each. Use the F.L.O.W. Method. Avoid saying "um" or "uh".</p>
+  <p><strong>Part 3 – Fluency Challenge:</strong> Choose three random objects in your home. Speak about each for one minute without stopping.</p>
+
+  <h4>Key Takeaway</h4>
+  <div class="example-box">Band 7 speakers sound conversational, not rehearsed. They answer directly, expand ideas with reasons and examples, use natural linking expressions, and keep talking even when they need a moment to think.</div>
+  </div>`,
+  quiz:[
+    {q:"What does fluency mean in IELTS Speaking?",opts:["Speaking very fast","Speaking continuously with minimal hesitation","Using difficult vocabulary","Speaking without mistakes"],a:1},
+    {q:"Which is a better filler than 'Umm...'?",opts:["Er...","That's an interesting question.","Ah...","Well..."],a:1},
+    {q:"What does F.L.O.W. stand for?",opts:["First, Link, Offer, Wrap","Fluency, Link, Offer, Wrap","First, Learn, Offer, Write","Focus, Link, Offer, Wrap"],a:0},
+    {q:"Which phrase extends an answer naturally?",opts:["Yes.","The main reason is...","No.","Maybe."],a:1},
+    {q:"How long should a Band 7 Part 1 answer last?",opts:["5–10 seconds","20–30 seconds","1–2 minutes","3–4 minutes"],a:1},
+    {q:"What should you do if you need thinking time?",opts:["Stop speaking","Use a natural filler","Say 'um' repeatedly","Change the topic"],a:1},
+    {q:"Which expression means 'from my experience'?",opts:["Looking back","From my experience","Off the top of my head","Generally speaking"],a:1},
+    {q:"What does 'On top of that' mean?",opts:["In addition","In contrast","For example","Overall"],a:0},
+    {q:"Why is silence sometimes better than saying 'um'?",opts:["It shows confidence","It doesn't interrupt communication","It impresses the examiner","It's faster"],a:1},
+    {q:"Which is a natural way to self-correct?",opts:["Stop and restart","I went there in 2022... actually, I think it was 2023.","Ignore the mistake","Say 'um' and continue"],a:1}
+  ]
+},
+{
+  unit:"Module 5 — Advanced Fluency & Band 7 Strategies",
+  id:"5.2",
+  title:"Using Advanced Vocabulary Naturally",
+  objectives:[
+    "Replace basic vocabulary with more precise and natural expressions.",
+    "Use collocations confidently in speaking.",
+    "Avoid repeating the same words.",
+    "Sound more like a Band 7+ speaker without using unnatural 'fancy' vocabulary.",
+    "Improve the Lexical Resource criterion of the IELTS Speaking test."
+  ],
+  success:[
+    "Replace basic vocabulary with more precise alternatives.",
+    "Use common IELTS collocations naturally.",
+    "Avoid excessive repetition.",
+    "Sound fluent without forcing uncommon words.",
+    "Improve lexical range while remaining accurate."
+  ],
+  vocab:[
+    ["good","excellent, impressive, beneficial"],
+    ["bad","disappointing, harmful, unpleasant"],
+    ["nice","enjoyable, pleasant, delightful"],
+    ["big","enormous, spacious, vast"],
+    ["small","compact, tiny, modest"],
+    ["beautiful","stunning, breathtaking, picturesque"],
+    ["interesting","fascinating, engaging, thought-provoking"],
+    ["boring","dull, repetitive, uninspiring"],
+    ["important","essential, significant, crucial"],
+    ["busy","hectic, demanding"],
+    ["quiet","peaceful, tranquil"],
+    ["expensive","costly, overpriced"],
+    ["cheap","affordable, inexpensive"],
+    ["get","obtain, receive"],
+    ["make","create, produce, develop"],
+    ["help","assist, support, contribute to"],
+    ["show","demonstrate, illustrate"],
+    ["change","transform"],
+    ["improve","enhance"],
+    ["start","begin, get into"],
+    ["stop","give up, quit"],
+    ["learn","acquire"],
+    ["use","rely on, make use of"]
+  ],
+  html:`
+  <div class="content-body">
+  <p><strong>Duration:</strong> 90 Minutes &nbsp;|&nbsp; <strong>Target Band:</strong> 6.5 → 7.5 &nbsp;|&nbsp; <strong>Focus:</strong> Lexical Resource + Natural Word Choice + Avoiding Memorised Language</p>
+
+  <h4>Lesson Objectives</h4>
+  <p>By the end of this lesson, the student will be able to:</p>
+  <ul class="obj-list">
+    <li>Replace basic vocabulary with more precise and natural expressions.</li>
+    <li>Use collocations confidently in speaking.</li>
+    <li>Avoid repeating the same words.</li>
+    <li>Sound more like a Band 7+ speaker without using unnatural "fancy" vocabulary.</li>
+    <li>Improve the Lexical Resource criterion of the IELTS Speaking test.</li>
+  </ul>
+
+  <h4>Vocabulary Theme: Upgrading Everyday English (20 Minutes)</h4>
+  <p><strong>Replace Basic Adjectives</strong></p>
+  <table class="data-table"><tr><th>Basic</th><th>Band 7 Alternative</th></tr>
+  <tr><td>good</td><td>excellent, impressive, beneficial</td></tr>
+  <tr><td>bad</td><td>disappointing, harmful, unpleasant</td></tr>
+  <tr><td>nice</td><td>enjoyable, pleasant, delightful</td></tr>
+  <tr><td>big</td><td>enormous, spacious, vast</td></tr>
+  <tr><td>small</td><td>compact, tiny, modest</td></tr>
+  <tr><td>beautiful</td><td>stunning, breathtaking, picturesque</td></tr>
+  <tr><td>interesting</td><td>fascinating, engaging, thought-provoking</td></tr>
+  <tr><td>boring</td><td>dull, repetitive, uninspiring</td></tr>
+  <tr><td>important</td><td>essential, significant, crucial</td></tr>
+  <tr><td>busy</td><td>hectic, demanding</td></tr>
+  <tr><td>quiet</td><td>peaceful, tranquil</td></tr>
+  <tr><td>expensive</td><td>costly, overpriced</td></tr>
+  <tr><td>cheap</td><td>affordable, inexpensive</td></tr>
+  </table>
+
+  <p><strong>Strong Verbs</strong></p>
+  <div class="example-box">
+    <p>get → obtain, receive<br>
+    make → create, produce, develop<br>
+    help → assist, support, contribute to<br>
+    show → demonstrate, illustrate<br>
+    change → transform<br>
+    improve → enhance<br>
+    start → begin, get into<br>
+    stop → give up, quit<br>
+    learn → acquire<br>
+    use → rely on, make use of</p>
+  </div>
+
+  <p><strong>Useful Collocations</strong></p>
+  <div class="example-box">
+    <p><strong>Education:</strong> acquire knowledge / broaden your horizons / lifelong learning / academic achievement / practical skills<br>
+    <strong>Technology:</strong> keep in touch / access information / online platforms / digital devices / technological advances<br>
+    <strong>Work:</strong> meet deadlines / gain experience / career opportunities / work-life balance / job satisfaction<br>
+    <strong>Health:</strong> maintain a healthy lifestyle / balanced diet / regular exercise / mental well-being / reduce stress<br>
+    <strong>Travel:</strong> breathtaking scenery / local cuisine / cultural experience / tourist attraction / unforgettable journey</p>
+  </div>
+
+  <h4>Speaking Strategy (10 Minutes)</h4>
+  <p><strong>The S.M.A.R.T. Vocabulary Method</strong></p>
+  <div class="example-box">
+    <p><strong>S — Simple First</strong> — Start with a simple idea.<br>
+    <strong>M — Modify</strong> — Add a stronger adjective or verb.<br>
+    <strong>A — Add Detail</strong> — Include a collocation.<br>
+    <strong>R — Real Example</strong> — Give a personal example.<br>
+    <strong>T — Tie It Together</strong> — Finish with a concluding thought.</p>
+  </div>
+
+  <h4>Fluency Challenge (10 Minutes)</h4>
+  <p><strong>Vocabulary Upgrade Game</strong> — Teacher says a basic word. Student has 5 seconds to replace it. Then use the upgraded word in a complete sentence.</p>
+
+  <h4>Pronunciation Focus (5 Minutes)</h4>
+  <p>Practice stress in collocations. Repeat: broaden your horizons / work-life balance / breathtaking scenery / maintain a healthy lifestyle / gain valuable experience / acquire knowledge / meet deadlines / have a positive impact.</p>
+
+  <h4>Homework</h4>
+  <p><strong>Part 1 – Vocabulary:</strong> Write one original sentence using each expression: broaden your horizons, acquire knowledge, work-life balance, maintain a healthy lifestyle, breathtaking scenery, technological advances, have a positive impact, gain valuable experience, meet deadlines, job satisfaction.</p>
+  <p><strong>Part 2 – Speaking:</strong> Record yourself answering questions. Use the S.M.A.R.T. Vocabulary Method. Include at least 10 upgraded vocabulary items and 5 collocations.</p>
+  <p><strong>Part 3 – Writing:</strong> Write 250 words on: How can people improve their quality of life?</p>
+
+  <h4>Key Takeaway</h4>
+  <div class="example-box">Band 7 speakers don't try to impress with obscure vocabulary. They consistently choose accurate words, use natural collocations, avoid repetition, and support ideas with clear examples.</div>
+  </div>`,
+  quiz:[
+    {q:"Which is a better alternative to 'good'?",opts:["nice","excellent","okay","fine"],a:1},
+    {q:"What does 'broaden your horizons' mean?",opts:["Travel more","Expand your knowledge and experience","Read more books","Learn a language"],a:1},
+    {q:"Which collocation is correct?",opts:["make a decision","take responsibility","give attention","take a bus"],a:1},
+    {q:"Which word means 'very important'?",opts:["nice","essential","good","interesting"],a:1},
+    {q:"What does 'work-life balance' mean?",opts:["Working more hours","Balancing work and personal life","Having a good job","Earning more money"],a:1},
+    {q:"Which verb replaces 'make' in formal speaking?",opts:["do","create","have","get"],a:1},
+    {q:"Which expression means 'reduce stress'?",opts:["increase stress","maintain stress","reduce stress","avoid stress"],a:2},
+    {q:"What does 'acquire knowledge' mean?",opts:["Forget information","Gain knowledge","Share knowledge","Teach others"],a:1},
+    {q:"Which phrase means 'enjoyable journey'?",opts:["boring trip","unforgettable journey","long journey","cheap holiday"],a:1},
+    {q:"Why is repeating 'good' and 'nice' a problem in IELTS?",opts:["It shows poor vocabulary range","It's too formal","It's too informal","Examiners dislike these words"],a:0}
+  ]
+},
+{
+  unit:"Module 5 — Advanced Fluency & Band 7 Strategies",
+  id:"5.3",
+  title:"Using Complex Grammar Naturally",
+  objectives:[
+    "Use a wider range of grammatical structures naturally in conversation.",
+    "Combine simple ideas into complex, fluent answers.",
+    "Improve grammatical accuracy while speaking.",
+    "Use advanced sentence structures without sounding memorised.",
+    "Increase their score in the Grammatical Range and Accuracy criterion."
+  ],
+  success:[
+    "Use a wider range of sentence structures naturally.",
+    "Combine ideas into longer, coherent answers.",
+    "Use complex grammar accurately without sacrificing fluency.",
+    "Demonstrate grammatical flexibility in Part 2 and Part 3 responses.",
+    "Improve readiness for Band 7+ in Grammatical Range and Accuracy."
+  ],
+  vocab:[
+    ["I like English because it's useful.","I like English because it's incredibly useful for both my studies and future career."],
+    ["My teacher helped me.","My teacher, who helped me improve my English, is incredibly friendly."],
+    ["I finished work and went home.","Having finished my homework, I watched television."],
+    ["People recycle.","People who recycle regularly make a significant difference."],
+    ["The city is crowded.","The city, which is known for its vibrant culture, attracts millions of tourists every year."]
+  ],
+  html:`
+  <div class="content-body">
+  <p><strong>Duration:</strong> 90 Minutes &nbsp;|&nbsp; <strong>Target Band:</strong> 6.5 → 7.5 &nbsp;|&nbsp; <strong>Focus:</strong> Grammatical Range & Accuracy + Complex Sentences for IELTS Speaking</p>
+
+  <h4>Lesson Objectives</h4>
+  <p>By the end of this lesson, the student will be able to:</p>
+  <ul class="obj-list">
+    <li>Use a wider range of grammatical structures naturally in conversation.</li>
+    <li>Combine simple ideas into complex, fluent answers.</li>
+    <li>Improve grammatical accuracy while speaking.</li>
+    <li>Use advanced sentence structures without sounding memorised.</li>
+    <li>Increase their score in the Grammatical Range and Accuracy criterion.</li>
+  </ul>
+
+  <h4>Grammar Theme: Building Complex Sentences (20 Minutes)</h4>
+  <p><strong>1. Relative Clauses</strong></p>
+  <div class="example-box">
+    <p>My teacher, who helped me improve my English, is incredibly friendly.</p>
+  </div>
+
+  <p><strong>2. Conditional Sentences</strong></p>
+  <div class="example-box">
+    <p>If I had more free time, I'd travel more.<br>
+    If governments invested more in education, students would benefit.<br>
+    If I get the opportunity, I'll study abroad.</p>
+  </div>
+
+  <p><strong>3. Present Perfect</strong></p>
+  <div class="example-box">
+    <p>I've lived here for ten years.<br>
+    I've always enjoyed learning languages.<br>
+    I've never visited Europe.</p>
+  </div>
+
+  <p><strong>4. Passive Voice</strong></p>
+  <div class="example-box">
+    <p>English is spoken in many countries.<br>
+    The building was constructed over a century ago.<br>
+    Many problems can be solved through education.</p>
+  </div>
+
+  <p><strong>5. Participle Clauses</strong></p>
+  <div class="example-box">
+    <p>Having finished my homework, I watched television.<br>
+    People living in cities often experience higher living costs.</p>
+  </div>
+
+  <h4>Speaking Strategy (10 Minutes)</h4>
+  <p><strong>The C.O.M.P.L.E.X. Method</strong></p>
+  <div class="example-box">
+    <p><strong>C — Clear Answer</strong> — Answer directly.<br>
+    <strong>O — Opinion</strong> — Express your view.<br>
+    <strong>M — Multiple Ideas</strong> — Add another point.<br>
+    <strong>P — Personal Example</strong> — Support your answer.<br>
+    <strong>L — Link</strong> — Connect ideas smoothly.<br>
+    <strong>E — Expand</strong> — Explain why.<br>
+    <strong>X — eXtra Detail</strong> — Finish with one additional thought.</p>
+  </div>
+
+  <h4>Fluency Challenge (10 Minutes)</h4>
+  <p><strong>Grammar Transformation</strong> — Teacher gives a simple sentence. Student must make it more advanced using: one relative clause / one conditional / one participle clause / one present perfect structure.</p>
+
+  <h4>Mini IELTS Speaking Test (10 Minutes)</h4>
+  <div class="example-box">
+    <p><strong>Question:</strong> Do you think education should be free for everyone?</p>
+  </div>
+
+  <h4>Pronunciation Focus (5 Minutes)</h4>
+  <p>Practice chunking longer sentences. Repeat: If I had more free time, I'd... / Having finished my studies... / People who... / I've always believed that... / Technology, which... / Overall, I'd say...</p>
+
+  <h4>Homework</h4>
+  <p><strong>Part 1 – Grammar:</strong> Rewrite each sentence using a more advanced structure.</p>
+  <p><strong>Part 2 – Speaking:</strong> Record yourself answering questions. Use the C.O.M.P.L.E.X. Method. Include: 2 relative clauses, 2 conditional sentences, 2 present perfect sentences, 1 passive voice sentence, 1 participle clause.</p>
+  <p><strong>Part 3 – Writing:</strong> Write 250 words on: How can education prepare young people for the future?</p>
+
+  <h4>Key Takeaway</h4>
+  <div class="example-box">Band 7 speakers build ideas, not just sentences. They connect opinions, explanations, examples, and reflections using a range of grammatical structures. By mastering the C.O.M.P.L.E.X. Method, you'll produce answers that sound mature, coherent, and flexible.</div>
+  </div>`,
+  quiz:[
+    {q:"Which structure uses 'who', 'which', or 'that'?",opts:["Conditional","Relative clause","Passive voice","Participle clause"],a:1},
+    {q:"What is the correct conditional form?",opts:["If I had more time, I will travel.","If I had more time, I'd travel.","If I have more time, I would travel.","If I had more time, I travel."],a:1},
+    {q:"Which sentence uses present perfect?",opts:["I lived here for ten years.","I've lived here for ten years.","I live here for ten years.","I had lived here for ten years."],a:1},
+    {q:"What does 'Having finished my homework' mean?",opts:["I will finish","After finishing","I finish","Before finishing"],a:1},
+    {q:"Which is a passive voice sentence?",opts:["People speak English.","English is spoken worldwide.","People are speaking English.","English speaks people."],a:1},
+    {q:"What does C.O.M.P.L.E.X. stand for?",opts:["Clear, Opinion, Multiple, Personal, Link, Expand, eXtra","Complex, Opinion, Modify, Personal, Link, Example, eXtra","Clear, Opinion, Multiple, Personal, Link, Expand, eXtra","Conditional, Opinion, Multiple, Personal, Link, Expand, eXtra"],a:2},
+    {q:"Which sentence combines two ideas using a participle clause?",opts:["I finished work and went home.","Having finished work, I went home.","I finished work, then I went home.","After I finished work, I went home."],a:1},
+    {q:"Why is grammar variety important in IELTS Speaking?",opts:["To use difficult words","To demonstrate range and accuracy","To speak faster","To avoid mistakes"],a:1},
+    {q:"Which is a correct relative clause?",opts:["My teacher who helped me is friendly.","My teacher, who helped me, is incredibly friendly.","My teacher, who helped me is incredibly friendly.","My teacher who, helped me, is incredibly friendly."],a:1},
+    {q:"What does 'Band 7' require for grammar?",opts:["Only simple sentences","Only complex sentences","A mix of simple and complex structures","No grammar mistakes"],a:2}
+  ]
+},
+{
+  unit:"Module 6 — Band 7+ Mastery & Mock Exams",
+  id:"6.1",
+  title:"Full IELTS Speaking Mock Test & Feedback",
+  objectives:[
+    "Complete a full IELTS Speaking test under realistic exam conditions.",
+    "Demonstrate fluency across Parts 1, 2, and 3.",
+    "Receive feedback using the official IELTS Speaking assessment criteria.",
+    "Identify strengths and weaknesses.",
+    "Create a personalised improvement plan for the final lessons."
+  ],
+  success:[
+    "Complete the full IELTS Speaking test confidently.",
+    "Maintain fluency across all three parts.",
+    "Organise answers clearly without relying on memorised scripts.",
+    "Demonstrate a wide range of vocabulary and grammatical structures.",
+    "Understand exactly what is needed to reach Band 7.5."
+  ],
+  vocab:[],
+  html:`
+  <div class="content-body">
+  <p><strong>Duration:</strong> 90 Minutes &nbsp;|&nbsp; <strong>Target Band:</strong> 7.0 → 7.5 &nbsp;|&nbsp; <strong>Focus:</strong> Complete IELTS Speaking Test + Examiner Feedback + Improvement Plan</p>
+
+  <h4>Lesson Objectives</h4>
+  <p>By the end of this lesson, the student will:</p>
+  <ul class="obj-list">
+    <li>Complete a full IELTS Speaking test under realistic exam conditions.</li>
+    <li>Demonstrate fluency across Parts 1, 2, and 3.</li>
+    <li>Receive feedback using the official IELTS Speaking assessment criteria.</li>
+    <li>Identify strengths and weaknesses.</li>
+    <li>Create a personalised improvement plan for the final lessons.</li>
+  </ul>
+
+  <h4>Lesson Structure</h4>
+  <table class="data-table"><tr><th>Activity</th><th>Time</th></tr>
+  <tr><td>Warm-up</td><td>5 min</td></tr>
+  <tr><td>IELTS Speaking Part 1</td><td>10 min</td></tr>
+  <tr><td>IELTS Speaking Part 2</td><td>15 min</td></tr>
+  <tr><td>IELTS Speaking Part 3</td><td>20 min</td></tr>
+  <tr><td>Vocabulary Challenge</td><td>10 min</td></tr>
+  <tr><td>Feedback Session</td><td>20 min</td></tr>
+  <tr><td>Action Plan</td><td>10 min</td></tr>
+  </table>
+
+  <h4>IELTS Speaking Part 1 (10 Minutes)</h4>
+  <p><strong>Topic 1 – Hometown:</strong> Where is your hometown? / What do you like most about it? / Has it changed in recent years? / Would you like to live there in the future?</p>
+  <p><strong>Topic 2 – Free Time:</strong> What do you usually do in your free time? / Do you prefer relaxing at home or going out? / Have your hobbies changed over the years?</p>
+  <p><strong>Topic 3 – Technology:</strong> How often do you use your phone? / What app do you use the most? / Has technology improved your daily life?</p>
+
+  <h4>IELTS Speaking Part 2 (15 Minutes)</h4>
+  <div class="example-box">
+    <p><strong>Cue Card:</strong> Describe a person who has taught you something important.<br>
+    You should say: who this person is / what they taught you / how they taught you / why it was important / and explain how this lesson has influenced your life.<br>
+    Preparation: 1 minute &nbsp;·&nbsp; Speaking: 2 minutes</p>
+  </div>
+
+  <h4>IELTS Speaking Part 3 (20 Minutes)</h4>
+  <p><strong>Follow-up Discussion</strong></p>
+  <div class="example-box">
+    <p><strong>Education:</strong> Should schools teach more life skills? Why?<br>
+    <strong>Society:</strong> Why do some people become good teachers?<br>
+    <strong>Learning:</strong> Is learning from experience better than learning from books?<br>
+    <strong>Technology:</strong> Will technology replace teachers one day?<br>
+    <strong>Future:</strong> How do you think education will change over the next twenty years?</p>
+  </div>
+
+  <h4>Vocabulary Challenge (10 Minutes)</h4>
+  <p>Student explains each word naturally: perseverance, innovation, sustainable, opportunity, responsibility, motivation, confidence, achievement, independence, determination.</p>
+
+  <h4>Fluency Challenge (5 Minutes)</h4>
+  <p>Student speaks continuously for 90 seconds. Topic: "What makes a successful person?" No stopping, no memorised speech, support ideas with examples.</p>
+
+  <h4>Pronunciation Check (5 Minutes)</h4>
+  <p>Read naturally: <em>I firmly believe that education plays a vital role in helping people achieve their goals because it provides opportunities to develop practical skills and broaden their horizons.</em></p>
+
+  <h4>Official IELTS Feedback Sheet</h4>
+  <table class="data-table"><tr><th>Skill</th><th>Band 5</th><th>Band 6</th><th>Band 7</th><th>Band 8</th></tr>
+  <tr><td>Fluency & Coherence</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td></tr>
+  <tr><td>Lexical Resource</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td></tr>
+  <tr><td>Grammatical Range & Accuracy</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td></tr>
+  <tr><td>Pronunciation</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td></tr>
+  </table>
+
+  <h4>Homework</h4>
+  <p><strong>Part 1 – Reflection:</strong> Identify three strengths and three areas for improvement from the mock test.</p>
+  <p><strong>Part 2 – Speaking:</strong> Redo the complete mock test without notes. Aim to reduce hesitation, improve organisation, include more examples, use advanced vocabulary naturally.</p>
+  <p><strong>Part 3 – Vocabulary Journal:</strong> Choose 15 words or collocations from previous lessons. Write a definition, one original sentence, and record yourself saying it naturally.</p>
+
+  <h4>Key Takeaway</h4>
+  <div class="example-box">A Band 7.5 candidate performs consistently across all three parts. They answer directly, develop ideas with examples, use varied vocabulary and grammar naturally, and maintain confidence. A full mock test with detailed feedback is one of the most effective ways to identify final areas for improvement.</div>
+  </div>`,
+  quiz:[
+    {q:"How long should you speak in IELTS Speaking Part 2?",opts:["30 seconds","1 minute","1–2 minutes","3 minutes"],a:2},
+    {q:"How much preparation time do you get for Part 2?",opts:["30 seconds","1 minute","2 minutes","No preparation"],a:1},
+    {q:"What are the four IELTS Speaking criteria?",opts:["Fluency, Grammar, Vocabulary, Pronunciation","Listening, Speaking, Reading, Writing","Fluency, Coherence, Lexis, Grammar","Speed, Accuracy, Range, Pronunciation"],a:0},
+    {q:"How long does a strong Part 3 answer last?",opts:["10–20 seconds","30–60 seconds","1–2 minutes","2–3 minutes"],a:1},
+    {q:"What does a Band 7 candidate do in Part 2?",opts:["Memorises answers","Gives short answers","Develops ideas with examples","Uses only simple language"],a:2},
+    {q:"Which skill is NOT one of the four IELTS Speaking criteria?",opts:["Fluency & Coherence","Lexical Resource","Grammatical Range & Accuracy","Writing Speed"],a:3},
+    {q:"What should you do if you make a mistake during the test?",opts:["Stop and restart","Ignore it completely","Correct it smoothly and continue","Apologise to the examiner"],a:2},
+    {q:"How many parts are there in the IELTS Speaking test?",opts:["2","3","4","5"],a:1},
+    {q:"What is the purpose of a mock test?",opts:["To memorise answers","To identify strengths and weaknesses","To learn new vocabulary","To practice writing"],a:1},
+    {q:"Which is a common Band 5.5 habit in Part 3?",opts:["Giving extended answers","Using varied grammar","Giving one-sentence opinions","Supporting ideas with examples"],a:2}
+  ]
+}
 ];
