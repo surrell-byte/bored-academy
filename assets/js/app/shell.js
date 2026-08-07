@@ -50,12 +50,29 @@
     const logoutBtn = document.getElementById('logoutBtn');
     if(logoutBtn){
       logoutBtn.addEventListener('click', function(){
-        if(confirm('Sign out of Bored Academy?')){
-          if(window.BoredAuth) BoredAuth.logout();
-          window.location.href = 'welcome.html';
-        }
+        showSignOutDialog();
       });
     }
+  }
+
+  function showSignOutDialog(){
+    let dialog = document.getElementById('shellSignOutDialog');
+    if(!dialog){
+      dialog = document.createElement('dialog');
+      dialog.id = 'shellSignOutDialog';
+      dialog.className = 'confirm-dialog';
+      dialog.innerHTML = `<div class="confirm-dialog-inner">
+        <h3>Sign out?</h3><p>You can sign back in any time to continue where you left off.</p>
+        <div class="confirm-dialog-actions"><button class="welcome-link-btn cancel-btn" type="button">Stay signed in</button><button class="settings-btn danger" type="button">Sign out</button></div>
+      </div>`;
+      document.body.appendChild(dialog);
+      dialog.querySelector('.cancel-btn').addEventListener('click', () => dialog.close());
+      dialog.querySelector('.settings-btn').addEventListener('click', () => {
+        if(window.BoredAuth) BoredAuth.logout();
+        window.location.href = 'welcome.html';
+      });
+    }
+    dialog.showModal();
   }
 
   function renderPhoneNav(activeTab){

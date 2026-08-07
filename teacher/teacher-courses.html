@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Courses — Bored Academy</title>
+  <link rel="icon" type="image/webp" href="../assets/img/favicon.webp">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/dashboard.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+  <script src="../assets/js/auth/roles.js"></script>
+  <script src="../assets/js/auth/auth.js"></script>
+  <script src="../assets/js/app/theme.js"></script>
+</head>
+<body class="dash-page teacher-page">
+<script>
+  (function(){
+    if(!window.BoredAuth || !BoredAuth.requireAuth()) return;
+    const user = BoredAuth.currentUser();
+    if(!window.BoredRoles || (!BoredRoles.isTeacher(user.role) && !BoredRoles.isAdmin(user.role))) window.location.href = '../student/student-dashboard.html';
+  })();
+</script>
+<div class="dash-shell">
+  <aside class="dash-sidebar">
+    <div class="dash-brand"><span class="logo"><img src="../assets/img/logo.webp" alt="Bored Academy logo" width="28" height="28"></span><h1>Bored Academy</h1></div>
+    <nav class="dash-nav">
+      <a href="teacher-dashboard.html"><span class="n-label">Dashboard</span></a>
+      <a href="teacher-courses.html" class="active"><span class="n-label">Courses</span></a>
+      <a href="teacher-assignments.html"><span class="n-label">Assignments</span></a>
+      <a href="teacher-tests.html"><span class="n-label">Tests</span></a>
+      <a href="teacher-gradebook.html"><span class="n-label">Gradebook</span></a>
+      <a href="teacher-calendar.html"><span class="n-label">Calendar</span></a>
+      <a href="teacher-settings.html"><span class="n-label">Settings</span></a>
+    </nav>
+  </aside>
+  <main class="dash-main">
+    <div class="dash-topbar"><div class="dash-topbar-right"><span class="dash-role-badge" id="roleBadge"></span></div></div>
+    <div class="dash-content">
+      <div class="dash-welcome"><h2>Course library</h2><p>Browse the courses available to your students and open any course to review its lessons.</p></div>
+      <section class="block" style="margin-top:1.4em;"><h3 class="block-title">Available courses</h3><div class="course-grid" id="courseGrid"></div></section>
+    </div>
+  </main>
+</div>
+<script src="../assets/js/app/icons.js"></script>
+<script src="../assets/js/app/teacher-ui.js"></script>
+<script src="../assets/js/data/courses.js"></script>
+<script>
+  document.getElementById('roleBadge').textContent = BoredAuth.currentUser().role.replace('_', ' ');
+  document.getElementById('courseGrid').innerHTML = COURSES.map(course => course.available
+    ? `<a class="course-card" href="../${course.url}"><div class="c-icon">${icon(course.svgIcon)}</div><h4>${course.title}</h4><div class="c-lessons">${course.blurb}</div><div class="c-action">Review course →</div></a>`
+    : `<div class="course-card soon"><div class="c-icon">${icon(course.svgIcon)}</div><h4>${course.title}</h4><div class="c-lessons">${course.blurb}</div><div class="c-action">Coming soon</div></div>`).join('');
+</script>
+</body>
+</html>

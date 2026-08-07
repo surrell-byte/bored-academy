@@ -69,17 +69,27 @@
   </main>
 </div>
 
+<dialog class="confirm-dialog" id="signOutDialog" aria-labelledby="signOutTitle">
+  <div class="confirm-dialog-inner">
+    <h3 id="signOutTitle">Sign out?</h3>
+    <p>You can sign back in any time to return to your courses, progress, and classes.</p>
+    <div class="confirm-dialog-actions">
+      <button type="button" class="welcome-link-btn cancel-btn" id="cancelSignOut">Stay signed in</button>
+      <button type="button" class="settings-btn danger" id="confirmSignOut">Sign out</button>
+    </div>
+  </div>
+</dialog>
+
 <script src="../assets/js/app/icons.js"></script>
 <script src="../assets/js/app/dashboard.js"></script>
 <script>
   document.getElementById('roleBadge').textContent = BoredAuth.currentUser().role.replace('_',' ');
   renderSettingsPage();
   document.getElementById('signOutBtn').addEventListener('click', function(){
-    if(confirm('Sign out of Bored Academy?')){
-      BoredAuth.logout();
-      window.location.href = '../welcome.html';
-    }
+    document.getElementById('signOutDialog').showModal();
   });
+  document.getElementById('cancelSignOut').addEventListener('click', () => document.getElementById('signOutDialog').close());
+  document.getElementById('confirmSignOut').addEventListener('click', function(){ BoredAuth.logout(); window.location.href = '../welcome.html'; });
 </script>
 </body>
 </html>
