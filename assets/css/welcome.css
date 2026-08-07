@@ -95,6 +95,9 @@
   font-weight:600;font-size:.88em;color:var(--muted);cursor:pointer;transition:.15s;
 }
 .auth-tab.active{background:var(--teal);color:#fff;}
+.auth-tab:focus-visible,.welcome-btn:focus-visible,.welcome-link-btn:focus-visible{
+  outline:3px solid var(--gold);outline-offset:2px;
+}
 .auth-form h2{margin:0 0 .2em;font-family:Georgia,serif;font-size:1.35em;color:var(--ink);}
 .auth-hint{margin:0 0 1.2em;color:var(--muted);font-size:.88em;}
 .auth-form label{
@@ -103,9 +106,9 @@
 .auth-form input, .auth-form select{
   display:block;width:100%;margin-top:.35em;padding:.65em .8em;
   border:1px solid var(--line);border-radius:9px;background:var(--paper);
-  color:var(--ink);font-size:.95em;font-family:inherit;
+  color:var(--ink);font-size:16px;font-family:inherit;transition:border-color .15s ease,box-shadow .15s ease;
 }
-.auth-form input:focus, .auth-form select:focus{outline:2px solid var(--teal);outline-offset:1px;}
+.auth-form input:focus, .auth-form select:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px color-mix(in srgb, var(--teal) 20%, transparent);}
 .auth-field-hint{display:block;font-weight:400;color:var(--muted-3,var(--muted));font-size:.85em;margin-top:.3em;}
 .auth-error{
   min-height:1.4em;color:var(--bad);font-size:.85em;margin:-.3em 0 .4em;
@@ -133,4 +136,7 @@
   .welcome-cta-row{justify-content:center;}
   .welcome-hero h1{font-size:2.1em;}
   .welcome-features{grid-template-columns:1fr;}
+  .auth-shell{align-items:flex-start;padding:1.25em 1em 2em;}
+  .auth-card{padding:1.5em 1.25em 1.3em;border-radius:15px;}
+  .welcome-topbar{padding:1em 1.15em;}
 }

@@ -38,8 +38,8 @@
 <main class="auth-shell">
   <div class="auth-card">
     <div class="auth-tabs">
-      <button type="button" class="auth-tab" data-tab="login">Log In</button>
-      <button type="button" class="auth-tab" data-tab="signup">Sign Up</button>
+      <button type="button" class="auth-tab" data-tab="login" aria-selected="true">Log In</button>
+      <button type="button" class="auth-tab" data-tab="signup" aria-selected="false">Sign Up</button>
     </div>
 
     <form id="loginForm" class="auth-form">
@@ -92,12 +92,17 @@
 <script>
   const loginForm = document.getElementById('loginForm');
   const signupForm = document.getElementById('signupForm');
-  const tabs = document.querySelectorAll('.auth-tab');
+  const tabs = document.querySelectorAll('[data-tab]');
 
   function showTab(name){
-    tabs.forEach(t=>t.classList.toggle('active', t.dataset.tab===name));
+    tabs.forEach(t=>{
+      const selected = t.dataset.tab === name;
+      t.classList.toggle('active', selected);
+      t.setAttribute('aria-selected', String(selected));
+    });
     loginForm.style.display = name==='login' ? '' : 'none';
     signupForm.style.display = name==='signup' ? '' : 'none';
+    document.getElementById(name === 'login' ? 'loginEmail' : 'signupName').focus();
   }
   tabs.forEach(t=> t.addEventListener('click', ()=> showTab(t.dataset.tab)));
 
@@ -109,8 +114,13 @@
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
     const errEl = document.getElementById('loginError');
+    errEl.textContent = '';
     const result = BoredAuth.login(email, password);
-    if(!result.ok){ errEl.textContent = result.error; return; }
+    if(!result.ok){
+      errEl.textContent = result.error;
+      document.getElementById('loginPassword').focus();
+      return;
+    }
     goToDashboardOrHome(result.user);
   });
 
@@ -139,7 +149,11 @@
     errEl.textContent = '';
 
     const result = BoredAuth.signUp(name, email, password, accountType);
-    if(!result.ok){ errEl.textContent = result.error; return; }
+    if(!result.ok){
+      errEl.textContent = result.error;
+      document.getElementById('signupEmail').focus();
+      return;
+    }
 
     if(accountType === 'student' && classCode && window.BoredClassroom){
       const joinResult = BoredClassroom.joinClass(result.user.email, classCode);
@@ -147,6 +161,7 @@
         BoredAuth.addClass(result.user.email, joinResult.class.id);
       } else {
         errEl.textContent = joinResult.error + ' Your account was created — you can join a class later from Settings.';
+        document.getElementById('signupClassCode').focus();
       }
     }
 
