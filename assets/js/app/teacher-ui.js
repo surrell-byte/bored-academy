@@ -17,6 +17,14 @@
       if(dashboard) dashboard.insertAdjacentElement('afterend', courses);
       else nav.appendChild(courses);
     }
+    if(!nav.querySelector('a[href="teacher-leaderboard.html"]')){
+      const leaderboard = document.createElement('a');
+      leaderboard.href = 'teacher-leaderboard.html';
+      leaderboard.innerHTML = '<span class="n-label">Leaderboard</span>';
+      const gradebook = Array.from(nav.children).find(item => item.textContent.trim() === 'Gradebook');
+      if(gradebook) gradebook.insertAdjacentElement('afterend', leaderboard);
+      else nav.appendChild(leaderboard);
+    }
     nav.querySelectorAll('a').forEach(link => {
       const label = link.querySelector('.n-label');
       const name = label ? label.textContent.trim() : link.textContent.trim();

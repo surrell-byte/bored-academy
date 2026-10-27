@@ -52,6 +52,12 @@ html[data-theme="dark"]{
   --placeholder:#9fb0ac;
 }
 *{box-sizing:border-box;}
+@view-transition{navigation:auto;}
+body.page-ready{animation:page-enter .2s ease-out both;}
+body.page-leaving{animation:page-leave .14s ease-in both;pointer-events:none;}
+@keyframes page-enter{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+@keyframes page-leave{to{opacity:0;transform:translateY(-4px)}}
+@media (prefers-reduced-motion:reduce){body.page-ready,body.page-leaving{animation:none;}}
 body.dash-page{
   margin:0;font-family:'Iowan Old Style','Georgia',serif;
   background:var(--paper);color:var(--ink);
@@ -108,6 +114,13 @@ html[data-theme="dark"] .course-card.soon{opacity:.45;}
 }
 .teacher-page .dash-content input:focus,.teacher-page .dash-content select:focus,.teacher-page .dash-content textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px color-mix(in srgb,var(--teal) 18%,transparent);}
 .welcome-btn:focus-visible,.welcome-link-btn:focus-visible,.settings-btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px;}
+.auth-tabs{display:flex;gap:.35em;max-width:440px;margin-top:1.2em;padding:4px;background:var(--paper);border:1px solid var(--line);border-radius:12px;}
+.auth-tab{flex:1;padding:.6em .5em;border:0;border-radius:8px;background:transparent;color:var(--muted);font:700 .84em Georgia,serif;cursor:pointer;}
+.auth-tab:hover{color:var(--teal-dark);background:var(--flame-soft);}
+.auth-tab.active{background:var(--teal);color:#fff;}
+.teacher-class-picker{display:flex;gap:.55em;flex-wrap:wrap;margin-top:1em;}
+.leaderboard-row{display:grid;grid-template-columns:42px minmax(0,1fr) auto auto;gap:1em;margin-bottom:.55em;}
+.leaderboard-rank{font-size:1.2em;text-align:center;}
 
 /* ---------- Topbar ---------- */
 .dash-main{padding:0 0 4em;}

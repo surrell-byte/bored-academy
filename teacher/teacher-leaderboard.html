@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Class Leaderboard — Bored Academy</title>
+  <link rel="icon" type="image/webp" href="../assets/img/favicon.webp">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/dashboard.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+  <script src="../assets/js/auth/roles.js"></script>
+  <script src="../assets/js/auth/auth.js"></script>
+  <script src="../assets/js/classroom/classroom.js"></script>
+  <script src="../assets/js/classroom/grading.js"></script>
+  <script src="../assets/js/classroom/leaderboard.js"></script>
+  <script src="../assets/js/app/theme.js"></script>
+</head>
+<body class="dash-page teacher-page">
+<script>
+  (function(){
+    if(!window.BoredAuth || !BoredAuth.requireAuth()) return;
+    const user = BoredAuth.currentUser();
+    if(!window.BoredRoles || (!BoredRoles.isTeacher(user.role) && !BoredRoles.isAdmin(user.role))) window.location.href = '../student/student-leaderboard.html';
+  })();
+</script>
+<div class="dash-shell">
+  <aside class="dash-sidebar"><div class="dash-brand"><span class="logo"><img src="../assets/img/logo.webp" alt="Bored Academy logo" width="28" height="28"></span><h1>Bored Academy</h1></div><nav class="dash-nav">
+    <a href="teacher-dashboard.html"><span class="n-label">Dashboard</span></a><a href="teacher-assignments.html"><span class="n-label">Assignments</span></a><a href="teacher-tests.html"><span class="n-label">Tests</span></a><a href="teacher-gradebook.html"><span class="n-label">Gradebook</span></a><a href="teacher-leaderboard.html" class="active"><span class="n-label">Leaderboard</span></a><a href="teacher-calendar.html"><span class="n-label">Calendar</span></a><a href="teacher-settings.html"><span class="n-label">Settings</span></a>
+  </nav></aside>
+  <main class="dash-main"><div class="dash-topbar"><div class="dash-topbar-right"><span class="dash-role-badge" id="roleBadge"></span></div></div><div class="dash-content">
+    <div class="dash-welcome"><h2>Class leaderboard</h2><p id="classPickerLine">Compare points from graded assignments.</p></div>
+    <div id="classPicker" class="teacher-class-picker"></div>
+    <div class="auth-tabs" id="periodTabs" role="group" aria-label="Leaderboard period"><button type="button" class="auth-tab" data-period="daily">Daily</button><button type="button" class="auth-tab" data-period="weekly">Weekly</button><button type="button" class="auth-tab active" data-period="monthly">Monthly</button><button type="button" class="auth-tab" data-period="all">All time</button></div>
+    <section class="block" style="margin-top:1.2em;"><h3 class="block-title">Rankings</h3><div id="rankings"></div><p id="noRankings" style="color:var(--muted);display:none;">No graded work yet for this period.</p><p id="noClasses" style="color:var(--muted);display:none;">Create a class to see its leaderboard.</p></section>
+  </div></main>
+</div>
+<script src="../assets/js/app/icons.js"></script><script src="../assets/js/app/teacher-ui.js"></script>
+<script>
+  const user = BoredAuth.currentUser(), classes = BoredClassroom.classesForTeacher(user.email); let selectedClassId = classes[0] && classes[0].id, selectedPeriod = 'monthly';
+  document.getElementById('roleBadge').textContent = user.role.replace('_', ' ');
+  document.getElementById('noClasses').style.display = classes.length ? 'none' : '';
+  const medals = ['🥇','🥈','🥉'];
+  function renderPicker(){ const el=document.getElementById('classPicker'); el.innerHTML=classes.map(c=>`<button type="button" data-id="${c.id}" class="${c.id===selectedClassId?'welcome-btn':'welcome-link-btn'}">${c.name}</button>`).join(''); el.querySelectorAll('button').forEach(b=>b.onclick=()=>{selectedClassId=b.dataset.id;renderPicker();renderRankings();}); }
+  function renderRankings(){ const ranks=selectedClassId?BoredLeaderboard.rankingsForClass(selectedClassId,selectedPeriod):[]; document.getElementById('noRankings').style.display=ranks.length?'none':''; document.getElementById('rankings').innerHTML=ranks.map((r,i)=>`<div class="stat-card leaderboard-row"><span class="leaderboard-rank">${medals[i]||'#'+(i+1)}</span><strong>${r.studentName}</strong><span>${r.gradedCount} graded</span><b>${r.points} pts</b></div>`).join(''); }
+  document.querySelectorAll('#periodTabs button').forEach(b=>b.onclick=()=>{selectedPeriod=b.dataset.period;document.querySelectorAll('#periodTabs button').forEach(x=>x.classList.toggle('active',x===b));renderRankings();}); renderPicker();renderRankings();
+</script>
+</body>
+</html>

@@ -169,5 +169,24 @@
     return localStorage.getItem('boredacademy:teacher_access') === '1';
   }
 
+  // Keep same-site navigation feeling continuous without delaying form submits,
+  // downloads, external links, or modified clicks that users expect browsers
+  // to handle normally.
+  function enablePageTransitions(){
+    document.body.classList.add('page-ready');
+    document.addEventListener('click', function(event){
+      const link = event.target.closest && event.target.closest('a[href]');
+      if(!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      if(link.target && link.target !== '_self' || link.hasAttribute('download')) return;
+      const url = new URL(link.href, window.location.href);
+      if(url.origin !== window.location.origin || url.pathname === window.location.pathname && url.search === window.location.search && url.hash) return;
+      event.preventDefault();
+      document.body.classList.add('page-leaving');
+      window.setTimeout(function(){ window.location.href = url.href; }, 145);
+    });
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', enablePageTransitions);
+  else enablePageTransitions();
+
   window.BoredAuth = { currentUser, signUp, login, logout, requireAuth, setRole, addClass, firebaseAvailable, markOnboardingDone, needsOnboarding, setTeacherAccess, hasTeacherAccess, rootRelative };
 })();
