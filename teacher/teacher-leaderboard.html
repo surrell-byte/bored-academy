@@ -13,7 +13,7 @@
   <script src="../assets/js/classroom/classroom.js"></script>
   <script src="../assets/js/classroom/grading.js"></script>
   <script src="../assets/js/classroom/leaderboard.js"></script>
-  <script src="../assets/js/app/theme.js"></script>
+  <script src="../assets/js/app/theme.js?v=3"></script>
 </head>
 <body class="dash-page teacher-page">
 <script>
@@ -39,7 +39,7 @@
   const user = BoredAuth.currentUser(), classes = BoredClassroom.classesForTeacher(user.email); let selectedClassId = classes[0] && classes[0].id, selectedPeriod = 'monthly';
   document.getElementById('roleBadge').textContent = user.role.replace('_', ' ');
   document.getElementById('noClasses').style.display = classes.length ? 'none' : '';
-  const medals = ['🥇','🥈','🥉'];
+  const medals = ['1','2','3'];
   function renderPicker(){ const el=document.getElementById('classPicker'); el.innerHTML=classes.map(c=>`<button type="button" data-id="${c.id}" class="${c.id===selectedClassId?'welcome-btn':'welcome-link-btn'}">${c.name}</button>`).join(''); el.querySelectorAll('button').forEach(b=>b.onclick=()=>{selectedClassId=b.dataset.id;renderPicker();renderRankings();}); }
   function renderRankings(){ const ranks=selectedClassId?BoredLeaderboard.rankingsForClass(selectedClassId,selectedPeriod):[]; document.getElementById('noRankings').style.display=ranks.length?'none':''; document.getElementById('rankings').innerHTML=ranks.map((r,i)=>`<div class="stat-card leaderboard-row"><span class="leaderboard-rank">${medals[i]||'#'+(i+1)}</span><strong>${r.studentName}</strong><span>${r.gradedCount} graded</span><b>${r.points} pts</b></div>`).join(''); }
   document.querySelectorAll('#periodTabs button').forEach(b=>b.onclick=()=>{selectedPeriod=b.dataset.period;document.querySelectorAll('#periodTabs button').forEach(x=>x.classList.toggle('active',x===b));renderRankings();}); renderPicker();renderRankings();

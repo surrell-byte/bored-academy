@@ -214,7 +214,7 @@ cat > "student/student-leaderboard.html" <<'EOF'
     });
   });
 
-  const MEDALS = ['🥇', '🥈', '🥉'];
+  const MEDALS = ['1', '2', '3'];
 
   function renderRankings(){
     document.getElementById('classPickerLine').textContent = selectedClassId

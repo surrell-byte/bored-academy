@@ -53,6 +53,10 @@ html[data-theme="dark"]{
 }
 *{box-sizing:border-box;}
 @view-transition{navigation:auto;}
+::view-transition-old(root){animation:page-view-out .14s ease-in both;}
+::view-transition-new(root){animation:page-view-in .18s ease-out both;}
+@keyframes page-view-out{from{opacity:1}to{opacity:.96}}
+@keyframes page-view-in{from{opacity:.96}to{opacity:1}}
 body.page-ready{animation:page-enter .2s ease-out both;}
 body.page-leaving{animation:page-leave .14s ease-in both;pointer-events:none;}
 @keyframes page-enter{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}

@@ -85,5 +85,42 @@
     if(document.documentElement) observer.observe(document.documentElement, {childList:true, subtree:true});
   }
 
+  function enablePageTransitions(){
+    if(document.documentElement.dataset.transitionsReady === 'true') return;
+    document.documentElement.dataset.transitionsReady = 'true';
+    document.body.classList.add('page-ready');
+
+    document.addEventListener('click', function(event){
+      const link = event.target.closest && event.target.closest('a[href]');
+      if(!link || event.defaultPrevented || event.button !== 0 || link.target && link.target !== '_self' || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || link.hasAttribute('download')) return;
+      let url;
+      try{ url = new URL(link.href, window.location.href); }
+      catch(e){ return; }
+      if(url.origin !== window.location.origin || url.pathname === window.location.pathname && url.search === window.location.search && url.hash) return;
+      event.preventDefault();
+      document.body.classList.remove('page-ready');
+      document.body.classList.add('page-leaving');
+      window.setTimeout(function(){ window.location.href = url.href; }, 140);
+    });
+
+    document.addEventListener('pointerover', function(event){
+      const link = event.target.closest && event.target.closest('a[href]');
+      if(!link) return;
+      let url;
+      try{ url = new URL(link.href, window.location.href); }
+      catch(e){ return; }
+      if(url.origin !== window.location.origin || url.pathname === window.location.pathname && url.search === window.location.search || url.hash) return;
+      const alreadyPrefetched = Array.from(document.querySelectorAll('link[rel="prefetch"]')).some(function(item){ return item.href === url.href; });
+      if(alreadyPrefetched) return;
+      const prefetch = document.createElement('link');
+      prefetch.rel = 'prefetch';
+      prefetch.href = url.href;
+      document.head.appendChild(prefetch);
+    });
+  }
+
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', enablePageTransitions);
+  else enablePageTransitions();
+
   window.BoredTheme = { get: getTheme, set: setTheme };
 })();
