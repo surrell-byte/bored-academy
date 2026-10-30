@@ -4,7 +4,7 @@
 window.COURSES = [
   {
     id: "chemistry",
-    icon: "🧪",
+    icon: "flask",
     svgIcon: "flask",
     title: "Introduction to Chemistry",
     blurb: "Matter, atomic structure, states of matter and lab safety.",
@@ -14,7 +14,7 @@ window.COURSES = [
   },
   {
     id: "ielts",
-    icon: "🗣️",
+    icon: "mic",
     svgIcon: "mic",
     title: "IELTS Speaking (Band 5.5 → 7.5)",
     blurb: "Fluency formulas, vocabulary upgrades, grammar and Part 2 cue-card strategy.",
@@ -24,7 +24,7 @@ window.COURSES = [
   },
   {
     id: "cet4",
-    icon: "📝",
+    icon: "pencil",
     svgIcon: "pencil",
     title: "CET-4 Master Course",
     blurb: "12-week exam prep: grammar, listening, reading, writing and translation for the CET-4.",
@@ -34,7 +34,7 @@ window.COURSES = [
   },
   {
     id: "physics",
-    icon: "⚡",
+    icon: "zap",
     svgIcon: "zap",
     title: "Physics",
     blurb: "Forces, motion, energy and electricity.",
@@ -43,7 +43,7 @@ window.COURSES = [
   },
   {
     id: "maths",
-    icon: "📐",
+    icon: "ruler",
     svgIcon: "ruler",
     title: "Mathematics",
     blurb: "Algebra, geometry, statistics and problem solving.",
@@ -52,7 +52,7 @@ window.COURSES = [
   },
   {
     id: "geography",
-    icon: "🌍",
+    icon: "globe",
     svgIcon: "globe",
     title: "Geography",
     blurb: "Maps, climate, ecosystems and human geography.",
@@ -61,7 +61,7 @@ window.COURSES = [
   },
   {
     id: "computer-science",
-    icon: "💻",
+    icon: "monitor",
     svgIcon: "monitor",
     title: "Computer Science",
     blurb: "Algorithms, data structures and programming fundamentals.",

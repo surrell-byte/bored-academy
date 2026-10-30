@@ -50,8 +50,8 @@ window.COURSE_DATA = [
   <h4>Band 5.5 vs Band 7</h4>
   <p><strong>Question:</strong> Do you enjoy cooking?</p>
   <div class="misconceptions">
-  <div class="row wrong">❌ Band 5.5: “Yes, I do. It's fun.” (About 3 seconds.)</div>
-  <div class="row right">✔ Band 7: “Yes, I really enjoy cooking, especially at weekends when I have more free time. The main reason is that I find it relaxing, and I also enjoy trying new recipes. For example, last weekend I made homemade pizza with my family, and it turned out really well. It's something I'd like to do more often.”</div>
+  <div class="row wrong">Incorrect: Band 5.5: “Yes, I do. It's fun.” (About 3 seconds.)</div>
+  <div class="row right">Correct: Band 7: “Yes, I really enjoy cooking, especially at weekends when I have more free time. The main reason is that I find it relaxing, and I also enjoy trying new recipes. For example, last weekend I made homemade pizza with my family, and it turned out really well. It's something I'd like to do more often.”</div>
   </div>
   <h4>Vocabulary Upgrade</h4>
   <table class="data-table"><tr><th>Basic</th><th>Better</th></tr>
@@ -154,8 +154,8 @@ window.COURSE_DATA = [
   <h4>Band 5.5 vs Band 7</h4>
   <p><strong>Question:</strong> Do you like reading?</p>
   <div class="misconceptions">
-  <div class="row wrong">❌ Band 5.5: “Yes, I do. It's interesting.”</div>
-  <div class="row right">✔ Band 7: “Yes, I'm quite fond of reading because it helps me relax after work. For example, I recently finished a mystery novel that kept me interested from beginning to end. Reading also helps me improve my vocabulary, so I try to read for at least thirty minutes every evening.”</div>
+  <div class="row wrong">Incorrect: Band 5.5: “Yes, I do. It's interesting.”</div>
+  <div class="row right">Correct: Band 7: “Yes, I'm quite fond of reading because it helps me relax after work. For example, I recently finished a mystery novel that kept me interested from beginning to end. Reading also helps me improve my vocabulary, so I try to read for at least thirty minutes every evening.”</div>
   </div>
   <h4>Vocabulary Upgrade</h4>
   <table class="data-table"><tr><th>Basic</th><th>Better</th></tr>
@@ -183,14 +183,14 @@ window.COURSE_DATA = [
   </table>
   <h4>Grammar Focus</h4>
   <div class="misconceptions">
-  <div class="row wrong">❌ I have visited Victoria Falls last year.</div>
-  <div class="row right">✔ I visited Victoria Falls last year.</div>
-  <div class="row wrong">❌ I went there several times this year.</div>
-  <div class="row right">✔ I've been there several times this year.</div>
-  <div class="row wrong">❌ Yesterday I have watched a movie.</div>
-  <div class="row right">✔ Yesterday I watched a movie.</div>
-  <div class="row wrong">❌ I have finished school in 2023.</div>
-  <div class="row right">✔ I finished school in 2023.</div>
+  <div class="row wrong">Incorrect: I have visited Victoria Falls last year.</div>
+  <div class="row right">Correct: I visited Victoria Falls last year.</div>
+  <div class="row wrong">Incorrect: I went there several times this year.</div>
+  <div class="row right">Correct: I've been there several times this year.</div>
+  <div class="row wrong">Incorrect: Yesterday I have watched a movie.</div>
+  <div class="row right">Correct: Yesterday I watched a movie.</div>
+  <div class="row wrong">Incorrect: I have finished school in 2023.</div>
+  <div class="row right">Correct: I finished school in 2023.</div>
   </div>
   <h4>Useful Expressions</h4><ul>
   <li>To begin with...</li>
@@ -259,7 +259,7 @@ window.COURSE_DATA = [
   <h4>Band 5.5 vs Band 7</h4>
   <p><strong>Question:</strong> Has your daily routine changed over the years?</p>
   <div class="misconceptions">
-  <div class="row right">✔ Band 7: “Yes, quite a lot. When I was younger, I spent most of my free time playing video games. Nowadays, I tend to focus more on work and improving my English. I've also started exercising regularly because I want to stay healthy. Overall, I think my routine is much more balanced than it used to be.”</div>
+  <div class="row right">Correct: Band 7: “Yes, quite a lot. When I was younger, I spent most of my free time playing video games. Nowadays, I tend to focus more on work and improving my English. I've also started exercising regularly because I want to stay healthy. Overall, I think my routine is much more balanced than it used to be.”</div>
   </div>
   <h4>Vocabulary Upgrade</h4>
   <table class="data-table"><tr><th>Basic</th><th>Better</th></tr>
@@ -396,12 +396,12 @@ window.COURSE_DATA = [
   <div class="example-box">Adding the Takeaway is particularly valuable for Band 7+ because it shows reflection and helps extend an answer naturally.</div>
   <h4>Grammar Focus</h4>
   <div class="misconceptions">
-  <div class="row wrong">❌ My father is a doctor. He works in a hospital.</div>
-  <div class="row right">✔ My father, who works in a hospital, is a doctor.</div>
-  <div class="row wrong">❌ My friend loves football. He plays every weekend.</div>
-  <div class="row right">✔ My friend, who loves football, plays every weekend.</div>
-  <div class="row wrong">❌ My grandmother tells wonderful stories. She is eighty years old.</div>
-  <div class="row right">✔ My grandmother, who is eighty years old, tells wonderful stories.</div>
+  <div class="row wrong">Incorrect: My father is a doctor. He works in a hospital.</div>
+  <div class="row right">Correct: My father, who works in a hospital, is a doctor.</div>
+  <div class="row wrong">Incorrect: My friend loves football. He plays every weekend.</div>
+  <div class="row right">Correct: My friend, who loves football, plays every weekend.</div>
+  <div class="row wrong">Incorrect: My grandmother tells wonderful stories. She is eighty years old.</div>
+  <div class="row right">Correct: My grandmother, who is eighty years old, tells wonderful stories.</div>
   </div>
   <h4>Useful Expressions</h4><ul>
   <li>We get along really well.</li>
@@ -505,10 +505,10 @@ window.COURSE_DATA = [
   </table>
   <h4>Grammar Focus</h4>
   <div class="misconceptions">
-  <div class="row wrong">❌ Paris is __________ (beautiful) my hometown.</div>
-  <div class="row right">✔ Paris is more beautiful than my hometown.</div>
-  <div class="row wrong">❌ It was __________ (good) holiday I've ever had.</div>
-  <div class="row right">✔ It was the best holiday I've ever had.</div>
+  <div class="row wrong">Incorrect: Paris is __________ (beautiful) my hometown.</div>
+  <div class="row right">Correct: Paris is more beautiful than my hometown.</div>
+  <div class="row wrong">Incorrect: It was __________ (good) holiday I've ever had.</div>
+  <div class="row right">Correct: It was the best holiday I've ever had.</div>
   </div>
   <h4>Useful Expressions</h4><ul>
   <li>It's well worth visiting.</li>
@@ -602,10 +602,10 @@ window.COURSE_DATA = [
   </table>
   <h4>Grammar Focus</h4>
   <div class="misconceptions">
-  <div class="row wrong">❌ Home cooking is __________ (healthy) fast food.</div>
-  <div class="row right">✔ Home cooking is healthier than fast food.</div>
-  <div class="row wrong">❌ Eating at home is one of __________ (good) ways to save money.</div>
-  <div class="row right">✔ Eating at home is one of the best ways to save money.</div>
+  <div class="row wrong">Incorrect: Home cooking is __________ (healthy) fast food.</div>
+  <div class="row right">Correct: Home cooking is healthier than fast food.</div>
+  <div class="row wrong">Incorrect: Eating at home is one of __________ (good) ways to save money.</div>
+  <div class="row right">Correct: Eating at home is one of the best ways to save money.</div>
   </div>
   <h4>Useful Expressions</h4><ul>
   <li>I have a sweet tooth.</li>
@@ -675,7 +675,7 @@ window.COURSE_DATA = [
   <h4>Band 5.5 vs Band 7</h4>
   <p><strong>Question:</strong> Has technology improved education?</p>
   <div class="misconceptions">
-  <div class="row right">✔ Band 7: “In my opinion, technology has made education much more accessible. That's because students can access online courses, educational videos, and digital libraries from almost anywhere. For example, many people now learn English through online platforms instead of attending traditional classes. Overall, I think technology has created far more opportunities for learners around the world.”</div>
+  <div class="row right">Correct: Band 7: “In my opinion, technology has made education much more accessible. That's because students can access online courses, educational videos, and digital libraries from almost anywhere. For example, many people now learn English through online platforms instead of attending traditional classes. Overall, I think technology has created far more opportunities for learners around the world.”</div>
   </div>
   <h4>Vocabulary Upgrade</h4>
   <table class="data-table"><tr><th>Basic</th><th>Better</th></tr>
@@ -706,10 +706,10 @@ window.COURSE_DATA = [
   </table>
   <h4>Grammar Focus</h4>
   <div class="misconceptions">
-  <div class="row wrong">❌ I think...</div>
-  <div class="row right">✔ In my opinion... / Personally speaking... / From my point of view... / As far as I'm concerned...</div>
-  <div class="row wrong">❌ Strong opinions</div>
-  <div class="row right">✔ There's no doubt that... / I'm convinced that... / I firmly believe that...</div>
+  <div class="row wrong">Incorrect: I think...</div>
+  <div class="row right">Correct: In my opinion... / Personally speaking... / From my point of view... / As far as I'm concerned...</div>
+  <div class="row wrong">Incorrect: Strong opinions</div>
+  <div class="row right">Correct: There's no doubt that... / I'm convinced that... / I firmly believe that...</div>
   </div>
   <h4>Useful Expressions</h4><ul>
   <li>Technology has transformed our lives.</li>
@@ -777,7 +777,7 @@ window.COURSE_DATA = [
   <h4>Band 5.5 vs Band 7</h4>
   <p><strong>Question:</strong> What career would you like to have?</p>
   <div class="misconceptions">
-  <div class="row right">✔ Band 7: “I'd like to pursue a career in software engineering because I've always been interested in technology. It would give me plenty of opportunities to solve problems and continue learning new skills. At the moment, I'm working on improving my programming skills by taking online courses and building small projects. In the long term, I hope to work for an international company and eventually lead my own development team.”</div>
+  <div class="row right">Correct: Band 7: “I'd like to pursue a career in software engineering because I've always been interested in technology. It would give me plenty of opportunities to solve problems and continue learning new skills. At the moment, I'm working on improving my programming skills by taking online courses and building small projects. In the long term, I hope to work for an international company and eventually lead my own development team.”</div>
   </div>
   <h4>Vocabulary Upgrade</h4>
   <table class="data-table"><tr><th>Basic</th><th>Better</th></tr>
@@ -946,7 +946,7 @@ window.COURSE_DATA = [
   <h4>Band 5.5 vs Band 7</h4>
   <p><strong>Question:</strong> Describe a memorable celebration.</p>
   <div class="misconceptions">
-  <div class="row right">✔ Band 7: “I'd like to talk about my university graduation, which took place two years ago. At first, I felt nervous because I had to give a short speech in front of my classmates and teachers. While everyone was waiting for the ceremony to begin, I was trying to stay calm. The highlight of the day was receiving my certificate and celebrating with my family afterwards. Looking back, it was a once-in-a-lifetime experience that made me realise how important hard work and determination are.”</div>
+  <div class="row right">Correct: Band 7: “I'd like to talk about my university graduation, which took place two years ago. At first, I felt nervous because I had to give a short speech in front of my classmates and teachers. While everyone was waiting for the ceremony to begin, I was trying to stay calm. The highlight of the day was receiving my certificate and celebrating with my family afterwards. Looking back, it was a once-in-a-lifetime experience that made me realise how important hard work and determination are.”</div>
   </div>
   <h4>Vocabulary Upgrade</h4>
   <table class="data-table"><tr><th>Basic</th><th>Better</th></tr>

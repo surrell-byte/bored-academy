@@ -44,14 +44,45 @@
       btn.addEventListener('click', ()=> setTheme(t.id));
       wrap.appendChild(btn);
     });
-    document.body.appendChild(wrap);
+    const courseToolbar = document.querySelector('.course-toolbar-actions');
+    if(courseToolbar){ courseToolbar.appendChild(wrap); }
+    else { document.body.appendChild(wrap); }
     setTheme(getTheme());
   }
 
   if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', mountSwitcher);
+    document.addEventListener('DOMContentLoaded', function(){
+      mountSwitcher();
+      window.setTimeout(function(){
+        mountSwitcher();
+        const toolbar = document.querySelector('.course-toolbar-actions');
+        const switcher = document.querySelector('.theme-switcher');
+        if(toolbar && switcher) toolbar.appendChild(switcher);
+      }, 50);
+    });
   } else {
     mountSwitcher();
+    window.setTimeout(function(){
+      mountSwitcher();
+      const toolbar = document.querySelector('.course-toolbar-actions');
+      const switcher = document.querySelector('.theme-switcher');
+      if(toolbar && switcher) toolbar.appendChild(switcher);
+    }, 50);
+  }
+
+  if(typeof MutationObserver !== 'undefined'){
+    let placed = false;
+    const observer = new MutationObserver(function(){
+      const toolbar = document.querySelector('.course-toolbar-actions');
+      const switcher = document.querySelector('.theme-switcher');
+      if(toolbar && switcher && switcher.parentElement !== toolbar){
+        toolbar.appendChild(switcher);
+        placed = true;
+      } else if(placed){
+        observer.disconnect();
+      }
+    });
+    if(document.documentElement) observer.observe(document.documentElement, {childList:true, subtree:true});
   }
 
   window.BoredTheme = { get: getTheme, set: setTheme };

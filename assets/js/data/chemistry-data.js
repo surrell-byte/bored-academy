@@ -53,12 +53,12 @@ window.COURSE_DATA = [
   <div class="example-box"><strong>Think like a chemist — a candle:</strong> before lighting, wax is solid. When lit, wax melts, evaporates, and burns, producing heat, light, and new substances (carbon dioxide and water vapor). A chemist asks: why does this happen? What new substances are made? Can we measure the energy released?</div>
 
   <div class="misconceptions">
-    <div class="row wrong">❌ Chemistry is only done in laboratories.</div>
-    <div class="row right">✔ Chemistry happens everywhere.</div>
-    <div class="row wrong">❌ Chemicals are always dangerous.</div>
-    <div class="row right">✔ Everything is made of chemicals, including water and oxygen.</div>
-    <div class="row wrong">❌ Natural substances are always safe.</div>
-    <div class="row right">✔ Some natural substances, such as poisonous mushrooms or snake venom, can be very dangerous.</div>
+    <div class="row wrong">Incorrect: Chemistry is only done in laboratories.</div>
+    <div class="row right">Correct: Chemistry happens everywhere.</div>
+    <div class="row wrong">Incorrect: Chemicals are always dangerous.</div>
+    <div class="row right">Correct: Everything is made of chemicals, including water and oxygen.</div>
+    <div class="row wrong">Incorrect: Natural substances are always safe.</div>
+    <div class="row right">Correct: Some natural substances, such as poisonous mushrooms or snake venom, can be very dangerous.</div>
   </div>
   </div>`,
   quiz:[
@@ -116,14 +116,14 @@ window.COURSE_DATA = [
   <h4>Safety symbols</h4>
   <table class="data-table">
     <tr><th>Symbol</th><th>Meaning</th></tr>
-    <tr><td>🔥</td><td>Flammable</td></tr>
-    <tr><td>☠️</td><td>Toxic</td></tr>
-    <tr><td>🧪</td><td>Corrosive</td></tr>
-    <tr><td>💥</td><td>Explosive</td></tr>
-    <tr><td>⚠️</td><td>Irritant / Harmful</td></tr>
-    <tr><td>🌳🐟</td><td>Environmental Hazard</td></tr>
-    <tr><td>🔥⭕</td><td>Oxidizing</td></tr>
-    <tr><td>🧬</td><td>Health Hazard</td></tr>
+    <tr><td><strong>FL</strong></td><td>Flammable</td></tr>
+    <tr><td><strong>TOX</strong></td><td>Toxic</td></tr>
+    <tr><td><strong>COR</strong></td><td>Corrosive</td></tr>
+    <tr><td><strong>EXP</strong></td><td>Explosive</td></tr>
+    <tr><td><strong>IRR</strong></td><td>Irritant / Harmful</td></tr>
+    <tr><td><strong>ENV</strong></td><td>Environmental Hazard</td></tr>
+    <tr><td><strong>OX</strong></td><td>Oxidizing</td></tr>
+    <tr><td><strong>HH</strong></td><td>Health Hazard</td></tr>
   </table>
 
   <h4>What to do in an emergency</h4>
@@ -136,10 +136,10 @@ window.COURSE_DATA = [
   </ul>
 
   <div class="misconceptions">
-    <div class="row wrong">❌ Smelling chemicals directly.</div>
-    <div class="row right">✔ Use the wafting method.</div>
-    <div class="row wrong">❌ Leaving a flame unattended.</div>
-    <div class="row right">✔ Turn off the burner when not in use.</div>
+    <div class="row wrong">Incorrect: Smelling chemicals directly.</div>
+    <div class="row right">Correct: Use the wafting method.</div>
+    <div class="row wrong">Incorrect: Leaving a flame unattended.</div>
+    <div class="row right">Correct: Turn off the burner when not in use.</div>
   </div>
   </div>`,
   quiz:[
@@ -206,12 +206,12 @@ window.COURSE_DATA = [
   <p>A <strong>fair test</strong> ensures that any change in the results is caused only by the independent variable — changing more than one variable at a time makes it impossible to know what caused the results.</p>
 
   <div class="misconceptions">
-    <div class="row wrong">❌ Changing more than one variable.</div>
-    <div class="row right">✔ Change only the independent variable.</div>
-    <div class="row wrong">❌ Writing a hypothesis as a fact.</div>
-    <div class="row right">✔ Write it as a prediction.</div>
-    <div class="row wrong">❌ Drawing conclusions without evidence.</div>
-    <div class="row right">✔ Base conclusions on the results collected.</div>
+    <div class="row wrong">Incorrect: Changing more than one variable.</div>
+    <div class="row right">Correct: Change only the independent variable.</div>
+    <div class="row wrong">Incorrect: Writing a hypothesis as a fact.</div>
+    <div class="row right">Correct: Write it as a prediction.</div>
+    <div class="row wrong">Incorrect: Drawing conclusions without evidence.</div>
+    <div class="row right">Correct: Base conclusions on the results collected.</div>
   </div>
   </div>`,
   quiz:[
@@ -285,10 +285,10 @@ window.COURSE_DATA = [
   <div class="example-box">Convert 2500 g to kg → 2500 ÷ 1000 = <strong>2.5 kg</strong><br>Convert 4.2 L to mL → 4.2 × 1000 = <strong>4200 mL</strong><br>Convert 350 mm to cm → 350 ÷ 10 = <strong>35 cm</strong></div>
 
   <div class="misconceptions">
-    <div class="row wrong">❌ Reading the top of the meniscus.</div>
-    <div class="row right">✔ Read the bottom of the meniscus (for most liquids).</div>
-    <div class="row wrong">❌ Using the wrong instrument.</div>
-    <div class="row right">✔ Choose the instrument that provides the most suitable accuracy.</div>
+    <div class="row wrong">Incorrect: Reading the top of the meniscus.</div>
+    <div class="row right">Correct: Read the bottom of the meniscus (for most liquids).</div>
+    <div class="row wrong">Incorrect: Using the wrong instrument.</div>
+    <div class="row right">Correct: Choose the instrument that provides the most suitable accuracy.</div>
   </div>
   </div>`,
   quiz:[
@@ -331,10 +331,10 @@ window.COURSE_DATA = [
 
   <table class="data-table">
     <tr><th>Situation</th><th>Accurate?</th><th>Precise?</th></tr>
-    <tr><td>Close to true value and close together</td><td>✅</td><td>✅</td></tr>
-    <tr><td>Close together but far from true value</td><td>❌</td><td>✅</td></tr>
-    <tr><td>Close to true value but spread out</td><td>✅</td><td>❌</td></tr>
-    <tr><td>Far from true value and spread out</td><td>❌</td><td>❌</td></tr>
+    <tr><td>Close to true value and close together</td><td>Complete</td><td>Complete</td></tr>
+    <tr><td>Close together but far from true value</td><td aria-label="No">—</td><td>Complete</td></tr>
+    <tr><td>Close to true value but spread out</td><td>Complete</td><td aria-label="No">—</td></tr>
+    <tr><td>Far from true value and spread out</td><td aria-label="No">—</td><td aria-label="No">—</td></tr>
   </table>
 
   <h4>Errors</h4>
@@ -353,10 +353,10 @@ window.COURSE_DATA = [
   <p>3 500 000 = 3.5 × 10⁶ &nbsp;&nbsp; 0.00042 = 4.2 × 10⁻⁴</p>
 
   <div class="misconceptions">
-    <div class="row wrong">❌ Confusing accuracy with precision.</div>
-    <div class="row right">✔ Accuracy = closeness to the true value; precision = closeness of repeated measurements.</div>
-    <div class="row wrong">❌ Counting leading zeros as significant figures.</div>
-    <div class="row right">✔ Leading zeros are placeholders and are not significant.</div>
+    <div class="row wrong">Incorrect: Confusing accuracy with precision.</div>
+    <div class="row right">Correct: Accuracy = closeness to the true value; precision = closeness of repeated measurements.</div>
+    <div class="row wrong">Incorrect: Counting leading zeros as significant figures.</div>
+    <div class="row right">Correct: Leading zeros are placeholders and are not significant.</div>
   </div>
   </div>`,
   quiz:[
@@ -411,12 +411,12 @@ window.COURSE_DATA = [
   <div class="example-box"><strong>Why can you squeeze air into a bicycle pump?</strong> Air is a gas, so its particles are far apart and can be pushed closer together.<br><strong>Why does a brick keep its shape?</strong> A brick is a solid, so its particles are held in fixed positions by strong forces.</div>
 
   <div class="misconceptions">
-    <div class="row wrong">❌ Liquids have no volume.</div>
-    <div class="row right">✔ Liquids have a fixed volume but no fixed shape.</div>
-    <div class="row wrong">❌ Gases have no mass.</div>
-    <div class="row right">✔ Gases have mass and occupy space.</div>
-    <div class="row wrong">❌ Solid particles do not move.</div>
-    <div class="row right">✔ Solid particles vibrate about fixed positions.</div>
+    <div class="row wrong">Incorrect: Liquids have no volume.</div>
+    <div class="row right">Correct: Liquids have a fixed volume but no fixed shape.</div>
+    <div class="row wrong">Incorrect: Gases have no mass.</div>
+    <div class="row right">Correct: Gases have mass and occupy space.</div>
+    <div class="row wrong">Incorrect: Solid particles do not move.</div>
+    <div class="row right">Correct: Solid particles vibrate about fixed positions.</div>
   </div>
   </div>`,
   quiz:[
@@ -489,12 +489,12 @@ window.COURSE_DATA = [
   <p>During melting and boiling, temperature stays constant because the energy supplied overcomes the forces of attraction between particles rather than increasing their kinetic energy.</p>
 
   <div class="misconceptions">
-    <div class="row wrong">❌ Boiling and evaporation are the same.</div>
-    <div class="row right">✔ Boiling occurs throughout the liquid at a fixed temperature; evaporation happens only at the surface at any temperature.</div>
-    <div class="row wrong">❌ Melting changes water into a new substance.</div>
-    <div class="row right">✔ Melted ice is still water (H₂O).</div>
-    <div class="row wrong">❌ All solids melt before becoming gases.</div>
-    <div class="row right">✔ Some solids, such as dry ice, sublime directly into gases.</div>
+    <div class="row wrong">Incorrect: Boiling and evaporation are the same.</div>
+    <div class="row right">Correct: Boiling occurs throughout the liquid at a fixed temperature; evaporation happens only at the surface at any temperature.</div>
+    <div class="row wrong">Incorrect: Melting changes water into a new substance.</div>
+    <div class="row right">Correct: Melted ice is still water (H₂O).</div>
+    <div class="row wrong">Incorrect: All solids melt before becoming gases.</div>
+    <div class="row right">Correct: Some solids, such as dry ice, sublime directly into gases.</div>
   </div>
   </div>`,
   quiz:[
@@ -554,10 +554,10 @@ window.COURSE_DATA = [
   <p>At <strong>equilibrium</strong>, particles are evenly distributed — they are still moving randomly, but there is no further net movement.</p>
 
   <div class="misconceptions">
-    <div class="row wrong">❌ Diffusion only happens in gases.</div>
-    <div class="row right">✔ Diffusion occurs in gases, liquids, and solids, but is much slower in solids.</div>
-    <div class="row wrong">❌ Particles stop moving at equilibrium.</div>
-    <div class="row right">✔ Particles keep moving randomly; only the net movement stops.</div>
+    <div class="row wrong">Incorrect: Diffusion only happens in gases.</div>
+    <div class="row right">Correct: Diffusion occurs in gases, liquids, and solids, but is much slower in solids.</div>
+    <div class="row wrong">Incorrect: Particles stop moving at equilibrium.</div>
+    <div class="row right">Correct: Particles keep moving randomly; only the net movement stops.</div>
   </div>
   </div>`,
   quiz:[
@@ -616,10 +616,10 @@ window.COURSE_DATA = [
   <div class="example-box">Everyday examples: dust dancing in sunlight, smoke particles moving randomly, fat droplets in milk under a microscope.</div>
 
   <div class="misconceptions">
-    <div class="row wrong">❌ Brownian motion is caused by living organisms.</div>
-    <div class="row right">✔ It is caused by collisions with molecules.</div>
-    <div class="row wrong">❌ Molecules stop moving when a liquid appears still.</div>
-    <div class="row right">✔ Molecules are always moving unless at absolute zero (0 K).</div>
+    <div class="row wrong">Incorrect: Brownian motion is caused by living organisms.</div>
+    <div class="row right">Correct: It is caused by collisions with molecules.</div>
+    <div class="row wrong">Incorrect: Molecules stop moving when a liquid appears still.</div>
+    <div class="row right">Correct: Molecules are always moving unless at absolute zero (0 K).</div>
   </div>
   </div>`,
   quiz:[
@@ -670,10 +670,10 @@ window.COURSE_DATA = [
   <p>The Earth's atmosphere exerts atmospheric pressure on everything, but we don't normally feel it because it acts equally in all directions.</p>
 
   <div class="misconceptions">
-    <div class="row wrong">❌ Gases have no mass.</div>
-    <div class="row right">✔ Gases have mass and occupy space.</div>
-    <div class="row wrong">❌ Gas particles expand when heated.</div>
-    <div class="row right">✔ The particles themselves do not expand; they move faster and spread farther apart.</div>
+    <div class="row wrong">Incorrect: Gases have no mass.</div>
+    <div class="row right">Correct: Gases have mass and occupy space.</div>
+    <div class="row wrong">Incorrect: Gas particles expand when heated.</div>
+    <div class="row right">Correct: The particles themselves do not expand; they move faster and spread farther apart.</div>
   </div>
   </div>`,
   quiz:[
@@ -734,10 +734,10 @@ window.COURSE_DATA = [
   </ul>
 
   <div class="misconceptions">
-    <div class="row wrong">❌ Electrons orbit exactly like planets.</div>
-    <div class="row right">✔ Electrons occupy energy levels (shells); modern science describes them as probability regions.</div>
-    <div class="row wrong">❌ The nucleus fills most of the atom.</div>
-    <div class="row right">✔ The nucleus is tiny but contains almost all the mass.</div>
+    <div class="row wrong">Incorrect: Electrons orbit exactly like planets.</div>
+    <div class="row right">Correct: Electrons occupy energy levels (shells); modern science describes them as probability regions.</div>
+    <div class="row wrong">Incorrect: The nucleus fills most of the atom.</div>
+    <div class="row right">Correct: The nucleus is tiny but contains almost all the mass.</div>
   </div>
   </div>`,
   quiz:[
@@ -789,12 +789,12 @@ window.COURSE_DATA = [
   <p>Isotopes of an element have the <strong>same chemical properties</strong> (same number of electrons) but <strong>different masses</strong> (different numbers of neutrons). Some are stable, others radioactive — e.g. carbon-14 is used for dating fossils; cobalt-60 for cancer treatment.</p>
 
   <div class="misconceptions">
-    <div class="row wrong">❌ Atomic number = number of neutrons.</div>
-    <div class="row right">✔ Atomic number = number of protons.</div>
-    <div class="row wrong">❌ Isotopes are different elements.</div>
-    <div class="row right">✔ Isotopes are the same element because they have the same number of protons.</div>
-    <div class="row wrong">❌ Mass number is the same as relative atomic mass.</div>
-    <div class="row right">✔ Mass number refers to one atom; relative atomic mass is a weighted average of all isotopes.</div>
+    <div class="row wrong">Incorrect: Atomic number = number of neutrons.</div>
+    <div class="row right">Correct: Atomic number = number of protons.</div>
+    <div class="row wrong">Incorrect: Isotopes are different elements.</div>
+    <div class="row right">Correct: Isotopes are the same element because they have the same number of protons.</div>
+    <div class="row wrong">Incorrect: Mass number is the same as relative atomic mass.</div>
+    <div class="row right">Correct: Mass number refers to one atom; relative atomic mass is a weighted average of all isotopes.</div>
   </div>
   </div>`,
   quiz:[
@@ -849,10 +849,10 @@ window.COURSE_DATA = [
   <p><strong>Noble gases</strong> (Group 18) have full outer shells (e.g. Neon 2,8), making them very stable and unreactive.</p>
 
   <div class="misconceptions">
-    <div class="row wrong">❌ Electrons can be placed in any shell.</div>
-    <div class="row right">✔ Electrons fill the lowest available energy shell first.</div>
-    <div class="row wrong">❌ The atomic number equals the number of shells.</div>
-    <div class="row right">✔ The atomic number equals the number of protons (and electrons in a neutral atom).</div>
+    <div class="row wrong">Incorrect: Electrons can be placed in any shell.</div>
+    <div class="row right">Correct: Electrons fill the lowest available energy shell first.</div>
+    <div class="row wrong">Incorrect: The atomic number equals the number of shells.</div>
+    <div class="row right">Correct: The atomic number equals the number of protons (and electrons in a neutral atom).</div>
   </div>
   </div>`,
   quiz:[
@@ -908,10 +908,10 @@ window.COURSE_DATA = [
   <p><strong>Metals</strong> (left side of the Periodic Table) usually lose electrons → cations. <strong>Non-metals</strong> (right side) usually gain electrons → anions. Noble gases already have full outer shells so rarely form ions.</p>
 
   <div class="misconceptions">
-    <div class="row wrong">❌ Atoms lose protons to form ions.</div>
-    <div class="row right">✔ Only electrons are gained or lost in ordinary chemical reactions.</div>
-    <div class="row wrong">❌ Chlorine loses one electron.</div>
-    <div class="row right">✔ Chlorine gains one electron to complete its outer shell.</div>
+    <div class="row wrong">Incorrect: Atoms lose protons to form ions.</div>
+    <div class="row right">Correct: Only electrons are gained or lost in ordinary chemical reactions.</div>
+    <div class="row wrong">Incorrect: Chlorine loses one electron.</div>
+    <div class="row right">Correct: Chlorine gains one electron to complete its outer shell.</div>
   </div>
   </div>`,
   quiz:[
@@ -964,10 +964,10 @@ window.COURSE_DATA = [
   <p><strong>Ionic compounds:</strong> table salt (NaCl), magnesium oxide (MgO), calcium chloride (CaCl₂).<br><strong>Covalent compounds:</strong> water (H₂O), carbon dioxide (CO₂), methane (CH₄), oxygen (O₂).</p>
 
   <div class="misconceptions">
-    <div class="row wrong">❌ Ionic bonds involve sharing electrons.</div>
-    <div class="row right">✔ Ionic bonds involve the transfer of electrons.</div>
-    <div class="row wrong">❌ All compounds contain ions.</div>
-    <div class="row right">✔ Covalent compounds contain neutral molecules, not ions.</div>
+    <div class="row wrong">Incorrect: Ionic bonds involve sharing electrons.</div>
+    <div class="row right">Correct: Ionic bonds involve the transfer of electrons.</div>
+    <div class="row wrong">Incorrect: All compounds contain ions.</div>
+    <div class="row right">Correct: Covalent compounds contain neutral molecules, not ions.</div>
   </div>
   </div>`,
   quiz:[
@@ -1025,10 +1025,10 @@ window.COURSE_DATA = [
   <p>Metals lose electrons to form <strong>cations</strong>; non-metals gain electrons to form <strong>anions</strong>. Ionic bonding transfers electrons between a metal and non-metal; covalent bonding shares electrons between non-metals.</p>
 
   <div class="misconceptions">
-    <div class="row wrong">❌ Atomic number = neutrons.</div>
-    <div class="row right">✔ Atomic number = protons.</div>
-    <div class="row wrong">❌ Covalent bonding forms ions.</div>
-    <div class="row right">✔ Covalent bonding forms molecules.</div>
+    <div class="row wrong">Incorrect: Atomic number = neutrons.</div>
+    <div class="row right">Correct: Atomic number = protons.</div>
+    <div class="row wrong">Incorrect: Covalent bonding forms ions.</div>
+    <div class="row right">Correct: Covalent bonding forms molecules.</div>
   </div>
   </div>`,
   quiz:[
@@ -1080,10 +1080,10 @@ window.COURSE_DATA = [
   <p>Isotopes are chemically similar because they have the same number of protons and electrons (same electron arrangement); they differ only in mass due to different neutron numbers.</p>
 
   <div class="misconceptions">
-    <div class="row wrong">❌ Relative atomic mass is the mass of one atom.</div>
-    <div class="row right">✔ It is a weighted average based on isotope abundance.</div>
-    <div class="row wrong">❌ The most common isotope always gives the exact atomic mass.</div>
-    <div class="row right">✔ Relative atomic mass accounts for all isotopes and their abundances.</div>
+    <div class="row wrong">Incorrect: Relative atomic mass is the mass of one atom.</div>
+    <div class="row right">Correct: It is a weighted average based on isotope abundance.</div>
+    <div class="row wrong">Incorrect: The most common isotope always gives the exact atomic mass.</div>
+    <div class="row right">Correct: Relative atomic mass accounts for all isotopes and their abundances.</div>
   </div>
   </div>`,
   quiz:[
@@ -1131,12 +1131,12 @@ window.COURSE_DATA = [
   </table>
 
   <div class="misconceptions">
-    <div class="row wrong">❌ Atomic number = protons + neutrons.</div>
-    <div class="row right">✔ Atomic number = protons only.</div>
-    <div class="row wrong">❌ Ions are formed by changing protons.</div>
-    <div class="row right">✔ Ions form by gaining or losing electrons.</div>
-    <div class="row wrong">❌ Chlorine gains two electrons.</div>
-    <div class="row right">✔ Chlorine gains one electron to complete its outer shell.</div>
+    <div class="row wrong">Incorrect: Atomic number = protons + neutrons.</div>
+    <div class="row right">Correct: Atomic number = protons only.</div>
+    <div class="row wrong">Incorrect: Ions are formed by changing protons.</div>
+    <div class="row right">Correct: Ions form by gaining or losing electrons.</div>
+    <div class="row wrong">Incorrect: Chlorine gains two electrons.</div>
+    <div class="row right">Correct: Chlorine gains one electron to complete its outer shell.</div>
   </div>
   </div>`,
   quiz:[
@@ -1198,10 +1198,10 @@ window.COURSE_DATA = [
   </ul>
 
   <div class="misconceptions">
-    <div class="row wrong">❌ Radioactive materials stop decaying when stored safely.</div>
-    <div class="row right">✔ Radioactive decay continues naturally regardless of storage.</div>
-    <div class="row wrong">❌ Gamma radiation is a particle.</div>
-    <div class="row right">✔ Gamma radiation is electromagnetic energy, not a particle.</div>
+    <div class="row wrong">Incorrect: Radioactive materials stop decaying when stored safely.</div>
+    <div class="row right">Correct: Radioactive decay continues naturally regardless of storage.</div>
+    <div class="row wrong">Incorrect: Gamma radiation is a particle.</div>
+    <div class="row right">Correct: Gamma radiation is electromagnetic energy, not a particle.</div>
   </div>
   </div>`,
   quiz:[
@@ -1253,8 +1253,8 @@ window.COURSE_DATA = [
   <p>Use this checklist before the assessment: describe atomic structure; calculate protons/neutrons/electrons; explain isotopes; calculate relative atomic mass; write electron configurations; predict ion charges; explain ionic and covalent bonding; describe alpha, beta and gamma radiation; calculate half-life.</p>
 
   <div class="misconceptions">
-    <div class="row wrong">❌ Treating isotopes as chemically different because their masses differ.</div>
-    <div class="row right">✔ Isotopes react the same way chemically since they have identical electron arrangements.</div>
+    <div class="row wrong">Incorrect: Treating isotopes as chemically different because their masses differ.</div>
+    <div class="row right">Correct: Isotopes react the same way chemically since they have identical electron arrangements.</div>
   </div>
   </div>`,
   quiz:[

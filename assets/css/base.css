@@ -133,6 +133,9 @@ body{
   background:rgba(255,255,255,.25);margin-left:auto;
 }
 .lesson-dot.done{background:var(--gold);}
+.lesson-dot.locked{width:16px;height:16px;border-radius:0;background:transparent;color:#d9c184;}
+.lesson-dot.locked .lesson-lock-icon{width:16px;height:16px;}
+.locked-title-icon,.locked-section-title .icon{width:1em;height:1em;vertical-align:-0.12em;margin-right:.35em;}
 
 .progress-note{
   font-family:'Courier New',monospace;font-size:.72em;
@@ -373,6 +376,7 @@ table.data-table tbody tr:hover td{background:#f5faf9;}
 .floating-score .reset-btn{padding:.3em .7em;font-size:.85em;}
 
 /* ---------- Dark theme surface overrides ---------- */
+html[data-theme="dark"] .course-navbar{background:rgba(28,35,39,.94);}
 html[data-theme="dark"] .topbar{
   background:rgba(27,36,38,.85);border-color:rgba(255,255,255,.08);
 }
@@ -392,10 +396,16 @@ html[data-theme="dark"] .misconceptions .right{background:rgba(47,122,77,.18);}
 
 /* ---------- Theme switcher control ---------- */
 .theme-switcher{
-  position:fixed;right:24px;top:24px;z-index:70;
-  display:flex;gap:4px;background:var(--card);border:1px solid var(--line);
-  padding:5px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,.15);
+  display:flex;gap:3px;background:var(--paper);border:1px solid var(--line);
+  padding:4px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.08);flex-shrink:0;
 }
+.course-navbar{position:sticky;top:12px;z-index:60;background:rgba(255,255,255,.94);}
+.course-toolbar-actions{display:flex;align-items:center;justify-content:flex-end;gap:18px;min-width:0;}
+.course-toolbar-actions .theme-switcher{margin-left:2px;}
+.course-toolbar-filler{display:none;}
+.topbar-search .icon{color:var(--teal-dark);}
+.topbar-pill .icon{width:13px;height:13px;}
+.progress-label{white-space:nowrap;}
 .theme-switcher button{
   border:none;background:none;cursor:pointer;
   width:34px;height:34px;border-radius:8px;

@@ -60,16 +60,16 @@ window.COURSE_DATA = [
   </ul>
   <h4>Grammar Review — Common Errors</h4>
   <div class="misconceptions">
-  <div class="row wrong">❌ She go to school every day.</div>
-  <div class="row right">✔ She goes to school every day.</div>
-  <div class="row wrong">❌ He don't like coffee.</div>
-  <div class="row right">✔ He doesn't like coffee.</div>
-  <div class="row wrong">❌ I am study English.</div>
-  <div class="row right">✔ I am studying English.</div>
-  <div class="row wrong">❌ Yesterday I go shopping.</div>
-  <div class="row right">✔ Yesterday I went shopping.</div>
-  <div class="row wrong">❌ She have many books.</div>
-  <div class="row right">✔ She has many books.</div>
+  <div class="row wrong">Incorrect: She go to school every day.</div>
+  <div class="row right">Correct: She goes to school every day.</div>
+  <div class="row wrong">Incorrect: He don't like coffee.</div>
+  <div class="row right">Correct: He doesn't like coffee.</div>
+  <div class="row wrong">Incorrect: I am study English.</div>
+  <div class="row right">Correct: I am studying English.</div>
+  <div class="row wrong">Incorrect: Yesterday I go shopping.</div>
+  <div class="row right">Correct: Yesterday I went shopping.</div>
+  <div class="row wrong">Incorrect: She have many books.</div>
+  <div class="row right">Correct: She has many books.</div>
   </div>
   <h4>Reading Practice — Why Learn English?</h4>
   <p>English is one of the most widely spoken languages in the world. It is used in business, science, technology, education, and international communication. Many Chinese university students study English because it helps them find better jobs, continue their education abroad, and communicate with people from different countries. Learning English also gives students access to books, movies, research papers, and online resources. Although learning a new language can be challenging, regular practice helps learners become more confident and successful.</p>
@@ -148,10 +148,10 @@ window.COURSE_DATA = [
   <tr><td>Money, news, mathematics = singular</td><td>The news is interesting. Mathematics is difficult.</td></tr>
   </table>
   <div class="misconceptions">
-  <div class="row wrong">❌ He like football.</div><div class="row right">✔ He likes football.</div>
-  <div class="row wrong">❌ My parents goes shopping.</div><div class="row right">✔ My parents go shopping.</div>
-  <div class="row wrong">❌ Everyone have homework.</div><div class="row right">✔ Everyone has homework.</div>
-  <div class="row wrong">❌ The news are surprising.</div><div class="row right">✔ The news is surprising.</div>
+  <div class="row wrong">Incorrect: He like football.</div><div class="row right">Correct: He likes football.</div>
+  <div class="row wrong">Incorrect: My parents goes shopping.</div><div class="row right">Correct: My parents go shopping.</div>
+  <div class="row wrong">Incorrect: Everyone have homework.</div><div class="row right">Correct: Everyone has homework.</div>
+  <div class="row wrong">Incorrect: The news are surprising.</div><div class="row right">Correct: The news is surprising.</div>
   </div>
   <h4>Grammar Focus 4 — Articles</h4>
   <table class="data-table"><tr><th>Article</th><th>Use</th><th>Example</th></tr>
@@ -161,11 +161,11 @@ window.COURSE_DATA = [
   </table>
   <h4>CET-4 Error Correction</h4>
   <div class="misconceptions">
-  <div class="row wrong">❌ He don't know the answer.</div><div class="row right">✔ He doesn't know the answer.</div>
-  <div class="row wrong">❌ My brother study engineering.</div><div class="row right">✔ My brother studies engineering.</div>
-  <div class="row wrong">❌ I am usually go to bed at eleven.</div><div class="row right">✔ I usually go to bed at eleven.</div>
-  <div class="row wrong">❌ She is knowing the answer.</div><div class="row right">✔ She knows the answer.</div>
-  <div class="row wrong">❌ There are a university near my home.</div><div class="row right">✔ There is a university near my home.</div>
+  <div class="row wrong">Incorrect: He don't know the answer.</div><div class="row right">Correct: He doesn't know the answer.</div>
+  <div class="row wrong">Incorrect: My brother study engineering.</div><div class="row right">Correct: My brother studies engineering.</div>
+  <div class="row wrong">Incorrect: I am usually go to bed at eleven.</div><div class="row right">Correct: I usually go to bed at eleven.</div>
+  <div class="row wrong">Incorrect: She is knowing the answer.</div><div class="row right">Correct: She knows the answer.</div>
+  <div class="row wrong">Incorrect: There are a university near my home.</div><div class="row right">Correct: There is a university near my home.</div>
   </div>
   <h4>Reading Practice</h4>
   <p>Many university students want to improve their English because it is important for both their studies and future careers. Some students read English books every day, while others watch English videos online. Many also join English clubs where they can practice speaking with classmates. Although learning a language requires patience, regular practice helps students become more confident and successful.</p>
@@ -229,8 +229,8 @@ window.COURSE_DATA = [
   <tr><td>I went.</td><td>I have gone.</td></tr>
   </table>
   <div class="misconceptions">
-  <div class="row wrong">❌ I have seen him yesterday.</div><div class="row right">✔ I saw him yesterday.</div>
-  <div class="row wrong">❌ I visited Beijing three times last year.</div><div class="row right">✔ I have visited Beijing three times.</div>
+  <div class="row wrong">Incorrect: I have seen him yesterday.</div><div class="row right">Correct: I saw him yesterday.</div>
+  <div class="row wrong">Incorrect: I visited Beijing three times last year.</div><div class="row right">Correct: I have visited Beijing three times.</div>
   </div>
   <h4>Grammar Focus 3 — Passive Voice</h4>
   <p>Frequent in reading passages, translation, and academic writing. <strong>Structure:</strong> be + past participle.</p>
@@ -242,11 +242,11 @@ window.COURSE_DATA = [
   <p>Use the passive when the action matters more than the doer, the doer is unknown, or the writing is formal/academic.</p>
   <h4>Common CET-4 Errors</h4>
   <div class="misconceptions">
-  <div class="row wrong">❌ I have finished my homework yesterday.</div><div class="row right">✔ I finished my homework yesterday.</div>
-  <div class="row wrong">❌ She have visited Beijing.</div><div class="row right">✔ She has visited Beijing.</div>
-  <div class="row wrong">❌ English speak by millions.</div><div class="row right">✔ English is spoken by millions.</div>
-  <div class="row wrong">❌ The homework finish yesterday.</div><div class="row right">✔ The homework was finished yesterday.</div>
-  <div class="row wrong">❌ They has completed the work.</div><div class="row right">✔ They have completed the work.</div>
+  <div class="row wrong">Incorrect: I have finished my homework yesterday.</div><div class="row right">Correct: I finished my homework yesterday.</div>
+  <div class="row wrong">Incorrect: She have visited Beijing.</div><div class="row right">Correct: She has visited Beijing.</div>
+  <div class="row wrong">Incorrect: English speak by millions.</div><div class="row right">Correct: English is spoken by millions.</div>
+  <div class="row wrong">Incorrect: The homework finish yesterday.</div><div class="row right">Correct: The homework was finished yesterday.</div>
+  <div class="row wrong">Incorrect: They has completed the work.</div><div class="row right">Correct: They have completed the work.</div>
   </div>
   <h4>Translation Practice</h4><ol>
   <li>英语在世界各地被广泛使用。 → English is widely spoken around the world.</li>

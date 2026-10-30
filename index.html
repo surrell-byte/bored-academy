@@ -12,7 +12,12 @@
 <script src="assets/js/firebase/firestore.js"></script>
 <script src="assets/js/auth/auth.js"></script>
 <script>
-  if(window.BoredAuth) BoredAuth.requireAuth();
+  if(window.BoredAuth){
+    const visitingUser = BoredAuth.requireAuth();
+    if(BoredAuth.isGuest(visitingUser ? BoredAuth.currentUser() : null)){
+      window.location.href = 'welcome.html';
+    }
+  }
 </script>
 <script src="assets/js/app/theme.js"></script>
 </head>

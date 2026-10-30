@@ -2,10 +2,10 @@ const DATA = window.COURSE_DATA;
 const COURSE_ID = window.COURSE_ID || 'course';
 
 // BOREDACADEMY_LOCKING_PATCH
-// First 2 lessons of every course are free. Everything else needs the
-// signed-in user to be premium/admin, or the lesson assigned (and unlocked)
-// to one of the user's classes via BoredAssignments.
+// Guests can preview the first module's first three lessons. Other lessons
+// require a signed-in premium/user account or an unlocked classroom assignment.
 (function computeLessonAccess(){
+  const firstUnit = DATA[0] && DATA[0].unit;
   const user = (window.BoredAuth && window.BoredAuth.currentUser) ? window.BoredAuth.currentUser() : null;
   const classIds = (user && user.classIds) || [];
   let assignedByLesson = {};
@@ -19,8 +19,9 @@ const COURSE_ID = window.COURSE_ID || 'course';
       });
     });
   }
-  DATA.forEach(function(l, i){
-    l.free = i < 2;
+  DATA.forEach(function(l){
+    const indexInFirstModule = DATA.indexOf(l) - DATA.findIndex(function(item){ return item.unit === firstUnit; });
+    l.free = l.unit === firstUnit && indexInFirstModule >= 0 && indexInFirstModule < 3;
     l.assignedTo = assignedByLesson[l.id] || [];
   });
 })();
@@ -46,20 +47,6 @@ let current = 0;
 
 // BOREDACADEMY_LOCK_PATCH
 // BOREDACADEMY_ASSIGNMENT_UNLOCK_PATCH
-// First 2 lessons of each unit are free demo lessons (matches the "Guest
-// can complete first 2-3 lessons of every course" rule). Everything else
-// needs BoredPermissions.canAccessLesson() to return true, which checks
-// lesson.assignedTo against the user's classIds — populated below from
-// real BoredAssignments entries for classes the signed-in user is in.
-(function markFreeLessons(){
-  const seen = {};
-  DATA.forEach(l => {
-    seen[l.unit] = seen[l.unit] || 0;
-    l.free = seen[l.unit] < 2;
-    seen[l.unit]++;
-  });
-})();
-
 (function applyAssignments(){
   if(!window.BoredAssignments) return;
   const user = window.BoredAuth ? window.BoredAuth.currentUser() : null;
@@ -114,14 +101,14 @@ function saveProgress(){
 }
 
 const UNIT_ICONS = {
-  "Unit 1 — Introduction to Chemistry":"🧪",
-  "Unit 2 — States of Matter":"💧",
-  "Unit 3 — Atomic Structure":"⚛️",
-  "Module 1 — Building Fluency Foundations":"🗣️",
-  "Module 2 — Expanding Your Vocabulary":"📚",
-  "Module 3 — Mastering IELTS Speaking Part 2":"🎯",
-  "Module 1 — Building the Foundation":"🧱",
-  "Module 2 — Listening Mastery":"🎧"
+  "Unit 1 — Introduction to Chemistry":"flask",
+  "Unit 2 — States of Matter":"droplet",
+  "Unit 3 — Atomic Structure":"atom",
+  "Module 1 — Building Fluency Foundations":"mic",
+  "Module 2 — Expanding Your Vocabulary":"book-open",
+  "Module 3 — Mastering IELTS Speaking Part 2":"target",
+  "Module 1 — Building the Foundation":"layers",
+  "Module 2 — Listening Mastery":"headphones"
 };
 
 function toggleSidebar(){
@@ -156,7 +143,7 @@ function renderSidebar(){
   units.forEach(u=>{
     const lessonsInUnit = DATA.filter(l=>l.unit===u && (!term || l.title.toLowerCase().includes(term) || l.id.includes(term)));
     if(term && lessonsInUnit.length===0) return;
-    h += `<div class="unit-group"><div class="unit-label">${UNIT_ICONS[u]||'📘'} <span class="label-text">${u}</span></div>`;
+    h += `<div class="unit-group"><div class="unit-label">${icon(UNIT_ICONS[u] || 'book-open', 'unit-icon')} <span class="label-text">${u}</span></div>`;
     DATA.forEach((l,i)=>{
       if(l.unit!==u) return;
       if(term && !(l.title.toLowerCase().includes(term) || l.id.includes(term))) return;
@@ -164,7 +151,7 @@ function renderSidebar(){
       const locked = !canOpenLesson(l);
       h += `<button class="lesson-btn ${i===current?'active':''} ${locked?'locked':''}" onclick="goTo(${i})">
               <span class="num">${l.id}</span><span class="lesson-title-text">${l.title}</span>
-              <span class="lesson-dot ${locked?'':(done?'done':'')}">${locked?'🔒':''}</span>
+              <span class="lesson-dot ${locked?'locked':(done?'done':'')}">${locked?icon('lock','lesson-lock-icon'):''}</span>
             </button>`;
     });
     h += `</div>`;
@@ -173,7 +160,10 @@ function renderSidebar(){
 }
 
 function goTo(i){
-  if(!canOpenLesson(DATA[i])) return;
+  if(!canOpenLesson(DATA[i])){
+    window.location.href = '../auth.html?mode=signup';
+    return;
+  }
   current = i; render(); window.scrollTo(0,0);
   document.getElementById('sidebar').classList.remove('open');
   document.getElementById('scrim').classList.remove('show');
@@ -199,12 +189,13 @@ function renderMain(){
 
   if(!canOpenLesson(l)){
     m.innerHTML = `
-      <div class="topbar">
-        <div class="topbar-search">🔍 <input placeholder="Search lessons..." value="${searchTerm}" oninput="onSearch(this.value)"></div>
+      <div class="topbar course-navbar" role="navigation" aria-label="Course toolbar">
+        <div class="topbar-search">${icon('search')} <input placeholder="Search lessons..." value="${searchTerm}" oninput="onSearch(this.value)" aria-label="Search lessons"></div>
+        <div class="course-toolbar-actions"><div class="course-toolbar-filler"></div></div>
       </div>
       <div class="lesson-head">
         <div class="eyebrow">${l.unit} · Lesson ${l.id}</div>
-        <h2>🔒 ${l.title}</h2>
+        <h2><span class="locked-title-icon">${icon('lock')}</span>${l.title}</h2>
       </div>
       <section class="block">
         <h3 class="block-title">This lesson is locked</h3>
@@ -245,12 +236,14 @@ function renderMain(){
   const mins = estimateMinutes(l);
 
   m.innerHTML = `
-    <div class="topbar">
-      <div class="topbar-search">🔍 <input placeholder="Search lessons..." value="${searchTerm}" oninput="onSearch(this.value)"></div>
-      <div class="topbar-stats">
-        <span>Progress <span class="stat-num">${stats.pct}%</span></span>
-        <span class="topbar-pill">📚 ${DATA.length} lessons</span>
-        <span class="topbar-pill">✅ ${stats.lessonsDone} done</span>
+    <div class="topbar course-navbar" role="navigation" aria-label="Course toolbar">
+      <div class="topbar-search">${icon('search')} <input placeholder="Search lessons..." value="${searchTerm}" oninput="onSearch(this.value)" aria-label="Search lessons"></div>
+      <div class="course-toolbar-actions">
+        <div class="topbar-stats">
+          <span class="progress-label">Progress <span class="stat-num">${stats.pct}%</span></span>
+          <span class="topbar-pill"><span class="lesson-count-icon">${icon('book-open')}</span>${DATA.length} lessons</span>
+          <span class="topbar-pill done-pill"><span class="lesson-done-icon">${icon('check')}</span>${stats.lessonsDone} done</span>
+        </div>
       </div>
     </div>
 
@@ -258,10 +251,10 @@ function renderMain(){
       <div class="eyebrow">${l.unit} · Lesson ${l.id}</div>
       <h2>${l.title}</h2>
       <div class="lesson-meta">
-        <span class="m-item">⏱ <b>${mins} min</b></span>
-        <span class="m-item">🧪 <b>${l.vocab.length}</b> key terms</span>
-        <span class="m-item">❓ <b>${l.quiz.length}</b> questions</span>
-        <span class="m-item">🎯 <b>${l.objectives.length}</b> objectives</span>
+        <span class="m-item">${icon('clock')} <b>${mins} min</b></span>
+        <span class="m-item">${icon('book-open')} <b>${l.vocab.length}</b> key terms</span>
+        <span class="m-item">${icon('help-circle')} <b>${l.quiz.length}</b> questions</span>
+        <span class="m-item">${icon('target')} <b>${l.objectives.length}</b> objectives</span>
       </div>
     </div>
 
@@ -282,7 +275,7 @@ function renderMain(){
 
     ${isLessonLocked(l) ? `
     <section class="block lock-block">
-      <h3 class="block-title">🔒 This lesson is locked</h3>
+      <h3 class="block-title locked-section-title">${icon('lock')} This lesson is locked</h3>
       <p>Join a classroom with a teacher's code, or go Premium, to unlock this lesson and its notes/quiz.</p>
       <div class="lock-actions">
         <a class="btn" href="../auth.html">Join a classroom</a>

@@ -11,6 +11,7 @@
 (function(){
   const USERS_KEY = 'boredacademy:users';
   const SESSION_KEY = 'boredacademy:session';
+  const GUEST_KEY = 'boredacademy:guest';
 
   function readUsers(){
     try{ return JSON.parse(localStorage.getItem(USERS_KEY) || '{}'); }
@@ -25,9 +26,31 @@
     return 'v1_' + h;
   }
 
-  function currentUser(){
-    try{ return JSON.parse(localStorage.getItem(SESSION_KEY) || 'null'); }
+  function ensureGuest(){
+    const existing = currentUser(false);
+    if(existing) return existing;
+    const guest = {
+      guest: true,
+      name: 'Guest learner',
+      role: window.BoredRoles ? window.BoredRoles.ROLES.STUDENT_FREE : 'student_free',
+      classIds: []
+    };
+    try{ localStorage.setItem(SESSION_KEY, JSON.stringify(guest)); }catch(e){ }
+    try{ localStorage.setItem(GUEST_KEY, '1'); }catch(e){ }
+    return guest;
+  }
+
+  function currentUser(allowGuest){
+    try{
+      const user = JSON.parse(localStorage.getItem(SESSION_KEY) || 'null');
+      if(user) return user;
+      return allowGuest === false ? null : ensureGuest();
+    }
     catch(e){ return null; }
+  }
+
+  function isGuest(user){
+    return !!(user && user.guest);
   }
 
   function firebaseAvailable(){
@@ -76,6 +99,7 @@
     writeUsers(users);
     const session = { email, name: users[email].name, role: users[email].role, classIds: users[email].classIds };
     try{ localStorage.setItem(SESSION_KEY, JSON.stringify(session)); }catch(e){}
+    try{ localStorage.removeItem(GUEST_KEY); }catch(e){}
     try{ localStorage.setItem('boredacademy:name', session.name); }catch(e){}
     firebaseUserDoc(email, { role: session.role, classIds: session.classIds });
     return { ok:true, user: session };
@@ -125,6 +149,7 @@
     }
     const session = { email, name: record.name, role: record.role || defaultRoleFor('student'), classIds: record.classIds || [] };
     try{ localStorage.setItem(SESSION_KEY, JSON.stringify(session)); }catch(e){}
+    try{ localStorage.removeItem(GUEST_KEY); }catch(e){}
     try{ localStorage.setItem('boredacademy:name', session.name); }catch(e){}
     const firestoreUpdate = {};
     if(record.role) firestoreUpdate.role = session.role;
@@ -149,10 +174,9 @@
   }
 
   function requireAuth(){
-    if(!currentUser()){
-      window.location.href = rootRelative('welcome.html');
-      return false;
-    }
+    // Visitors automatically receive a guest session. They can explore the
+    // allowed preview lessons, while locked lesson actions lead to sign-up.
+    ensureGuest();
     return true;
   }
 
@@ -188,5 +212,5 @@
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', enablePageTransitions);
   else enablePageTransitions();
 
-  window.BoredAuth = { currentUser, signUp, login, logout, requireAuth, setRole, addClass, firebaseAvailable, markOnboardingDone, needsOnboarding, setTeacherAccess, hasTeacherAccess, rootRelative };
+  window.BoredAuth = { currentUser, ensureGuest, isGuest, signUp, login, logout, requireAuth, setRole, addClass, firebaseAvailable, markOnboardingDone, needsOnboarding, setTeacherAccess, hasTeacherAccess, rootRelative };
 })();

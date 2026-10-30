@@ -259,7 +259,7 @@ function renderProgressView(){
     return `
       <div class="progress-course-card">
         <div class="pc-head">
-          <div class="pc-icon">${c.icon}</div>
+          <div class="pc-icon">${icon(c.svgIcon || 'book-open')}</div>
           <div class="pc-head-body">
             <h4>${c.title}</h4>
             <div class="pc-sub">${totalLessons} lessons ${accuracy!==null?`· ${accuracy}% avg quiz score`:''}</div>
@@ -585,7 +585,7 @@ function renderQuizzesPage(){
     let html = '';
     if(course){
       html += `<div style="margin-bottom:1em;display:flex;align-items:center;gap:.8em;">
-        <div style="font-size:1.4em;">${course.icon}</div>
+        <div style="width:28px;height:28px;">${icon(course.svgIcon || 'book-open')}</div>
         <div>
           <div style="font-weight:700;font-size:1.1em;">${course.title}</div>
           <div style="color:var(--muted);font-size:.85em;">${lessons.length} quizzes · ${lessons.reduce((s,l)=>s+l.quiz.length,0)} questions</div>
@@ -683,7 +683,7 @@ function renderQuizzesPage(){
       const avgScore = scoreCount > 0 ? Math.round(totalScore/scoreCount) : null;
       return `
         <a class="course-card" href="javascript:void(0)" onclick="window._selectQuizCourse('${c.id}')">
-          <div class="c-icon">${c.icon}</div>
+          <div class="c-icon">${icon(c.svgIcon || 'book-open')}</div>
           <h4>${c.title}</h4>
           <div class="c-lessons">${totalLessons} Lessons · ${totalQ} Questions</div>
           <div class="c-bar"><span style="width:${avgScore !== null ? avgScore : 0}%"></span></div>
